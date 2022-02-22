@@ -2,8 +2,13 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import suggestionRoutes from "./routes/suggestions.js";
+
 // Initialize app
 const app = express();
+
+// Using express middleware to connect routes to our application
+app.use("/suggestions", suggestionRoutes);
 
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
