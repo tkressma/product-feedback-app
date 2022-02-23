@@ -21,8 +21,13 @@
   align-items: center;
 }
 
-.controller__sort_options img {
+.menuarrow {
   filter: brightness(0) invert(1);
+  transition: all 0.3s;
+}
+
+.menuarrow--active {
+  transform: rotate(-180deg);
 }
 
 .controller__listbox button {
@@ -44,6 +49,11 @@
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.2s, visibility 0.2s;
+}
+
+.active {
+  visibility: visible;
+  opacity: 1;
 }
 
 .controller__dropdown ul {

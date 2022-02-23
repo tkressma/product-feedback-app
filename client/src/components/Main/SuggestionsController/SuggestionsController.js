@@ -9,6 +9,8 @@ import { useMediaQuery } from "react-responsive";
 
 export default function SuggestionsController() {
   const isMobile = useMediaQuery({ query: "(min-width: 767px)" });
+  const [sortingOption, setSortingOption] = useState("Most Upvotes");
+  const [menuOpen, setMenuOpen] = useState(false);
   const sortingOptions = [
     "Most Upvotes",
     "Least Upvotes",
@@ -16,15 +18,15 @@ export default function SuggestionsController() {
     "Least Comments",
   ];
 
-  const [sortingOption, setSortingOption] = useState("Most Upvotes");
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const dropDownArrow = menuOpen ? upArrowIcon : downArrowIcon;
-
   const handleDropDown = (event) => {
     event.preventDefault();
     setMenuOpen(!menuOpen);
     event.target.setAttribute("aria-expanded", menuOpen);
+  };
+
+  const handleSortSelection = (event) => {
+    const selection = event.target.innerHTML;
+    console.log(selection);
   };
 
   const suggestionCount = isMobile && (
@@ -48,18 +50,29 @@ export default function SuggestionsController() {
           >
             {sortingOption}
           </button>
-          <img src={dropDownArrow} />
+          <img
+            src={downArrowIcon}
+            className={`${styles.menuarrow} ${
+              menuOpen && styles["menuarrow--active"]
+            }`}
+          />
         </div>
 
         {/* Dropdown pop up */}
-        <div className={styles["controller__dropdown"]}>
-          <ul role="listbox" tabIndex="-1" aria-labelledby="sort_label">
+        <div
+          className={`${styles["controller__dropdown"]} ${
+            menuOpen && styles.active
+          }`}
+        >
+          <ul role="listbox" aria-labelledby="sort_label">
             {sortingOptions.map((option, index) => (
               <li
                 key={index}
                 className={styles["controller__listitem"]}
                 role="option"
                 aria-selected="false"
+                tabIndex="0"
+                onClick={handleSortSelection}
               >
                 {option}
               </li>
