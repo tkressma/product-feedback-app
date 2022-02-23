@@ -6,7 +6,7 @@ import SuggestionModel from "../models/suggestionModel.js";
 /* Retrieve all suggestions */
 export const getSuggestions = async (req, res) => {
   try {
-    const suggestions = await SuggestionModel.find();
+    const suggestions = await SuggestionModel.find({});
     console.log(suggestions);
     res.status(200).json(suggestions); // OK
   } catch (error) {
