@@ -11,6 +11,7 @@
   --navy-blue: hsl(231, 33%, 34%);
   --blue-gray: hsl(224, 20%, 49%);
   --light-orange: hsl(14, 83%, 74%);
+  --red: hsl(0, 67%, 53%);
 }
 
 body {

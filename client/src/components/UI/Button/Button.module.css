@@ -1,8 +1,63 @@
 .button {
+  padding: 0.75rem 25px;
   font-weight: bold;
   font-size: 0.875rem;
   text-align: center;
-  padding: 0.75rem 1.539rem;
+  color: var(--white);
   border: none;
   border-radius: 10px;
+  transition: 0.2s all;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Basic Button Colors */
+.button--violet {
+  background-color: var(--violet);
+}
+
+.button--violet:hover {
+  background-color: #c75af6;
+}
+
+.button--blue {
+  background-color: var(--blue);
+}
+
+.button--blue:hover {
+  background-color: #7c91f9;
+}
+
+.button--navy-blue {
+  background-color: var(--navy-blue);
+}
+
+.button--navy-blue:hover {
+  background-color: #656ea3;
+}
+
+.button--red {
+  background-color: var(--red);
+}
+
+.button--red:hover {
+  background-color: #e98888;
+}
+
+/* Back Buttons */
+.button--back-inherit {
+  background-color: inherit;
+  text-decoration: transparent;
+}
+
+.button--back-inherit:hover {
+  text-decoration: underline;
+}
+
+.button--back {
+  background-color: var(--navy-blue-dark);
+}
+
+.button--back:hover {
+  text-decoration: underline;
 }

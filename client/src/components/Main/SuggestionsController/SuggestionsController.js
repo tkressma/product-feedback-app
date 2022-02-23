@@ -8,8 +8,9 @@ export default function SuggestionsController() {
         Sort by:
         <input type="button" value="Most Upvotes" />
       </label>
-      <Button>+ Add Feedback</Button>
-      <Button>Edit Feedback</Button>
+      <Button type="violet" link={true}>
+        + Add Feedback
+      </Button>
     </section>
   );
 }
