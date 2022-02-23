@@ -1,5 +1,5 @@
 .container {
-  width: 87.2%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -7,13 +7,15 @@
   .container {
     width: 89.714%;
     margin: 0 auto;
+    padding-top: 3.5rem;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1440px) {
   .container {
     width: 89.714%;
     margin: 0 auto;
     max-width: 1110px;
+    padding-top: 5.875rem;
   }
 }

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { connectAdvanced, useDispatch } from "react-redux";
 import { getSuggestions } from "./actions/suggestions";
-import Container from "./components/UI/Container/Container";
 import Main from "./components/Main/Main";
+import Container from "./components/UI/Container/Container";
 
 function App() {
   const dispatch = useDispatch();
@@ -12,11 +12,9 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div>
-      <Container>
-        <Main />
-      </Container>
-    </div>
+    <Container>
+      <Main />
+    </Container>
   );
 }
 
