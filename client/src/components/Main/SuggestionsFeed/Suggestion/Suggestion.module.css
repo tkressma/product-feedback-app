@@ -16,7 +16,9 @@
   flex-basis: 100%;
 }
 
-.suggestion__upvote_count {
+.suggestion__upvote {
+  display: flex;
+  gap: 12px;
   order: 2;
 }
 
@@ -25,6 +27,9 @@
 }
 
 @media (min-width: 768px) {
+  .suggestion {
+    padding: 1.75rem 2rem;
+  }
   .suggestion__info {
     flex-basis: auto;
   }
