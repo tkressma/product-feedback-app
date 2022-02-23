@@ -9,10 +9,62 @@
   background-color: var(--navy-blue-dark);
 }
 
-.controller__sortby {
+.controller__listbox {
   font-size: 0.8125rem;
   flex: 1;
   color: var(--light-gray);
+  position: relative;
+}
+
+.controller__sort_options {
+  display: flex;
+  align-items: center;
+}
+
+.controller__sort_options img {
+  filter: brightness(0) invert(1);
+}
+
+.controller__listbox button {
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.controller__dropdown {
+  position: absolute;
+  top: 68px;
+  left: 0;
+  width: 255px;
+  color: var(--navy-blue);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.controller__dropdown ul {
+  list-style: none;
+  padding: 0;
+}
+
+.controller__listitem {
+  font-size: 1rem;
+  line-height: 23px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+.controller__listitem + .controller__listitem {
+  border-top: 1px solid var(--navy-blue);
+}
+
+.controller__listitem:hover {
+  color: var(--violet);
 }
 
 @media (min-width: 768px) {
@@ -22,7 +74,7 @@
     padding: 0 1rem 0 1.5rem;
   }
 
-  .controller__sortby {
+  .controller__listbox {
     font-size: 0.875rem;
   }
 }
