@@ -1,0 +1,34 @@
+.suggestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+}
+
+.suggestion__info {
+  border: 1px;
+  flex: 1;
+  order: 0;
+  flex-basis: 100%;
+}
+
+.suggestion__upvote_count {
+  order: 2;
+}
+
+.suggestion__comment_count {
+  order: 2;
+}
+
+@media (min-width: 768px) {
+  .suggestion__info {
+    flex-basis: auto;
+  }
+  .suggestion__upvote_count {
+    order: 0;
+  }
+}
