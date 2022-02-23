@@ -1,5 +1,5 @@
 import styles from "./Suggestion.module.css";
-import Tag from "../../../UI/Container/Tag/Tag";
+import Tag from "../../../UI/Tag/Tag";
 import commentIcon from "../../../../assets/shared/icon-comments.svg";
 import upvoteIcon from "../../../../assets/shared/icon-arrow-up.svg";
 export default function Suggestion({ suggestionData }) {
