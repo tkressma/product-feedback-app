@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   gap: 2.5rem;
   padding: 1.5rem;
-  background-color: var(--card-bg);
+  background-color: var(--white);
   border-radius: 10px;
 }
 

@@ -1,6 +1,14 @@
 :root {
-  --bg: #f2f2f2;
-  --card-bg: #ffffff;
+  --off-white: #f7f8fd;
+  --light-gray: #f2f4ff;
+  --white: #ffffff;
+  --violet: hsl(282, 83%, 52%);
+  --blue: hsl(230, 76%, 59%);
+  --lightblue: hsl(204, 94%, 68%);
+  --navy-blue-dark: hsl(230, 31%, 31%);
+  --navy-blue: hsl(231, 33%, 34%);
+  --blue-gray: hsl(224, 20%, 49%);
+  --light-orange: hsl(14, 83%, 74%);
 }
 
 body {
@@ -10,7 +18,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--bg);
+  background-color: var(--off-white);
 }
 
 code {
