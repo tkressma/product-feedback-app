@@ -6,7 +6,7 @@ export default function Button({ type, link, children }) {
 
   // Sometimes our "buttons" should really be links. This solves those edge cases
   const button = link ? (
-    <a className={buttonStyling} href="https://www.google.com/">
+    <a className={buttonStyling} href="#">
       {children}
     </a>
   ) : (
