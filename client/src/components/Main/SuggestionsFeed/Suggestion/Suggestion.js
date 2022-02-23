@@ -3,6 +3,7 @@ import Tag from "../../../UI/Tag/Tag";
 import commentIcon from "../../../../assets/shared/icon-comments.svg";
 import upvoteIcon from "../../../../assets/shared/icon-arrow-up.svg";
 import Heading from "../../../UI/Heading/HeadingTypography";
+import TextBody from "../../../UI/TextBody/TextBody";
 export default function Suggestion({ suggestionData }) {
   const { title, description, category, upvotes, comments } = suggestionData;
   return (
@@ -20,7 +21,7 @@ export default function Suggestion({ suggestionData }) {
       {/* Suggestion title, description, and tag */}
       <section className={styles["suggestion__info"]}>
         <Heading type="h3">{title}</Heading>
-        <p>{description}</p>
+        <TextBody type="b1">{description}</TextBody>
         <Tag>{category.charAt(0).toUpperCase() + category.slice(1)}</Tag>
       </section>
 
