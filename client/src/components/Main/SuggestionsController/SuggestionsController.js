@@ -1,15 +1,18 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useMediaQuery } from "react-responsive";
 import styles from "./SuggestionsController.module.css";
 import Button from "../../UI/Button/Button";
 import Heading from "../../UI/Heading/Heading";
 import bulbIcon from "../../../assets/suggestions/icon-suggestions.svg";
-import upArrowIcon from "../../../assets/shared/icon-arrow-up.svg";
 import downArrowIcon from "../../../assets/shared/icon-arrow-down.svg";
-import { useMediaQuery } from "react-responsive";
+import checkIcon from "../../../assets/shared/icon-check.svg";
 
 export default function SuggestionsController() {
   const isMobile = useMediaQuery({ query: "(min-width: 767px)" });
   const [sortingOption, setSortingOption] = useState("Most Upvotes");
+  // Retrieves all of the suggestions
+  const suggestions = useSelector((state) => state.suggestions);
   const [menuOpen, setMenuOpen] = useState(false);
   const sortingOptions = [
     "Most Upvotes",
@@ -19,19 +22,22 @@ export default function SuggestionsController() {
   ];
 
   const handleDropDown = (event) => {
-    event.preventDefault();
-    setMenuOpen(!menuOpen);
-    event.target.setAttribute("aria-expanded", menuOpen);
+    setMenuOpen(!menuOpen); // Toggle the dropdown menu
+    event.target.setAttribute("aria-expanded", menuOpen); // Toggle aria-expanded label for accessibility
   };
 
   const handleSortSelection = (event) => {
+    setMenuOpen(false); // Close the dropdown menu
     const selection = event.target.innerHTML;
+    setSortingOption(selection);
     console.log(selection);
   };
 
+  // Displays how many suggestions are available on screen sizes larger than 768px
   const suggestionCount = isMobile && (
     <Heading type="h3" white={true}>
-      <img src={bulbIcon} />0 Suggestions
+      <img src={bulbIcon} />
+      {suggestions.length} Suggestions
     </Heading>
   );
 
@@ -61,7 +67,7 @@ export default function SuggestionsController() {
         {/* Dropdown pop up */}
         <div
           className={`${styles["controller__dropdown"]} ${
-            menuOpen && styles.active
+            menuOpen && styles["controller__dropdown--active"]
           }`}
         >
           <ul role="listbox" aria-labelledby="sort_label">
@@ -69,12 +75,17 @@ export default function SuggestionsController() {
               <li
                 key={index}
                 className={styles["controller__listitem"]}
+                aria-selected={sortingOption === option ? true : false}
                 role="option"
-                aria-selected="false"
                 tabIndex="0"
                 onClick={handleSortSelection}
+                onKeyPress={handleSortSelection}
               >
+                {/* Option text */}
                 {option}
+
+                {/* If a list item is currently selected, display a checkmark */}
+                {sortingOption === option && <img src={checkIcon} />}
               </li>
             ))}
           </ul>
