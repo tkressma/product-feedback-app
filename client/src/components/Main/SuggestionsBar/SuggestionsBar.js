@@ -11,22 +11,22 @@ import checkIcon from "../../../assets/shared/icon-check.svg";
 
 export default function SuggestionsBar() {
   const isMobile = useMediaQuery({ query: "(min-width: 767px)" });
-  const [sortingOption, setSortingOption] = useState("Most Upvotes");
-  // Retrieves all of the suggestions
-  const suggestions = useSelector((state) => state.suggestions);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const dispatch = useDispatch();
   const sortingOptions = [
     "Most Upvotes",
     "Least Upvotes",
     "Most Comments",
     "Least Comments",
   ];
+  const [sortingOption, setSortingOption] = useState("Most Upvotes");
+  // Retrieves all of the suggestions
+  const suggestions = useSelector((state) => state.suggestions);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const dir = sortingOption.toLowerCase().includes("most") ? "asc" : "desc";
-    const sortType = sortingOption.toLowerCase().includes("upvote")
-      ? "upvote"
+    const sortType = sortingOption.toLowerCase().includes("upvotes")
+      ? "upvotes"
       : "comment";
     dispatch(
       sortByUpvotes({
@@ -44,7 +44,7 @@ export default function SuggestionsBar() {
 
   const handleSortSelection = (event) => {
     setMenuOpen(false); // Close the dropdown menu
-    setSortingOption(event.target.innerHTML);
+    setSortingOption(event.target.innerText); // Set the sorting option to user selection (E.G. "Least Upvotes")
   };
 
   // Displays how many suggestions are available on screen sizes larger than 768px

@@ -1,4 +1,5 @@
 import styles from "./SuggestionsFeed.module.css";
+import ReactCSSTransitionGroup from "react-transition-group";
 import { useSelector } from "react-redux";
 import Suggestion from "./Suggestion/Suggestion";
 export default function SuggestionsFeed() {

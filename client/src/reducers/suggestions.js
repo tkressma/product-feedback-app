@@ -1,7 +1,7 @@
 export default (suggestions = [], action) => {
   switch (action.type) {
     case "FETCH_ALL":
-      return action.payload;
+      return [...sortDesc(action.payload, "upvotes")]; // Initially return all data sorted by most upvotes
     case "CREATE":
       return suggestions;
     case "SORT_BY_UPVOTE":
