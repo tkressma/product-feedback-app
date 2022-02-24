@@ -1,11 +1,11 @@
 import styles from "./Main.module.css";
-import SuggestionController from "./SuggestionsController/SuggestionsController";
+import SuggestionsBar from "./SuggestionsBar/SuggestionsBar";
 import SuggestionsFeed from "./SuggestionsFeed/SuggestionsFeed";
 export default function Main() {
   return (
     <main className={styles.main}>
-      <SuggestionController />
-      <SuggestionsFeed />;
+      <SuggestionsBar />
+      <SuggestionsFeed />
     </main>
   );
 }

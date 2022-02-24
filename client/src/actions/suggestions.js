@@ -10,3 +10,8 @@ export const getSuggestions = () => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const sortByUpvotes = (payload) => ({
+  type: "SORT_BY_UPVOTE",
+  payload,
+});
