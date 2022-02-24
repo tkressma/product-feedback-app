@@ -37,13 +37,6 @@ export default function SuggestionsBar() {
     );
   }, [sortingOption]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      console.log("render");
-    }, 100);
-    console.log("render");
-  }, []);
-
   const handleDropDown = (event) => {
     setMenuOpen(!menuOpen); // Toggle the dropdown menu
     event.target.setAttribute("aria-expanded", menuOpen); // Toggle aria-expanded label for accessibility
