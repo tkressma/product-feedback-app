@@ -1,14 +1,15 @@
 export default (suggestions = [], action) => {
   switch (action.type) {
     case "FETCH_ALL":
-      return [...sortDesc(action.payload, "upvotes")]; // Initially return all data sorted by most upvotes
+      return action.payload; // Initially return all data sorted by most upvotes
     case "CREATE":
       return suggestions;
     case "SORT_BY_UPVOTE":
-      if (action.payload.direction === "asc") {
-        return [...sortDesc(action.payload.suggestions, "upvotes")];
+      let sortByFn = action.payload.sortBy === "Most" ? sortDesc : sortAsc;
+      if (action.dataType === "upvotes") {
+        return [...sortByFn(action.payload.suggestions, "upvotes")];
       } else {
-        return [...sortAsc(action.payload.suggestions, "upvotes")];
+        return [...sortByFn(action.payload.suggestions, "comments")];
       }
     default:
       return suggestions;

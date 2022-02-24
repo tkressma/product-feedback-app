@@ -24,15 +24,15 @@ export default function SuggestionsBar() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const dir = sortingOption.toLowerCase().includes("most") ? "asc" : "desc";
-    const sortType = sortingOption.toLowerCase().includes("upvotes")
-      ? "upvotes"
-      : "comment";
+    const sortBy = sortingOption.includes("Most") ? "Most" : "Least";
+    const dataType = sortingOption.includes("Upvotes") ? "upvotes" : "comment";
+
+    // Sort data depending
     dispatch(
       sortByUpvotes({
         suggestions: suggestions,
-        direction: dir,
-        type: sortType,
+        sortBy: sortBy,
+        dataType: dataType,
       })
     );
   }, [sortingOption]);
