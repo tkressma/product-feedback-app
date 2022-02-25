@@ -29,7 +29,11 @@ export default function Suggestion({ suggestionData }) {
 
       {/* Comment Count */}
       <div className={styles["suggestion__comment"]}>
-        <img src={commentIcon} alt="A message bubble" />
+        <img
+          src={commentIcon}
+          alt="A message bubble"
+          className={styles["suggestion__comment_icon"]}
+        />
         <span>{comments.length}</span>
       </div>
     </article>

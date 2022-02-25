@@ -24,6 +24,8 @@
 .menuarrow {
   filter: brightness(0) invert(1);
   transition: all 0.3s;
+  width: 10px;
+  height: 7px;
 }
 
 .menuarrow--active {
@@ -78,6 +80,11 @@
 
 .bar__listitem:hover {
   color: var(--violet);
+}
+
+.bar__listitem_checkmark {
+  width: 13px;
+  height: 11px;
 }
 
 @media (min-width: 768px) {

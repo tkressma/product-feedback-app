@@ -112,7 +112,11 @@ export default function SuggestionsBar() {
 
                 {/* If a list item is currently selected, display a checkmark */}
                 {sortingOption === option && (
-                  <img src={checkIcon} alt="Checkmark" />
+                  <img
+                    src={checkIcon}
+                    alt="Checkmark"
+                    className={styles["bar__listitem_checkmark"]}
+                  />
                 )}
               </li>
             ))}

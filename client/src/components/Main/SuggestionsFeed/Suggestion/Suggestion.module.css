@@ -54,6 +54,11 @@
   order: 2;
 }
 
+.suggestion__comment_icon {
+  width: 18px;
+  height: 16px;
+}
+
 @media (min-width: 768px) {
   .suggestion {
     gap: 2.5rem;
