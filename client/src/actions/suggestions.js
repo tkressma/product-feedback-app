@@ -11,7 +11,13 @@ export const getSuggestions = () => async (dispatch) => {
   }
 };
 
-export const sortByUpvotes = (payload) => ({
-  type: "SORT_BY_UPVOTE",
-  payload,
-});
+export const sortByUpvotesAPI =
+  ({ dataType, order }) =>
+  async (dispatch) => {
+    try {
+      const { data } = await api.fetchSortedSuggestions(dataType, order);
+      dispatch({ type: "FETCH_SORTED", payload: data });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };

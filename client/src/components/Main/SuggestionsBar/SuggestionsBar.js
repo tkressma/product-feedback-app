@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { sortByUpvotes } from "../../../actions/suggestions";
+import { sortByUpvotes, sortByUpvotesAPI } from "../../../actions/suggestions";
 import { useMediaQuery } from "react-responsive";
 import styles from "./SuggestionsBar.module.css";
 import Button from "../../UI/Button/Button";
@@ -24,18 +24,17 @@ export default function SuggestionsBar() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const sortBy = sortingOption.includes("Most") ? "Most" : "Least";
-    const dataType = sortingOption.includes("Upvotes") ? "upvotes" : "comment";
+    const order = sortingOption.includes("Most") ? "desc" : "asc";
+    const type = sortingOption.includes("Upvotes") ? "upvotes" : "comments";
 
     // Sort data depending
     dispatch(
-      sortByUpvotes({
-        suggestions: suggestions,
-        sortBy: sortBy,
-        dataType: dataType,
+      sortByUpvotesAPI({
+        dataType: type,
+        order: order,
       })
     );
-  }, [sortingOption]);
+  }, [sortingOption, dispatch]);
 
   const handleDropDown = (event) => {
     setMenuOpen(!menuOpen); // Toggle the dropdown menu
