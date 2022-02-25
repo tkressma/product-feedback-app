@@ -18,13 +18,14 @@
   order: 2;
   padding: 0.594rem 0.938rem;
   background-color: var(--light-gray);
+  border: none;
   border-radius: 10px;
   font-weight: 600;
   font-size: 0.8125rem;
+  color: var(--blue);
   line-height: 19px;
   letter-spacing: -0.180556px;
-  text-decoration: none;
-  color: var(--blue);
+  cursor: pointer;
 }
 
 .suggestion__upvote_icon {

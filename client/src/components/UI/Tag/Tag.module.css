@@ -6,8 +6,9 @@
   font-weight: 600;
   font-size: 0.8125rem;
   line-height: 19px;
-  text-decoration: none;
   color: var(--blue);
   background-color: var(--light-gray);
   border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }

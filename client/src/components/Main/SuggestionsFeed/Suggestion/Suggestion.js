@@ -11,14 +11,14 @@ export default function Suggestion({ suggestionData }) {
   return (
     <article className={styles.suggestion}>
       {/* Upvote count */}
-      <div className={styles["suggestion__upvote"]}>
+      <button className={styles["suggestion__upvote"]}>
         <img
           src={upvoteIcon}
           alt="Upvote arrow"
           className={styles["suggestion__upvote_icon"]}
         />
         <span>{upvotes}</span>
-      </div>
+      </button>
 
       {/* Suggestion title, description, and tag */}
       <section className={styles["suggestion__info"]}>
