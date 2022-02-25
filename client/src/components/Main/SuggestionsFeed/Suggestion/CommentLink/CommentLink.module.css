@@ -1,0 +1,11 @@
+.comment {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  order: 2;
+}
+
+.comment_icon {
+  width: 18px;
+  height: 16px;
+}
