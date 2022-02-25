@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connectAdvanced, useDispatch } from "react-redux";
 import { getSuggestions } from "./actions/suggestions";
 import Main from "./components/Main/Main";
-import ControlCenter from "./components/ControlCenter/ControlCenter";
+import Header from "./components/Header/Header";
 import Container from "./components/UI/Container/Container";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
 
   return (
     <Container>
-      <ControlCenter />
+      <Header />
       <Main />
     </Container>
   );

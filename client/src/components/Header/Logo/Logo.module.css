@@ -1,0 +1,53 @@
+.logo {
+  color: white;
+  flex: 1;
+}
+
+.logo h1 {
+  font-size: 0.9375rem;
+  font-weight: bold;
+  line-height: 22px;
+  letter-spacing: -0.1875px;
+}
+
+.logo p {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 19px;
+  opacity: 0.75;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    background: url("../../../assets/suggestions/tablet/background-header.png")
+      no-repeat;
+    background-size: auto;
+    padding: 1rem;
+    border-radius: 10px;
+    height: 178px;
+    max-width: 223px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .logo h1 {
+    font-size: 1.25rem;
+    line-height: 29px;
+    letter-spacing: -0.25px;
+  }
+
+  .logo p {
+    font-size: 0.9375rem;
+    line-height: 22px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .logo {
+    background: url("../../../assets/suggestions/desktop/background-header.png");
+    background-size: cover;
+    max-height: 137px;
+    max-width: 255px;
+  }
+}
