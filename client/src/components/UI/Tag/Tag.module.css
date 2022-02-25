@@ -11,4 +11,14 @@
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  transition: 0.3s all;
+}
+
+.tag:hover {
+  background-color: var(--btn-hover);
+}
+
+.tag:active {
+  background-color: var(--blue);
+  color: white;
 }
