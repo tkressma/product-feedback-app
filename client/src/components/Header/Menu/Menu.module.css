@@ -1,4 +1,6 @@
 .menu {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 0;
   right: 0;
@@ -17,8 +19,10 @@
 
 @media (min-width: 768px) {
   .menu {
+    flex-direction: row;
     position: static;
     flex: 1;
+    margin: 0;
     height: auto;
     background: transparent;
     visibility: visible;
