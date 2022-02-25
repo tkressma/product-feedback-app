@@ -31,45 +31,67 @@ export const addSuggestion = async (req, res) => {
 };
 
 export const getSortedSuggestions = async (req, res) => {
+  // Since mongoose Model.find() returns an instance of Mongoose's Query class,
+  // 'suggestions' must first be converted to a JSON in order for me to retrieve
+  // comment replies data. Without doing this, replies will return undefined
+  // because _id = new ObjectID would cause the entire comment to return undefined.
   const suggestions = await SuggestionModel.find({});
+  let sortedSuggestions = JSON.parse(JSON.stringify(suggestions));
 
   try {
     const type = req.query.type;
     const order = req.query.order;
     const isComment = type === "comments" ? true : false;
-    let sortedSuggestions;
-
     if (order === "desc") {
-      sortedSuggestions = sort(suggestions, "desc", type, isComment);
+      // Most upvotes or comments
+      sortedSuggestions = sort(sortedSuggestions, "desc", type, isComment);
     } else if (order === "asc") {
       // Least upvotes or comments
-      sortedSuggestions = sort(suggestions, "asc", type, isComment);
+      sortedSuggestions = sort(sortedSuggestions, "asc", type, isComment);
     }
-
     res.status(200).json(sortedSuggestions);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
 
+// Sorts all suggestions based on order (most/least) or type (upvotes/comments)
 function sort(arr, order, type, isComment) {
   return arr.sort(function (a, b) {
     let curr = a[type];
     let next = b[type];
 
+    // If the type of data being sorted is a comment, retrieve all comment data
+    // including all replies to comments on that suggestion.
     if (isComment) {
-      curr = a[type].length + (a[type]?.replies?.length || 0);
-      next = b[type].length + (b[type]?.replies?.length || 0);
+      let currReplies = addReplies(a[type]);
+      let nextReplies = addReplies(b[type]);
+
+      curr = a[type].length + currReplies;
+      next = b[type].length + nextReplies;
     }
 
-    if (order === "asc") {
-      if (curr > next) return 1;
-      if (next > curr) return -1;
-      return 0;
-    } else {
+    if (order === "desc") {
+      // Sorts based on most upvotes or comments
       if (curr > next) return -1;
       if (next > curr) return 1;
       return 0;
+    } else {
+      // Sorts based on least upvotes or comments
+      if (curr > next) return 1;
+      if (next > curr) return -1;
+      return 0;
     }
   });
+}
+
+// Checks every comment in the suggestion for replies and returns a running total.
+function addReplies(arr) {
+  let totalReplies = 0;
+
+  arr.forEach((comment) => {
+    totalReplies += comment?.replies?.length || 0;
+  });
+
+  return totalReplies;
 }
