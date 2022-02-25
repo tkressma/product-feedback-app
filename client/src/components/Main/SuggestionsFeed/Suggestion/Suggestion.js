@@ -7,6 +7,7 @@ import TextBody from "../../../UI/TextBody/TextBody";
 export default function Suggestion({ suggestionData }) {
   // Destructuring props
   const { title, description, category, upvotes, comments } = suggestionData;
+  const tag = category.charAt(0).toUpperCase() + category.slice(1);
 
   return (
     <article className={styles.suggestion}>
@@ -16,7 +17,7 @@ export default function Suggestion({ suggestionData }) {
       <section className={styles["suggestion__info"]}>
         <Heading type="h3">{title}</Heading>
         <TextBody type="b1">{description}</TextBody>
-        <Tag>{category.charAt(0).toUpperCase() + category.slice(1)}</Tag>
+        <Tag>{tag}</Tag>
       </section>
 
       <CommentLink comments={comments} />
