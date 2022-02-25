@@ -1,0 +1,52 @@
+/* Upvote Count */
+
+.upvote {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  order: 2;
+  padding: 0.594rem 0.938rem;
+  background-color: var(--light-gray);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--blue);
+  line-height: 19px;
+  letter-spacing: -0.180556px;
+  cursor: pointer;
+}
+
+.upvote--active {
+  background-color: var(--blue);
+  color: white;
+}
+
+.upvote__icon--active {
+  filter: brightness(0) invert(100);
+}
+
+.upvote:hover {
+  background-color: #cfd7ff;
+}
+.upvote:active {
+  background-color: var(--blue);
+  color: white;
+}
+
+.upvote:active .upvote_icon {
+  filter: brightness(0) invert(100);
+}
+
+.upvote_icon {
+  width: 10px;
+  height: 7px;
+}
+
+@media (min-width: 768px) {
+  .upvote {
+    flex-direction: column;
+    align-self: flex-start;
+    order: 0;
+  }
+}

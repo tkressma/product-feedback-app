@@ -9,30 +9,6 @@
   border-radius: 10px;
 }
 
-/* Upvote Count */
-
-.suggestion__upvote {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  order: 2;
-  padding: 0.594rem 0.938rem;
-  background-color: var(--light-gray);
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 0.8125rem;
-  color: var(--blue);
-  line-height: 19px;
-  letter-spacing: -0.180556px;
-  cursor: pointer;
-}
-
-.suggestion__upvote_icon {
-  width: 10px;
-  height: 7px;
-}
-
 .suggestion__info {
   display: flex;
   flex-direction: column;
