@@ -10,7 +10,7 @@ import downArrowIcon from "../../../assets/shared/icon-arrow-down.svg";
 import checkIcon from "../../../assets/shared/icon-check.svg";
 
 export default function SuggestionsBar() {
-  const isMobile = useMediaQuery({ query: "(min-width: 767px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
   const sortingOptions = [
     "Most Upvotes",
     "Least Upvotes",
@@ -58,7 +58,7 @@ export default function SuggestionsBar() {
   };
 
   // Displays how many suggestions are available on screen sizes larger than 768px
-  const suggestionCount = isMobile && (
+  const suggestionCount = !isMobile && (
     <Heading type="h3" white={true}>
       <img src={bulbIcon} alt="Light bulb signifying an idea" />
       {suggestions.length} Suggestions
@@ -66,7 +66,7 @@ export default function SuggestionsBar() {
   );
 
   return (
-    <section className={styles.bar}>
+    <section className={`${styles.bar} ${isMobile && styles["bar--sticky"]}`}>
       {suggestionCount}
 
       <div className={styles["bar__listbox"]}>
