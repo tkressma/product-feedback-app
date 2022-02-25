@@ -3,7 +3,7 @@ import upvoteIcon from "../../../../../assets/shared/icon-arrow-up.svg";
 
 const UpvoteButton = ({ upvotes }) => {
   return (
-    <button className={styles["upvote"]}>
+    <button className={styles.upvote}>
       <img
         src={upvoteIcon}
         alt="Upvote arrow"
