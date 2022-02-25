@@ -1,15 +1,30 @@
+import { useState } from "react";
 import styles from "./Header.module.css";
 import { useMediaQuery } from "react-responsive";
+import { Spin as Hamburger } from "hamburger-react";
 import Logo from "./Logo/Logo";
 import Menu from "./Menu/Menu";
 export default function ControlCenter() {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className={styles.header}>
       <Logo />
-      {isMobile && "X"}
-      <Menu />
+      {isMobile && (
+        <Hamburger
+          color="#ffffff"
+          duration={0.3}
+          size={20}
+          label="Show menu"
+          aria-expanded={isOpen}
+          aria-controls="menu"
+          distance="lg"
+          toggled={isOpen}
+          toggle={setIsOpen}
+        />
+      )}
+      <Menu isOpen={isOpen} />
     </header>
   );
 }

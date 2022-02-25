@@ -6,12 +6,12 @@
   height: calc(100vh);
   border: 1px solid black;
   margin-top: 72px;
-  visibility: 0;
+  visibility: hidden;
   opacity: 0;
 }
 
 .menu--active {
-  visibility: 1;
+  visibility: visible;
   opacity: 1;
 }
 
