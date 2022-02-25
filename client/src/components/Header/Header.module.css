@@ -1,21 +1,21 @@
 .header {
   display: flex;
   flex: 1;
-  max-width: 825px;
   width: 100%;
+  max-width: 825px;
   height: 72px;
   padding: 1rem 10px 1rem 1.5rem;
+  position: relative;
   background: url("../../assets/suggestions/mobile/background-header.png")
     no-repeat;
   background-size: cover;
-  position: relative;
 }
 
 @media (min-width: 768px) {
   .header {
     padding: 0;
-    background: transparent;
     height: 178px;
+    background: transparent;
   }
 }
 
