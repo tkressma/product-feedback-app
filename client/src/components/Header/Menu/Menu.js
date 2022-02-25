@@ -1,23 +1,23 @@
 import styles from "./Menu.module.css";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import SuggestionTags from "./SuggestionTags/SuggestionTags";
 import ProjectRoadmap from "./ProjectRoadmap/ProjectRoadmap";
+let test = document.querySelector("body");
 
 export default function Menu({ isOpen }) {
+  // Disable scrolling if the menu is opened
   if (isOpen) {
-    document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${window.scrollY}px`;
+    disableBodyScroll(test);
   } else {
-    document.body.style.overflow = "auto";
-    document.body.style.position = "";
-    document.body.style.top = "";
+    enableBodyScroll(test);
   }
+
   return (
     <section
       className={`${styles.menu} ${isOpen && styles["menu--active"]}`}
       id="menu"
     >
-      {isOpen && <div className={styles.menubg} />}
+      {isOpen && <div className={styles["menu--backdrop"]} />}
 
       <SuggestionTags />
       <ProjectRoadmap />
