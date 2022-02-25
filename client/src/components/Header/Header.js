@@ -24,7 +24,7 @@ export default function ControlCenter() {
           toggle={setIsOpen}
         />
       )}
-      <Menu isOpen={isOpen} />
+      <Menu isOpen={isMobile && isOpen} />
     </header>
   );
 }
