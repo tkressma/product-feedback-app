@@ -21,11 +21,11 @@
   .logo {
     background: url("../../../assets/suggestions/tablet/background-header.png")
       no-repeat;
-    background-size: auto;
+    background-size: cover;
     padding: 1rem;
     border-radius: 10px;
     height: 178px;
-    max-width: 223px;
+    max-width: 255px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -48,6 +48,5 @@
     background: url("../../../assets/suggestions/desktop/background-header.png");
     background-size: cover;
     max-height: 137px;
-    max-width: 255px;
   }
 }

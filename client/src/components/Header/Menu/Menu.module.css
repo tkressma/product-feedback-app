@@ -4,9 +4,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  background: white;
+  background: var(--off-white);
   height: calc(100vh);
-  border: 1px solid black;
   margin-top: 72px;
   visibility: hidden;
   opacity: 0;
