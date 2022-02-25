@@ -4,6 +4,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 1.5rem;
+  margin: 0 1.5rem;
   gap: 1rem;
   background-color: var(--white);
   border-radius: 10px;
@@ -40,6 +41,7 @@
   .suggestion {
     gap: 2.5rem;
     padding: 1.5rem 2rem;
+    margin: 0;
   }
   .suggestion__info {
     flex-basis: 0;
