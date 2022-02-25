@@ -1,12 +1,21 @@
 .tags {
   display: flex;
   flex-wrap: wrap;
-  flex: 1;
-
-  max-width: 255px;
-  margin: 0 10px;
   padding: 1.5rem;
+  max-width: 226px;
+  margin: 1.5rem;
+  height: 178px;
   gap: 8px;
   background-color: var(--white);
   border-radius: 10px;
+  border: 1px solid black;
+}
+
+@media (min-width: 768px) {
+  .tags {
+    flex: 1;
+    max-width: none;
+    margin: 0 10px;
+    height: auto;
+  }
 }

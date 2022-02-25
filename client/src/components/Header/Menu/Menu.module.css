@@ -19,10 +19,10 @@
 @media (min-width: 768px) {
   .menu {
     flex-direction: row;
+    flex: 1 1 66%;
     position: static;
-    flex: 1;
-    margin: 0;
     height: auto;
+    margin: 0;
     background: transparent;
     visibility: visible;
     opacity: 1;

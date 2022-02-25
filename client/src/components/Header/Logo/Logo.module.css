@@ -19,16 +19,16 @@
 
 @media (min-width: 768px) {
   .logo {
-    background: url("../../../assets/suggestions/tablet/background-header.png")
-      no-repeat;
-    background-size: cover;
-    padding: 1rem;
-    border-radius: 10px;
-    height: 178px;
-    max-width: 255px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    flex-basis: 33%;
+    padding: 1rem;
+    border-radius: 10px;
+    height: 178px;
+    background: url("../../../assets/suggestions/tablet/background-header.png")
+      no-repeat;
+    background-size: cover;
   }
 
   .logo h1 {
