@@ -13,13 +13,13 @@
   line-height: 19px;
   letter-spacing: -0.180556px;
   cursor: pointer;
-  transition: 0.3s all;
+  transition: 0.1s all;
 }
 
 .upvote_icon {
   width: 10px;
   height: 7px;
-  transition: 0.3s all;
+  transition: 0.1s all;
 }
 
 .upvote:hover {
