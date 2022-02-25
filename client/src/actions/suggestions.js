@@ -11,7 +11,7 @@ export const getSuggestions = () => async (dispatch) => {
   }
 };
 
-export const sortByUpvotesAPI =
+export const sortSuggestions =
   ({ dataType, order }) =>
   async (dispatch) => {
     try {
