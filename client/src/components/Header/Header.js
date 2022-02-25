@@ -5,7 +5,7 @@ import { Spin as Hamburger } from "hamburger-react";
 import Logo from "./Logo/Logo";
 import Menu from "./Menu/Menu";
 export default function ControlCenter() {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
   const [isOpen, setIsOpen] = useState(false);
 
   return (
