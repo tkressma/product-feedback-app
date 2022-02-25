@@ -8,6 +8,7 @@
   background: url("../../assets/suggestions/mobile/background-header.png")
     no-repeat;
   background-size: cover;
+  position: relative;
 }
 
 @media (min-width: 768px) {

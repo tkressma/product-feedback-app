@@ -1,9 +1,15 @@
 import styles from "./Header.module.css";
+import { useMediaQuery } from "react-responsive";
 import Logo from "./Logo/Logo";
+import Menu from "./Menu/Menu";
 export default function ControlCenter() {
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
   return (
     <header className={styles.header}>
       <Logo />
+      {isMobile && "X"}
+      <Menu />
     </header>
   );
 }
