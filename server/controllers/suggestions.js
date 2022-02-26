@@ -1,6 +1,7 @@
 /* This file contains all of the handlers (logic and functionality) for our routes.
    The purpose of having this file is to keep our code organized and maintainable. */
 
+import mongoose from "mongoose";
 import SuggestionModel from "../models/suggestionModel.js";
 
 /* Retrieve all suggestions */
@@ -97,15 +98,42 @@ function addReplies(arr) {
 }
 
 export const getFilteredSuggestions = async (req, res) => {
+  // Retrieve all suggestions in database
   const suggestions = await SuggestionModel.find({});
 
   try {
     const category = req.query.category;
+
+    // Filter through all of the suggestions to find those that match the category
     const filteredSuggestions = suggestions.filter(
       (suggestion) => suggestion.category === category
     );
+
+    // Return all of the categories that match the query (if any)
     res.status(200).json(filteredSuggestions);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
+};
+
+export const upvoteSuggestion = async (req, res) => {
+  const { id } = req.query;
+
+  // Determine if a suggestion with the given ID is in the database, else return 404
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No suggestions with id ${id} exist`);
+
+  // Retrieve the suggestion with the ID
+  const suggestion = await SuggestionModel.findById(id);
+
+  // Update suggestion, returning the "new" version of the object
+  const updatedSuggestion = await SuggestionModel.findByIdAndUpdate(
+    id,
+    {
+      upvotes: suggestion.upvotes + 1,
+    },
+    { new: true }
+  );
+
+  res.json(updatedSuggestion);
 };
