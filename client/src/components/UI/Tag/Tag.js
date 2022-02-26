@@ -1,4 +1,26 @@
 import styles from "./Tag.module.css";
-export default function Tag(props) {
-  return <button className={styles.tag}>{props.children}</button>;
+import { useDispatch } from "react-redux";
+import {
+  filterSuggestions,
+  getSuggestions,
+} from "../../../actions/suggestions";
+export default function Tag({ category }) {
+  const dispatch = useDispatch();
+
+  // If the selected category is "All", return all of the suggestions. Otherwise,
+  // filter the suggestions based on the category selected.
+  const handleFiltering = () => {
+    if (category === "All") {
+      dispatch(getSuggestions());
+    } else {
+      dispatch(filterSuggestions(category.toLowerCase()));
+    }
+  };
+
+  return (
+    <button className={styles.tag} onClick={handleFiltering}>
+      {/* Capitalize the first letter of the category */}
+      {category.charAt(0).toUpperCase() + category.slice(1)}
+    </button>
+  );
 }

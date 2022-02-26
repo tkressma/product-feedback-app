@@ -102,15 +102,15 @@ export const getFilteredSuggestions = async (req, res) => {
   const suggestions = await SuggestionModel.find({});
 
   try {
-    const category = req.query.category;
+    const { category } = req.query;
 
     // Filter through all of the suggestions to find those that match the category
-    const filteredSuggestions = suggestions.filter(
-      (suggestion) => suggestion.category === category
-    );
+    const filteredSuggestions = await SuggestionModel.find({
+      category: category,
+    });
 
     // Return all of the categories that match the query (if any)
-    res.status(200).json(filteredSuggestions);
+    res.status(200).json({ data: filteredSuggestions });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
