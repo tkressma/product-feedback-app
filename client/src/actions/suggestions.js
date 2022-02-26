@@ -1,3 +1,4 @@
+import { FETCH_ALL, FETCH_SORTED } from "../constants/actionTypes";
 import * as api from "../api";
 
 // Action Creators
@@ -5,7 +6,7 @@ import * as api from "../api";
 export const getSuggestions = () => async (dispatch) => {
   try {
     const { data } = await api.fetchSuggestions();
-    dispatch({ type: "FETCH_ALL", payload: data });
+    dispatch({ type: FETCH_ALL, payload: data });
   } catch (error) {
     console.log(error.message);
   }
@@ -16,7 +17,7 @@ export const sortSuggestions =
   async (dispatch) => {
     try {
       const { data } = await api.fetchSortedSuggestions(dataType, order);
-      dispatch({ type: "FETCH_SORTED", payload: data });
+      dispatch({ type: FETCH_SORTED, payload: data });
     } catch (error) {
       console.log(error.message);
     }
