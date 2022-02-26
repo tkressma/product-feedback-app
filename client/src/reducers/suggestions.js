@@ -1,4 +1,3 @@
-import { bindActionCreators } from "redux";
 import {
   FETCH_ALL,
   FETCH_SORTED,

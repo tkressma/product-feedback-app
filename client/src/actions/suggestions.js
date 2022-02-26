@@ -29,8 +29,6 @@ export const sortSuggestions =
 
 export const filterSuggestions = (category) => async (dispatch) => {
   try {
-    // If "All" category is selected, return all suggestions
-
     const {
       data: { data },
     } = await api.fetchFilteredSuggestions(category);
@@ -38,4 +36,8 @@ export const filterSuggestions = (category) => async (dispatch) => {
   } catch (error) {
     console.log(error.message);
   }
+};
+
+export const setFilters = (filters) => async (dispatch) => {
+  dispatch({ type: "CHANGE_TYPE", payload: filters });
 };
