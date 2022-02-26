@@ -95,3 +95,17 @@ function addReplies(arr) {
 
   return totalReplies;
 }
+
+export const getFilteredSuggestions = async (req, res) => {
+  const suggestions = await SuggestionModel.find({});
+
+  try {
+    const category = req.query.category;
+    const filteredSuggestions = suggestions.filter(
+      (suggestion) => suggestion.category === category
+    );
+    res.status(200).json(filteredSuggestions);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
