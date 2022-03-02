@@ -17,6 +17,7 @@ export default function Menu({ isOpen, closeMobileMenu }) {
       className={`${styles.menu} ${isOpen && styles["menu--active"]}`}
       id="menu"
     >
+      {/* If the mobile menu is open, display a back drop */}
       {isOpen && (
         <div className={styles["menu--backdrop"]} onClick={closeMobileMenu} />
       )}
