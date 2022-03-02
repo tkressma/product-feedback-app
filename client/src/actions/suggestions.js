@@ -1,8 +1,4 @@
-import {
-  FETCH_ALL,
-  FETCH_SORTED,
-  FETCH_FILTERED,
-} from "../constants/actionTypes";
+import { FETCH_ALL, FETCH_FILTERED } from "../constants/actionTypes";
 import * as api from "../api";
 
 // Action Creators
@@ -16,27 +12,21 @@ export const getSuggestions = () => async (dispatch) => {
   }
 };
 
-export const sortSuggestions =
-  ({ dataType, order }) =>
+export const filterSuggestions =
+  ({ category, type, order }) =>
   async (dispatch) => {
+    console.log(category, type, order);
     try {
-      const { data } = await api.fetchSortedSuggestions(dataType, order);
-      dispatch({ type: FETCH_SORTED, payload: data });
+      const { data } = await api.fetchFilteredSuggestions(
+        category,
+        type,
+        order
+      );
+      dispatch({ type: FETCH_FILTERED, payload: data });
     } catch (error) {
       console.log(error.message);
     }
   };
-
-export const filterSuggestions = (category) => async (dispatch) => {
-  try {
-    const {
-      data: { data },
-    } = await api.fetchFilteredSuggestions(category);
-    dispatch({ type: FETCH_FILTERED, payload: data });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
 
 export const setFilters = (filters) => async (dispatch) => {
   dispatch({ type: "CHANGE_TYPE", payload: filters });

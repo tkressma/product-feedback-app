@@ -1,29 +1,31 @@
 import styles from "./Tag.module.css";
-import { useDispatch } from "react-redux";
-import {
-  setFilters,
-  filterSuggestions,
-  getSuggestions,
-} from "../../../actions/suggestions";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilters, filterSuggestions } from "../../../actions/suggestions";
 export default function Tag({ category }) {
-  category = category.toLowerCase();
   const dispatch = useDispatch();
+  const { sortType, sortOrder } = useSelector((state) => state.filters);
 
-  // If the selected category is "All", return all of the suggestions. Otherwise,
-  // filter the suggestions based on the category selected.
   const handleFiltering = () => {
-    if (category === "all") {
-      dispatch(getSuggestions());
-    } else {
-      dispatch(setFilters({ categoryFilter: category }));
-      dispatch(filterSuggestions(category.toLowerCase()));
-    }
+    // Update the sorting filter for category. This is kept in state so that when a user
+    // decides to use the "Sort by: most/least upvotes/comments" filter, the current category
+    // chosen will also be taken into consideration when displaying results.
+    dispatch(
+      setFilters({
+        sortCategory: category.toLowerCase(),
+      })
+    );
+    dispatch(
+      filterSuggestions({
+        category: category.toLowerCase(),
+        type: sortType,
+        order: sortOrder,
+      })
+    );
   };
 
   return (
     <button className={styles.tag} onClick={handleFiltering}>
-      {/* Capitalize the first letter of the category */}
-      {category.charAt(0).toUpperCase() + category.slice(1)}
+      {category}
     </button>
   );
 }
