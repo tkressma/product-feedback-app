@@ -14,6 +14,8 @@ export default function Tag({ category }) {
         sortCategory: category.toLowerCase(),
       })
     );
+
+    // Filter the suggestions based on the new category.
     dispatch(
       filterSuggestions({
         category: category.toLowerCase(),
