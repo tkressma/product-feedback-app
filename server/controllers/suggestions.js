@@ -32,10 +32,6 @@ export const addSuggestion = async (req, res) => {
 };
 
 export const getSortedSuggestions = async (req, res) => {
-  // Since mongoose Model.find() returns an instance of Mongoose's Query class,
-  // 'suggestions' must first be converted to a JSON in order for me to retrieve
-  // comment replies data. Without doing this, replies will return undefined
-  // because _id = new ObjectID would cause the entire comment to return undefined.
   const suggestions = await SuggestionModel.find({});
   let sortedSuggestions = JSON.parse(JSON.stringify(suggestions));
 
@@ -56,9 +52,12 @@ export const getSortedSuggestions = async (req, res) => {
   }
 };
 
-export const getAllFiltered = async (req, res) => {
+export const getFilteredSuggestions = async (req, res) => {
   const { category, type, order } = req.query;
-  console.log(category, type, order);
+  // Since mongoose Model.find() returns an instance of Mongoose's Query class,
+  // 'suggestions' must first be converted to a JSON in order for me to retrieve
+  // comment replies data. Without doing this, replies will return undefined
+  // because _id = new ObjectID would cause the entire comment to return undefined.
   const suggestions = await SuggestionModel.find({ category: category });
   let sortedSuggestions = JSON.parse(JSON.stringify(suggestions));
 
@@ -117,25 +116,6 @@ function addReplies(arr) {
 
   return totalReplies;
 }
-
-export const getFilteredSuggestions = async (req, res) => {
-  // Retrieve all suggestions in database
-  const suggestions = await SuggestionModel.find({});
-
-  try {
-    const { category } = req.query;
-
-    // Filter through all of the suggestions to find those that match the category
-    const filteredSuggestions = await SuggestionModel.find({
-      category: category,
-    });
-
-    // Return all of the categories that match the query (if any)
-    res.status(200).json({ data: filteredSuggestions });
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
 
 export const upvoteSuggestion = async (req, res) => {
   const { id } = req.query;
