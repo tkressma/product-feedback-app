@@ -33,12 +33,16 @@ export const addSuggestion = async (req, res) => {
 
 export const getFilteredSuggestions = async (req, res) => {
   const { category, type, order } = req.query;
+
+  // IF the category chose is "all", then return all suggestions and apply the remaining filters.
+  // ELSE return all suggestions with the given category and apply the filters on that data set.
+  const query = category === "all" ? {} : { category: category };
+  const suggestions = await SuggestionModel.find(query);
+
   // Since mongoose Model.find() returns an instance of Mongoose's Query class,
   // 'suggestions' must first be converted to a JSON in order for me to retrieve
   // comment replies data. Without doing this, replies will return undefined
   // because _id = new ObjectID would cause the entire comment to return undefined.
-  const query = category === "all" ? {} : { category: category };
-  const suggestions = await SuggestionModel.find(query);
   let sortedSuggestions = JSON.parse(JSON.stringify(suggestions));
 
   try {

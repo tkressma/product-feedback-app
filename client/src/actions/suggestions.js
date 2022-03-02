@@ -15,6 +15,7 @@ export const getSuggestions = () => async (dispatch) => {
 export const filterSuggestions =
   ({ category, type, order }) =>
   async (dispatch) => {
+    console.log(category, type, order);
     try {
       const { data } = await api.fetchFilteredSuggestions(
         category,
