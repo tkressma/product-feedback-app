@@ -27,16 +27,17 @@ export const sortSuggestions =
     }
   };
 
-export const filterSuggestions = (category) => async (dispatch) => {
-  try {
-    const {
-      data: { data },
-    } = await api.fetchFilteredSuggestions(category);
-    dispatch({ type: FETCH_FILTERED, payload: data });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
+export const filterSuggestions =
+  (category, type, order) => async (dispatch) => {
+    try {
+      const {
+        data: { data },
+      } = await api.fetchFilteredSuggestions(category, type, order);
+      dispatch({ type: FETCH_FILTERED, payload: data });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
 export const setFilters = (filters) => async (dispatch) => {
   dispatch({ type: "CHANGE_TYPE", payload: filters });

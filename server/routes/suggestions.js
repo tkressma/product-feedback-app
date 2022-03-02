@@ -5,6 +5,7 @@ import {
   getSortedSuggestions,
   getFilteredSuggestions,
   upvoteSuggestion,
+  getAllFiltered,
 } from "../controllers/suggestions.js";
 
 // Initialize express router
@@ -16,4 +17,6 @@ router.post("/", addSuggestion);
 router.get("/sort", getSortedSuggestions);
 router.get("/filter", getFilteredSuggestions);
 router.patch("/upvote", upvoteSuggestion);
+
+router.get("/filterall", getAllFiltered);
 export default router;

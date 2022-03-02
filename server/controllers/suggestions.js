@@ -56,6 +56,27 @@ export const getSortedSuggestions = async (req, res) => {
   }
 };
 
+export const getAllFiltered = async (req, res) => {
+  const { category, type, order } = req.query;
+  console.log(category, type, order);
+  const suggestions = await SuggestionModel.find({ category: category });
+  let sortedSuggestions = JSON.parse(JSON.stringify(suggestions));
+
+  try {
+    const isComment = type === "comments" ? true : false;
+    if (order === "desc") {
+      // Most upvotes or comments
+      sortedSuggestions = sort(sortedSuggestions, "desc", type, isComment);
+    } else if (order === "asc") {
+      // Least upvotes or comments
+      sortedSuggestions = sort(sortedSuggestions, "asc", type, isComment);
+    }
+    res.status(200).json(sortedSuggestions);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 // Sorts all suggestions based on order (most/least) or type (upvotes/comments)
 function sort(arr, order, type, isComment) {
   return arr.sort(function (a, b) {
