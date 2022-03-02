@@ -1,5 +1,5 @@
 export default (
-  filters = { categoryFilter: "all", sortType: "upvotes", sortOrder: "desc" },
+  filters = { sortCategory: "all", sortType: "upvotes", sortOrder: "desc" },
   action
 ) => {
   switch (action.type) {

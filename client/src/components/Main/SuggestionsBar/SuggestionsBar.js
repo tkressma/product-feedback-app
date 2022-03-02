@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { sortSuggestions, setFilters } from "../../../actions/suggestions";
+import { filterSuggestions, setFilters } from "../../../actions/suggestions";
 import { useMediaQuery } from "react-responsive";
 import styles from "./SuggestionsBar.module.css";
 import Button from "../../UI/Button/Button";
@@ -20,7 +20,9 @@ export default function SuggestionsBar() {
   const [sortingOption, setSortingOption] = useState("Most Upvotes");
   // Retrieves all of the suggestions
   const suggestions = useSelector((state) => state.suggestions);
-  const { sortType, sortOrder } = useSelector((state) => state.filters);
+  const { sortCategory, sortType, sortOrder } = useSelector(
+    (state) => state.filters
+  );
 
   const [menuOpen, setMenuOpen] = useState(false);
   const dispatch = useDispatch();
@@ -28,9 +30,10 @@ export default function SuggestionsBar() {
   // Sort by Most Upvotes on component mount
   useEffect(() => {
     dispatch(
-      sortSuggestions({
-        dataType: sortType,
-        order: sortOrder,
+      filterSuggestions({
+        category: "all",
+        type: "upvotes",
+        order: "desc",
       })
     );
   }, []);
@@ -45,12 +48,13 @@ export default function SuggestionsBar() {
 
     // Sort data depending on order (most/least) and type(upvotes/comments)
     dispatch(
-      sortSuggestions({
-        dataType: type,
-        order: order,
+      filterSuggestions({
+        category: sortCategory,
+        type: sortType,
+        order: sortOrder,
       })
     );
-  }, [sortingOption, dispatch]);
+  }, [sortingOption, sortCategory, sortType, sortOrder, dispatch]);
 
   const handleDropDown = (event) => {
     setMenuOpen(!menuOpen); // Toggle the dropdown menu

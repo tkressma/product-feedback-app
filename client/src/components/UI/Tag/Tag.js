@@ -1,22 +1,23 @@
 import styles from "./Tag.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setFilters,
   filterSuggestions,
   getSuggestions,
 } from "../../../actions/suggestions";
 export default function Tag({ category }) {
-  category = category.toLowerCase();
   const dispatch = useDispatch();
+  const { sortType, sortOrder } = useSelector((state) => state.filters);
 
   // If the selected category is "All", return all of the suggestions. Otherwise,
   // filter the suggestions based on the category selected.
   const handleFiltering = () => {
+    dispatch(setFilters({ sortCategory: category }));
+
     if (category === "all") {
       dispatch(getSuggestions());
     } else {
-      dispatch(setFilters({ categoryFilter: category }));
-      dispatch(filterSuggestions(category.toLowerCase()));
+      dispatch(filterSuggestions(category, sortType, sortOrder));
     }
   };
 

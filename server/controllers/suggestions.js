@@ -31,34 +31,14 @@ export const addSuggestion = async (req, res) => {
   }
 };
 
-export const getSortedSuggestions = async (req, res) => {
-  const suggestions = await SuggestionModel.find({});
-  let sortedSuggestions = JSON.parse(JSON.stringify(suggestions));
-
-  try {
-    const type = req.query.type;
-    const order = req.query.order;
-    const isComment = type === "comments" ? true : false;
-    if (order === "desc") {
-      // Most upvotes or comments
-      sortedSuggestions = sort(sortedSuggestions, "desc", type, isComment);
-    } else if (order === "asc") {
-      // Least upvotes or comments
-      sortedSuggestions = sort(sortedSuggestions, "asc", type, isComment);
-    }
-    res.status(200).json(sortedSuggestions);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
 export const getFilteredSuggestions = async (req, res) => {
   const { category, type, order } = req.query;
   // Since mongoose Model.find() returns an instance of Mongoose's Query class,
   // 'suggestions' must first be converted to a JSON in order for me to retrieve
   // comment replies data. Without doing this, replies will return undefined
   // because _id = new ObjectID would cause the entire comment to return undefined.
-  const suggestions = await SuggestionModel.find({ category: category });
+  const query = category === "all" ? {} : { category: category };
+  const suggestions = await SuggestionModel.find(query);
   let sortedSuggestions = JSON.parse(JSON.stringify(suggestions));
 
   try {

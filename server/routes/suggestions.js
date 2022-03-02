@@ -2,7 +2,6 @@ import express from "express";
 import {
   getSuggestions,
   addSuggestion,
-  getSortedSuggestions,
   upvoteSuggestion,
   getFilteredSuggestions,
 } from "../controllers/suggestions.js";
@@ -13,7 +12,6 @@ const router = express.Router();
 // Routes starting with '/suggestions'
 router.get("/", getSuggestions);
 router.post("/", addSuggestion);
-router.get("/sort", getSortedSuggestions);
 router.get("/filter", getFilteredSuggestions);
 router.patch("/upvote", upvoteSuggestion);
 
