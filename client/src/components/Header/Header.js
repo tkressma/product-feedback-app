@@ -24,7 +24,11 @@ export default function ControlCenter() {
           toggle={setIsOpen}
         />
       )}
-      <Menu isOpen={isMobile && isOpen} />
+      <Menu
+        isOpen={isMobile && isOpen}
+        // Allow the mobile menu to close when the backdrop is clicked on.
+        closeMobileMenu={() => setIsOpen(false)}
+      />
     </header>
   );
 }

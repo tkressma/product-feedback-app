@@ -4,7 +4,7 @@ import SuggestionTags from "./SuggestionTags/SuggestionTags";
 import ProjectRoadmap from "./ProjectRoadmap/ProjectRoadmap";
 let test = document.querySelector("body");
 
-export default function Menu({ isOpen }) {
+export default function Menu({ isOpen, closeMobileMenu }) {
   // Disable scrolling if the menu is opened
   if (isOpen) {
     disableBodyScroll(test);
@@ -17,7 +17,9 @@ export default function Menu({ isOpen }) {
       className={`${styles.menu} ${isOpen && styles["menu--active"]}`}
       id="menu"
     >
-      {isOpen && <div className={styles["menu--backdrop"]} />}
+      {isOpen && (
+        <div className={styles["menu--backdrop"]} onClick={closeMobileMenu} />
+      )}
 
       <SuggestionTags />
       <ProjectRoadmap />
