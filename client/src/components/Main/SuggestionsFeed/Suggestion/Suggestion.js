@@ -16,7 +16,7 @@ export default function Suggestion({ suggestionData }) {
       <section className={styles["suggestion__info"]}>
         <Heading type="h3">{title}</Heading>
         <TextBody type="b1">{description}</TextBody>
-        <Tag category={category} />
+        <Tag category={category.charAt(0).toUpperCase() + category.slice(1)} />
       </section>
 
       <CommentLink comments={comments} />
