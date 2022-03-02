@@ -39,7 +39,7 @@ export const getFilteredSuggestions = async (req, res) => {
   const query = category === "all" ? {} : { category: category };
   const suggestions = await SuggestionModel.find(query);
 
-  // Since mongoose Model.find() returns an instance of Mongoose's Query class,
+  // Since Mongoose Model.find() returns an instance of Mongoose's Query class,
   // 'suggestions' must first be converted to a JSON in order for me to retrieve
   // comment replies data. Without doing this, replies will return undefined
   // because _id = new ObjectID would cause the entire comment to return undefined.
@@ -61,6 +61,10 @@ export const getFilteredSuggestions = async (req, res) => {
 };
 
 // Sorts all suggestions based on order (most/least) or type (upvotes/comments)
+// This is a custom sort designed with comments and replies in mind.
+// If I were to have used Mongoose search queries to retrieve suggestions with
+// the most comments first, it would return the length of the comments array,
+// which DOES NOT account for reply comments.
 function sort(arr, order, type, isComment) {
   return arr.sort(function (a, b) {
     let curr = a[type];
@@ -94,6 +98,7 @@ function sort(arr, order, type, isComment) {
 function addReplies(arr) {
   let totalReplies = 0;
 
+  // If replies exist, add that to the total replies. Else, set the value to 0.
   arr.forEach((comment) => {
     totalReplies += comment?.replies?.length || 0;
   });
