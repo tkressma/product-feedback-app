@@ -18,8 +18,10 @@ export default function SuggestionsBar() {
     "Least Comments",
   ];
   const [sortingOption, setSortingOption] = useState("Most Upvotes");
+
   // Retrieves all of the suggestions
   const suggestions = useSelector((state) => state.suggestions);
+  // Retrieves all of the filters that are selected
   const { sortCategory, sortType, sortOrder } = useSelector(
     (state) => state.filters
   );
@@ -45,7 +47,13 @@ export default function SuggestionsBar() {
     const type = sortingOption.includes("Upvotes") ? "upvotes" : "comments";
 
     // Update the sorting filters
-    dispatch(setFilters({ sortType: type, sortOrder: order }));
+    dispatch(
+      setFilters({
+        sortCategory: sortCategory,
+        sortType: type,
+        sortOrder: order,
+      })
+    );
 
     // Sort data depending on order (most/least) and type(upvotes/comments)
     dispatch(
