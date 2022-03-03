@@ -2,9 +2,9 @@ import styles from "./Form.module.css";
 import BackButton from "../../BackButton/BackButton";
 export default function Form({ icon, backButtonDestination, children }) {
   return (
-    <main className={styles.form}>
+    <main className={styles["form__page"]}>
       <BackButton destination={backButtonDestination} />
-      <section className={styles["form__card"]}>
+      <section className={styles.form}>
         <img
           src={icon}
           className={styles["form__icon"]}

@@ -1,14 +1,10 @@
-.form {
+.form__page {
   display: flex;
   flex-direction: column;
   margin: 2.125rem 24px 24px;
 }
 
-form {
-  margin-top: 1.5rem;
-}
-
-.form__card {
+.form {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -17,7 +13,10 @@ form {
   position: relative;
   background-color: var(--white);
   border-radius: 10px;
-  border: 1px solid black;
+}
+
+form {
+  margin-top: 1.5rem;
 }
 
 .form__icon {
@@ -29,7 +28,7 @@ form {
 }
 
 @media (min-width: 768px) {
-  .form {
+  .form__page {
     width: 100%;
     max-width: 540px;
     margin: 0;
