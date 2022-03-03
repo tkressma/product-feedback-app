@@ -7,6 +7,15 @@ export default function FormTextInput({
   labelCaption,
   onChange,
 }) {
+  let textInput;
+  if (large) {
+    textInput = <textarea id={inputId} onChange={onChange} />;
+  } else {
+    textInput = (
+      <input id={inputId} type="text" onChange={onChange} value={value} />
+    );
+  }
+
   // If the text input is large, then use a textarea instead of a input of type text.
   return (
     <>
@@ -16,11 +25,8 @@ export default function FormTextInput({
       <label htmlFor={inputId} className={styles.caption}>
         {labelCaption}
       </label>
-      {large ? (
-        <textarea id={inputId} onChange={onChange} />
-      ) : (
-        <input id={inputId} type="text" onChange={onChange} value={value} />
-      )}
+
+      {textInput}
     </>
   );
 }
