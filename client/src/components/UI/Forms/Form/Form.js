@@ -1,11 +1,15 @@
 import styles from "./Form.module.css";
-import Button from "../../Button/Button";
+import BackButton from "../../BackButton/BackButton";
 export default function Form({ icon, backButtonDestination, children }) {
   return (
     <main className={styles.form}>
-      <Button type="back-inherit" destination={backButtonDestination} />
+      <BackButton destination={backButtonDestination} />
       <section className={styles["form__card"]}>
-        <img src={icon} className={styles["form__icon"]} />
+        <img
+          src={icon}
+          className={styles["form__icon"]}
+          alt="A pen representing creating or editing."
+        />
         {children}
       </section>
     </main>

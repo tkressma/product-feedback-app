@@ -1,6 +1,5 @@
 import styles from "./NoSuggestions.module.css";
 import Heading from "../../../../UI/Heading/Heading";
-import TextBody from "../../../../UI/TextBody/TextBody";
 import { useMediaQuery } from "react-responsive";
 import Button from "../../../../UI/Button/Button";
 import emptyIllustration from "../../../../../assets/suggestions/illustration-empty.svg";
@@ -19,7 +18,7 @@ const NoSuggestions = () => {
         hearing about new ideas to improve our app.
       </p>
 
-      <Button type="violet" link={true} destination="create-feedback">
+      <Button style="violet" link={true} destination="create-feedback">
         + Add Feedback
       </Button>
     </article>

@@ -1,0 +1,32 @@
+/* Back Buttons */
+
+.button--back {
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  font-size: 0.8125rem;
+  text-align: center;
+  color: var(--blue-gray);
+  background-color: inherit;
+  border: none;
+  border-radius: 10px;
+  transition: 0.2s all;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+  align-self: flex-start;
+}
+
+.button--back:hover {
+  text-decoration: underline;
+}
+
+.backicon {
+  margin-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .button--back {
+    font-size: 0.875rem;
+    padding: 0;
+  }
+}

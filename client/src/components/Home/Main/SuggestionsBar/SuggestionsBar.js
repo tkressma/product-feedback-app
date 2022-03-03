@@ -142,9 +142,12 @@ export default function SuggestionsBar() {
         </div>
       </div>
 
-      <Button type="violet" link={true} destination="create-feedback">
-        + Add Feedback
-      </Button>
+      <Button
+        style="violet"
+        text="+ Add Feedback"
+        link={true}
+        destination="create-feedback"
+      />
     </section>
   );
 }

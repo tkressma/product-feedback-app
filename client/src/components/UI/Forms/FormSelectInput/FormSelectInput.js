@@ -1,24 +1,29 @@
 import styles from "../FormInput.module.css";
 export default function FormSelectInput({
   inputId,
-  type,
+  value,
   labelHeading,
   labelCaption,
+  onChange,
 }) {
+  const categories = ["Feature", "UI", "UX", "Enhancement", "Bug"];
+  const status = ["Suggestion", "Planned", "In-Progress", "Live"];
+  const optionsArray = inputId === "category" ? categories : status;
   return (
     <>
-      <label for={inputId} className={styles["caption-bold"]}>
+      <label htmlFor={inputId} className={styles["caption-bold"]}>
         {labelHeading}
       </label>
-      <label for={inputId} className={styles.caption}>
+      <label htmlFor={inputId} className={styles.caption}>
         {labelCaption}
       </label>
-      <input type="text" list="categories" />
-      <datalist id="categories">
-        <option>Feature</option>
-        <option>UI</option>
-        <option>UX</option>
-      </datalist>
+      <select name={inputId} id={inputId} onChange={onChange}>
+        {optionsArray.map((option, index) => (
+          <option key={index} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
     </>
   );
 }
