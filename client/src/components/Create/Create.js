@@ -1,12 +1,12 @@
 import styles from "./Create.module.css";
 import Heading from "../UI/Heading/Heading";
-import FormCard from "../UI/Forms/FormCard/FormCard";
+import Form from "../UI/Forms/Form/Form";
 import createIcon from "../../assets/shared/icon-new-feedback.svg";
 import Button from "../UI/Button/Button";
 export default function Create() {
   return (
-    <FormCard icon={createIcon} backButtonDestination="/">
+    <Form icon={createIcon} backButtonDestination="/">
       <Heading type="h1">Create New Feedback</Heading>
-    </FormCard>
+    </Form>
   );
 }
