@@ -1,4 +1,8 @@
-import { FETCH_ALL, FETCH_FILTERED } from "../constants/actionTypes";
+import {
+  FETCH_ALL,
+  FETCH_FILTERED,
+  CREATE_SUGGESTION,
+} from "../constants/actionTypes";
 import * as api from "../api";
 
 // Action Creators - Must use redux thunk since we are working with asynchronous data
@@ -8,6 +12,15 @@ export const getSuggestions = () => async (dispatch) => {
   try {
     const { data } = await api.fetchSuggestions();
     dispatch({ type: FETCH_ALL, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const createSuggestion = (newSuggestion) => async (dispatch) => {
+  try {
+    const { data } = await api.createSuggestion(newSuggestion);
+    dispatch({ type: CREATE_SUGGESTION, payload: data });
   } catch (error) {
     console.log(error.message);
   }

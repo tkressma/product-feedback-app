@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { createSuggestion } from "../../actions/suggestions";
 import styles from "./Create.module.css";
 import Heading from "../UI/Heading/Heading";
 import Form from "../UI/Forms/Form/Form";
@@ -16,9 +18,12 @@ export default function Create() {
     comments: [],
   });
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(newSuggestion);
+    dispatch(createSuggestion(newSuggestion));
   };
 
   return (

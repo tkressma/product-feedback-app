@@ -8,7 +8,7 @@ export default (suggestions = [], action) => {
     case FETCH_ALL:
       return action.payload;
     case CREATE_SUGGESTION:
-      return suggestions;
+      return [...suggestions, action.payload];
     case FETCH_FILTERED:
       return action.payload;
     default:
