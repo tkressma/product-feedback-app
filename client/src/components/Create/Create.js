@@ -7,25 +7,18 @@ import FormSelectInput from "../UI/Forms/FormSelectInput/FormSelectInput";
 import createIcon from "../../assets/shared/icon-new-feedback.svg";
 import Button from "../UI/Button/Button";
 export default function Create() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("Feature");
-
-  useEffect(() => {
-    console.log(title, description, category);
-  }, [title, description, category]);
+  const [newSuggestion, setNewSuggestion] = useState({
+    title: "",
+    category: "Feature",
+    upvotes: 0,
+    status: "suggestion",
+    description: "",
+    comments: [],
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const userFeedback = {
-      title: title,
-      category: category,
-      upvotes: 0,
-      status: "suggestion",
-      description: description,
-      comments: [],
-    };
-    console.log(userFeedback);
+    console.log(newSuggestion);
   };
 
   return (
@@ -35,25 +28,34 @@ export default function Create() {
       <form id="form">
         <FormTextInput
           inputId="title"
-          value={title}
+          value={newSuggestion.title}
           labelHeading="Feedback Title"
           labelCaption="Add a short, descriptive headline"
-          onChange={(event) => setTitle(event.target.value)}
+          onChange={(event) =>
+            setNewSuggestion({ ...newSuggestion, title: event.target.value })
+          }
         />
         <FormSelectInput
           inputId="category"
-          value={category}
+          value={newSuggestion.category}
           labelHeading="Category"
           labelCaption="Choose a category for your feedback"
-          onChange={(event) => setCategory(event.target.value)}
+          onChange={(event) =>
+            setNewSuggestion({ ...newSuggestion, category: event.target.value })
+          }
         />
         <FormTextInput
           inputId="detail"
-          value={description}
+          value={newSuggestion.description}
           large="true"
           labelHeading="Feedback Detail"
           labelCaption="Include any specific comments on what should be improved, added, etc."
-          onChange={(event) => setDescription(event.target.value)}
+          onChange={(event) =>
+            setNewSuggestion({
+              ...newSuggestion,
+              description: event.target.value,
+            })
+          }
         />
 
         <div className={styles["button__container"]}>
