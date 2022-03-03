@@ -4,6 +4,10 @@
   margin: 2.125rem 24px 24px;
 }
 
+form {
+  margin-top: 1.5rem;
+}
+
 .formcard {
   display: flex;
   flex-direction: column;
@@ -28,6 +32,10 @@
   .form {
     width: 100%;
     max-width: 540px;
+  }
+
+  form {
+    margin-top: 2.5rem;
   }
 
   .icon {

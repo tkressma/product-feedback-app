@@ -17,16 +17,3 @@
   line-height: 19px;
   font-weight: 600;
 }
-
-.body--caption {
-  font-size: 0.8125rem;
-  color: var(--blue-gray);
-  line-height: 19px;
-}
-
-@media (min-width: 768px) {
-  .body--caption {
-    font-size: 0.875rem;
-    line-height: 20px;
-  }
-}
