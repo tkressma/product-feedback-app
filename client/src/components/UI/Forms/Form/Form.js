@@ -4,8 +4,8 @@ export default function Form({ icon, backButtonDestination, children }) {
   return (
     <main className={styles.form}>
       <Button type="back-inherit" destination={backButtonDestination} />
-      <section className={styles.formcard}>
-        <img src={icon} className={styles.icon} />
+      <section className={styles["form__card"]}>
+        <img src={icon} className={styles["form__icon"]} />
         {children}
       </section>
     </main>

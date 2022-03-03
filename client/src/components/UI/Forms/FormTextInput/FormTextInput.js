@@ -1,10 +1,23 @@
-import styles from "./FormTextInput.module.css";
+import styles from "../FormInput.module.css";
 export default function FormTextInput({
   inputId,
-  type,
+  large = false,
   labelHeading,
   labelCaption,
 }) {
+  // If the text input is large, then use a textarea instead of a input of type text.
+  let inputBox;
+  if (large) {
+    inputBox = (
+      <textarea
+        id={inputId}
+        className={large && styles[`input__text--large`]}
+      />
+    );
+  } else {
+    inputBox = <input id={inputId} type="text" />;
+  }
+
   return (
     <>
       <label for={inputId} className={styles["caption-bold"]}>
@@ -13,7 +26,7 @@ export default function FormTextInput({
       <label for={inputId} className={styles.caption}>
         {labelCaption}
       </label>
-      <input className={styles[`input--${type}`]} type="text" id={inputId} />
+      {inputBox}
     </>
   );
 }
