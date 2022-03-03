@@ -46,8 +46,11 @@
 
 /* Back Buttons */
 .button--back-inherit {
+  color: var(--blue-gray);
   background-color: inherit;
   text-decoration: transparent;
+  padding: 0;
+  align-self: flex-start;
 }
 
 .button--back-inherit:hover {
@@ -62,9 +65,17 @@
   text-decoration: underline;
 }
 
+.backicon {
+  margin-right: 1rem;
+}
+
 @media (min-width: 768px) {
   .button {
     padding: 0.75rem 25px;
     font-size: 0.875rem;
+  }
+
+  .button--back-inherit {
+    padding: 0;
   }
 }
