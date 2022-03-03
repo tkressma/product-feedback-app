@@ -7,7 +7,7 @@ import styles from "./Headings.module.css";
 const Heading = ({ type, white, headingTag = true, children }) => {
   // This allows us to set the HTML tag depending on the value of type.
   // If headingTag is false, then it is simply a styled paragraph element.
-  const elementTag = headingTag ? type : "p";
+  const ElementTag = headingTag ? type : "p";
 
   // Allows us to select the CSS based on type value
   const headingStyle = `heading--${type}`;
@@ -16,7 +16,7 @@ const Heading = ({ type, white, headingTag = true, children }) => {
   ${styles[headingStyle]} 
   ${white && styles.white}`;
 
-  return <elementTag className={headingStyling}>{children}</elementTag>;
+  return <ElementTag className={headingStyling}>{children}</ElementTag>;
 };
 
 export default Heading;
