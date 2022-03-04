@@ -22,8 +22,14 @@ export default function Create() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(newSuggestion);
-    dispatch(createSuggestion(newSuggestion));
+
+    // Category field must be lowercase before being added to the database.
+    dispatch(
+      createSuggestion({
+        ...newSuggestion,
+        category: newSuggestion.category.toLowerCase(),
+      })
+    );
   };
 
   return (

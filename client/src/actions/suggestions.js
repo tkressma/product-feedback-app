@@ -50,7 +50,6 @@ export const filterSuggestions =
         type,
         order
       );
-      console.log("tettst:" + data);
 
       dispatch({ type: FETCH_FILTERED, payload: data });
       dispatch({ type: END_LOADING });
