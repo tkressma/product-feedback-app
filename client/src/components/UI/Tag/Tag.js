@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFilters, filterSuggestions } from "../../../actions/suggestions";
 export default function Tag({ category }) {
   const dispatch = useDispatch();
-  const { sortType, sortOrder } = useSelector((state) => state.filters);
+  const {
+    filters: { sortType, sortOrder },
+  } = useSelector((state) => state.suggestions);
 
   const handleFiltering = () => {
     // Update the sorting filter for category. This is kept in state so that when a user

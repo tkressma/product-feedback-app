@@ -4,7 +4,8 @@ import Suggestion from "./Suggestion/Suggestion";
 import NoSuggestions from "./NoSuggestions.js/NoSuggestions";
 export default function SuggestionsFeed() {
   // Retrieves all of the suggestions
-  const suggestions = useSelector((state) => state.suggestions);
+  const { suggestions } = useSelector((state) => state.suggestions);
+  console.log(suggestions);
   const suggestionsAvailable = suggestions.length !== 0;
 
   const suggestionCards = suggestions.map((suggestion) => (

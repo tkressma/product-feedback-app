@@ -2,6 +2,9 @@ import {
   FETCH_ALL,
   FETCH_FILTERED,
   CREATE_SUGGESTION,
+  START_LOADING,
+  END_LOADING,
+  CHANGE_FILTERS,
 } from "../constants/actionTypes";
 import * as api from "../api";
 
@@ -10,8 +13,12 @@ import * as api from "../api";
 // Returns all suggestions
 export const getSuggestions = () => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
+
     const { data } = await api.fetchSuggestions();
+    console.log("test:" + data);
     dispatch({ type: FETCH_ALL, payload: data });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error.message);
   }
@@ -19,8 +26,10 @@ export const getSuggestions = () => async (dispatch) => {
 
 export const createSuggestion = (newSuggestion) => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
     const { data } = await api.createSuggestion(newSuggestion);
     dispatch({ type: CREATE_SUGGESTION, payload: data });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error.message);
   }
@@ -34,12 +43,17 @@ export const filterSuggestions =
   ({ category, type, order }) =>
   async (dispatch) => {
     try {
+      dispatch({ type: START_LOADING });
+
       const { data } = await api.fetchFilteredSuggestions(
         category,
         type,
         order
       );
+      console.log("tettst:" + data);
+
       dispatch({ type: FETCH_FILTERED, payload: data });
+      dispatch({ type: END_LOADING });
     } catch (error) {
       console.log(error.message);
     }
@@ -50,5 +64,5 @@ export const filterSuggestions =
 // Category component - SuggestionTag.js
 // Upvotes and Comments sort component - SuggestionsBar.js
 export const setFilters = (filters) => async (dispatch) => {
-  dispatch({ type: "CHANGE_TYPE", payload: filters });
+  dispatch({ type: CHANGE_FILTERS, payload: filters });
 };
