@@ -14,9 +14,7 @@ import * as api from "../api";
 export const getSuggestions = () => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
-
     const { data } = await api.fetchSuggestions();
-    console.log("test:" + data);
     dispatch({ type: FETCH_ALL, payload: data });
     dispatch({ type: END_LOADING });
   } catch (error) {

@@ -2,24 +2,38 @@ import styles from "./SuggestionsFeed.module.css";
 import { useSelector } from "react-redux";
 import Suggestion from "./Suggestion/Suggestion";
 import NoSuggestions from "./NoSuggestions.js/NoSuggestions";
+import PulseLoader from "react-spinners/PulseLoader";
+
 export default function SuggestionsFeed() {
   // Retrieves all of the suggestions
-  const { suggestions } = useSelector((state) => state.suggestions);
-  console.log(suggestions);
-  const suggestionsAvailable = suggestions.length !== 0;
+  const { suggestions, isLoading } = useSelector((state) => state.suggestions);
 
+  // If there is one or more suggestions in the state array and the api
+  // request has finished loading, then there are suggestions available to display
+  const suggestionsAvailable = suggestions.length !== 0 && !isLoading;
+
+  // If there are no suggestions, apply different styling to the section
+  const suggestionFeedStyling = suggestionsAvailable
+    ? styles.suggestions
+    : styles["suggetions--empty"];
+
+  // Dynamically create all suggestion components to be rendered on the page
   const suggestionCards = suggestions.map((suggestion) => (
     <Suggestion key={suggestion["_id"]} suggestionData={suggestion} />
   ));
 
-  // As long as there are suggestions, display all of the available suggestion cards.
-  // If there are no suggestions, display the no suggestions screen.
+  // As long as there are suggestions, display all of the available suggestion components.
+  // If isLoading is true, display a loading symbol.
+  // If suggestionsAvailable is false, display the no suggestions component.
   return (
-    <section
-      className={
-        suggestionsAvailable ? styles.suggestions : styles["suggetions--empty"]
-      }
-    >
+    <section className={suggestionFeedStyling}>
+      <PulseLoader
+        color="#ad1fea"
+        loading={isLoading}
+        size="15"
+        margin="auto"
+      />
+
       {suggestionsAvailable ? suggestionCards : <NoSuggestions />}
     </section>
   );
