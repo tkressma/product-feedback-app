@@ -2,7 +2,8 @@ import styles from "./SuggestionsFeed.module.css";
 import { useSelector } from "react-redux";
 import Suggestion from "./Suggestion/Suggestion";
 import NoSuggestions from "./NoSuggestions.js/NoSuggestions";
-import PulseLoader from "react-spinners/PulseLoader";
+import { RotatingLines } from "react-loader-spinner/";
+import { useEffect } from "react";
 
 export default function SuggestionsFeed() {
   // Retrieves all of the suggestions
@@ -10,7 +11,7 @@ export default function SuggestionsFeed() {
 
   // If there is one or more suggestions in the state array and the api
   // request has finished loading, then there are suggestions available to display
-  const suggestionsAvailable = suggestions.length !== 0 && !isLoading;
+  const suggestionsAvailable = suggestions.length !== 0;
 
   // If there are no suggestions, apply different styling to the section
   const suggestionFeedStyling = suggestionsAvailable
@@ -27,14 +28,19 @@ export default function SuggestionsFeed() {
   // If suggestionsAvailable is false, display the no suggestions component.
   return (
     <section className={suggestionFeedStyling}>
-      <PulseLoader
-        color="#ad1fea"
-        loading={isLoading}
-        size="15"
-        margin="auto"
-      />
+      {isLoading && (
+        <RotatingLines
+          width="100"
+          strokeColor="hsl(230, 76%, 59%)"
+          strokeWidth="1"
+          animationDuration="1"
+          ariaLabel="loading"
+        />
+      )}
 
-      {suggestionsAvailable ? suggestionCards : <NoSuggestions />}
+      {suggestionsAvailable
+        ? !isLoading && suggestionCards
+        : !isLoading && <NoSuggestions />}
     </section>
   );
 }

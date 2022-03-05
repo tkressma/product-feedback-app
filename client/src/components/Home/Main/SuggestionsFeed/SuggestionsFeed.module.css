@@ -12,6 +12,10 @@
   margin: 0 1.5rem;
 }
 
+.loading {
+  margin: 0 auto;
+}
+
 @media (min-width: 768px) {
   .suggestions--empty {
     margin: 0;
