@@ -4,6 +4,11 @@
   gap: 1rem;
 }
 
+.loading--check {
+  height: 43.98px;
+  margin: 0 auto;
+}
+
 @media (min-width: 768px) {
   .button__container {
     flex-direction: row-reverse;
