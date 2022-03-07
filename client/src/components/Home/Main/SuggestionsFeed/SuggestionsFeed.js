@@ -2,8 +2,7 @@ import styles from "./SuggestionsFeed.module.css";
 import { useSelector } from "react-redux";
 import Suggestion from "./Suggestion/Suggestion";
 import NoSuggestions from "./NoSuggestions.js/NoSuggestions";
-import { RotatingLines } from "react-loader-spinner/";
-import { useEffect } from "react";
+import { SpinnerCircularFixed } from "spinners-react";
 
 export default function SuggestionsFeed() {
   // Retrieves all of the suggestions
@@ -23,24 +22,26 @@ export default function SuggestionsFeed() {
     <Suggestion key={suggestion["_id"]} suggestionData={suggestion} />
   ));
 
-  // As long as there are suggestions, display all of the available suggestion components.
   // If isLoading is true, display a loading symbol.
+  // As long as there are suggestions, display all of the available suggestion components.
   // If suggestionsAvailable is false, display the no suggestions component.
-  return (
+  const feed = isLoading ? (
+    <SpinnerCircularFixed
+      color="hsl(230, 76%, 59%)"
+      secondaryColor="#f2f5ff"
+      size={100}
+      style={{
+        display: "block",
+        margin: "4rem auto",
+      }}
+    />
+  ) : (
     <section className={suggestionFeedStyling}>
-      {isLoading && (
-        <RotatingLines
-          width="100"
-          strokeColor="hsl(230, 76%, 59%)"
-          strokeWidth="1"
-          animationDuration="1"
-          ariaLabel="loading"
-        />
-      )}
-
       {suggestionsAvailable
         ? !isLoading && suggestionCards
         : !isLoading && <NoSuggestions />}
     </section>
   );
+
+  return feed;
 }
