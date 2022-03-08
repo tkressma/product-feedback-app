@@ -2,6 +2,7 @@ import styles from "./Menu.module.css";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import SuggestionTags from "./SuggestionTags/SuggestionTags";
 import ProjectRoadmap from "./ProjectRoadmap/ProjectRoadmap";
+import LogoutButton from "../../../UI/LogoutButton/LogoutButton";
 let test = document.querySelector("body");
 
 export default function Menu({ isOpen, closeMobileMenu }) {
@@ -21,9 +22,10 @@ export default function Menu({ isOpen, closeMobileMenu }) {
       {isOpen && (
         <div className={styles["menu--backdrop"]} onClick={closeMobileMenu} />
       )}
-
       <SuggestionTags />
       <ProjectRoadmap />
+
+      {isOpen && <LogoutButton />}
     </section>
   );
 }
