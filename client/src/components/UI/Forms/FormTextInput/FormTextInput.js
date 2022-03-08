@@ -3,6 +3,7 @@ export default function FormTextInput({
   inputId, // The input id and label htmlFor value
   value, // The inner text value of the input being displayed
   large = false, // Whether or not the text box is multiple lines or a single line
+  type = "text",
   labelHeading,
   labelCaption,
   onChange,
@@ -12,7 +13,7 @@ export default function FormTextInput({
     textInput = <textarea id={inputId} onChange={onChange} />;
   } else {
     textInput = (
-      <input id={inputId} type="text" onChange={onChange} value={value} />
+      <input id={inputId} type={type} onChange={onChange} value={value} />
     );
   }
 

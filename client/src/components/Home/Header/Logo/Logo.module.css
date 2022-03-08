@@ -21,7 +21,7 @@
   opacity: 0.75;
 }
 
-.logo__text {
+.logo__text_container {
   display: flex;
   flex-direction: column;
 }
@@ -33,7 +33,7 @@
   align-items: center;
 }
 
-.logo__login {
+.logo__login_link {
   width: fit-content;
   margin-right: 1rem;
   font-weight: bold;
@@ -42,7 +42,7 @@
   color: white;
 }
 
-.logo__login:hover {
+.logo__login_link:hover {
   text-decoration: underline;
 }
 
@@ -72,11 +72,11 @@
     line-height: 22px;
   }
 
-  .logo__text {
+  .logo__text_container {
     order: 2;
   }
 
-  .logo__login {
+  .logo__login_link {
     order: 1;
     margin-right: 0;
   }

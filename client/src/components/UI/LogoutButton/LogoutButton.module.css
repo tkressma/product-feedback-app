@@ -4,7 +4,7 @@
   text-align: center;
   font-weight: bold;
   line-height: 19px;
-  margin-right: 1rem;
+  margin: 0 1.5rem;
   background-color: white;
   color: var(--navy-blue);
   border: none;
@@ -24,6 +24,6 @@
     font-size: 0.9375rem;
     line-height: 22px;
     padding: 0;
-    margin-right: 0;
+    margin: 0;
   }
 }

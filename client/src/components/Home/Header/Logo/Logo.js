@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import LogoutButton from "../../../UI/LogoutButton/LogoutButton";
-import Button from "../../../UI/Button/Button";
 export default function Logo() {
   // Retrieve the user from localStorage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -21,7 +20,7 @@ export default function Logo() {
 
   return (
     <div className={styles.logo}>
-      <div className={styles["logo__text"]}>
+      <div className={styles["logo__text_container"]}>
         <h1 className={styles.h1}>Frontend Mentor</h1>
         <p className={styles.p}>Feedback Board</p>
       </div>
@@ -32,7 +31,10 @@ export default function Logo() {
           {!isMobile && <LogoutButton />}
         </div>
       ) : (
-        <Link to="/auth" className={`${styles.p} ${styles["logo__login"]}`}>
+        <Link
+          to="/auth"
+          className={`${styles.p} ${styles["logo__login_link"]}`}
+        >
           Login
         </Link>
       )}

@@ -8,6 +8,7 @@ import Button from "../UI/Button/Button";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { signin, signup } from "../../actions/auth";
 
 const Auth = () => {
   const dispatch = useDispatch();
@@ -16,14 +17,28 @@ const Auth = () => {
   const heading = isSignup ? "Create An Account" : "Sign In";
   const formChangeBtnText = isSignup ? "Already a user?" : "Create An Account";
   const formSubmitBtnText = isSignup ? "Create Account" : "Sign In";
-  const [newUser, setNewUser] = useState({
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submit");
+
+    if (isSignup) {
+      dispatch(signup(formData, navigate));
+    } else {
+      dispatch(signin(formData, navigate));
+    }
+  };
+
+  // Update the form data state based on what input field is being used
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
   const googleSuccess = async (res) => {
@@ -48,40 +63,58 @@ const Auth = () => {
 
       <form id="create-user">
         {isSignup && (
+          <div className={styles["fullname__container"]}>
+            <div className={styles["inputlabel__container"]}>
+              <FormTextInput
+                inputId="firstName"
+                value={formData.firstName}
+                labelHeading="First Name"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles["inputlabel__container"]}>
+              <FormTextInput
+                inputId="lastname"
+                value={formData.lastname}
+                labelHeading="Last Name"
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+        )}
+
+        {isSignup && (
           <FormTextInput
             inputId="username"
-            value={newUser.username}
+            value={formData.username}
             labelHeading="Username"
-            onChange={(event) =>
-              setNewUser({ ...newUser, username: event.target.value })
-            }
+            onChange={handleChange}
           />
         )}
+
         <FormTextInput
           inputId="email"
-          value={newUser.email}
+          value={formData.email}
           labelHeading="Email Address"
-          onChange={(event) =>
-            setNewUser({ ...newUser, email: event.target.value })
-          }
+          onChange={handleChange}
         />
+
         <FormTextInput
           inputId="password"
-          value={newUser.password}
+          value={formData.password}
           labelHeading="Password"
+          type="password"
           labelCaption={isSignup && "Password must be at least 8 characters"}
-          onChange={(event) =>
-            setNewUser({ ...newUser, password: event.target.value })
-          }
+          onChange={handleChange}
         />
         {isSignup && (
           <FormTextInput
-            inputId="repassword"
-            value={newUser.repassword}
+            inputId="confirmPassword"
+            value={formData.confirmPassword}
             labelHeading="Repeat Password"
-            onChange={(event) =>
-              setNewUser({ ...newUser, repassword: event.target.value })
-            }
+            type="password"
+            onChange={handleChange}
           />
         )}
 
@@ -92,12 +125,13 @@ const Auth = () => {
             form="create-user"
             onClick={handleSubmit}
           />
+
           <GoogleLogin
             clientId="362804978157-o8ctp5ppr0kdu9a42h90rv8asg3d1eu2.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button
                 style="blue"
-                text="Sign in with Google"
+                text="Google Sign In"
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
               />

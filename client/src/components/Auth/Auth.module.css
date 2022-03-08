@@ -4,6 +4,16 @@
   gap: 1rem;
 }
 
+.fullname__container {
+  display: flex;
+  gap: 1rem;
+}
+
+.inputlabel__container {
+  display: flex;
+  flex-direction: column;
+}
+
 @media (min-width: 768px) {
   .button__container {
     flex-direction: row-reverse;
