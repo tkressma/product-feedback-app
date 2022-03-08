@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { createSuggestion } from "../../actions/suggestions";
 import styles from "./Create.module.css";
 import Heading from "../UI/Heading/Heading";
@@ -8,6 +9,10 @@ import FormTextInput from "../UI/Forms/FormTextInput/FormTextInput";
 import FormSelectInput from "../UI/Forms/FormSelectInput/FormSelectInput";
 import createIcon from "../../assets/shared/icon-new-feedback.svg";
 import Button from "../UI/Button/Button";
+import checkIcon from "../../assets/shared/icon-check.svg";
+
+import { SpinnerCircularFixed } from "spinners-react";
+
 export default function Create() {
   const [newSuggestion, setNewSuggestion] = useState({
     title: "",
@@ -19,11 +24,42 @@ export default function Create() {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isLoading } = useSelector((state) => state.suggestions);
+  const [submitted, setSubmitted] = useState(false); // Did the user submit the form?
+
+  // Displays a loading circle if the api call is still processing.
+  // Once finished, it will display a check mark.
+  const submissionConfirmation = isLoading ? (
+    <SpinnerCircularFixed
+      color="hsl(230, 76%, 59%)"
+      secondaryColor="#f2f5ff"
+      style={{ height: 43.98, margin: "0 auto" }}
+    />
+  ) : (
+    <img src={checkIcon} className={styles["loading--check"]} />
+  );
+
+  // After the feedback is added, wait 1.5 seconds before redirecting
+  // back to the home page.
+  useEffect(() => {
+    if ((!isLoading, submitted)) {
+      let timerFunc = setTimeout(() => navigate("/"), 1500);
+      return () => clearTimeout(timerFunc);
+    }
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(newSuggestion);
-    dispatch(createSuggestion(newSuggestion));
+    setSubmitted(true);
+
+    // Category field must be lowercase before being added to the database.
+    dispatch(
+      createSuggestion({
+        ...newSuggestion,
+        category: newSuggestion.category.toLowerCase(),
+      })
+    );
   };
 
   return (
@@ -46,7 +82,10 @@ export default function Create() {
           labelHeading="Category"
           labelCaption="Choose a category for your feedback"
           onChange={(event) =>
-            setNewSuggestion({ ...newSuggestion, category: event.target.value })
+            setNewSuggestion({
+              ...newSuggestion,
+              category: event.target.value,
+            })
           }
         />
         <FormTextInput
@@ -64,20 +103,26 @@ export default function Create() {
         />
 
         <div className={styles["button__container"]}>
-          <Button
-            style="violet"
-            text="Add Feedback"
-            form="form"
-            onClick={handleSubmit}
-          />
+          {submitted ? (
+            submissionConfirmation
+          ) : (
+            <>
+              <Button
+                style="violet"
+                text="Add Feedback"
+                form="form"
+                onClick={handleSubmit}
+              />
 
-          <Button
-            style="navy-blue"
-            text="Cancel"
-            onClick={handleSubmit}
-            link={true}
-            destination="/"
-          />
+              <Button
+                style="navy-blue"
+                text="Cancel"
+                onClick={handleSubmit}
+                link={true}
+                destination="/"
+              />
+            </>
+          )}
         </div>
       </form>
     </Form>

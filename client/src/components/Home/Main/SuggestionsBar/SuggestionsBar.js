@@ -19,12 +19,11 @@ export default function SuggestionsBar() {
   ];
   const [sortingOption, setSortingOption] = useState("Most Upvotes");
 
-  // Retrieves all of the suggestions
-  const suggestions = useSelector((state) => state.suggestions);
-  // Retrieves all of the filters that are selected
-  const { sortCategory, sortType, sortOrder } = useSelector(
-    (state) => state.filters
-  );
+  // Retrieves all of the suggestions and filters that are selected
+  const {
+    suggestions,
+    filters: { sortCategory, sortType, sortOrder },
+  } = useSelector((state) => state.suggestions);
 
   const [menuOpen, setMenuOpen] = useState(false);
   const dispatch = useDispatch();

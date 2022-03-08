@@ -3,6 +3,7 @@
   color: var(--navy-blue);
   display: flex;
   gap: 1rem;
+  text-decoration: none;
 }
 
 .heading--h1 {

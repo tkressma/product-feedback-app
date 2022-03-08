@@ -18,9 +18,12 @@ const NoSuggestions = () => {
         hearing about new ideas to improve our app.
       </p>
 
-      <Button style="violet" link={true} destination="create-feedback">
-        + Add Feedback
-      </Button>
+      <Button
+        style="violet"
+        text="+ Add Feedback"
+        link={true}
+        destination="create-feedback"
+      />
     </article>
   );
 };

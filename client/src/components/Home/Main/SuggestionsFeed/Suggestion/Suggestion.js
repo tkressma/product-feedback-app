@@ -14,7 +14,9 @@ export default function Suggestion({ suggestionData }) {
 
       {/* Suggestion title, description, and tag */}
       <section className={styles["suggestion__info"]}>
-        <Heading type="h3">{title}</Heading>
+        <Heading type="h3" link={true} destination="/">
+          {title}
+        </Heading>
         <TextBody type="b1">{description}</TextBody>
         <Tag category={category.charAt(0).toUpperCase() + category.slice(1)} />
       </section>

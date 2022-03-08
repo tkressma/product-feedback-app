@@ -14,7 +14,7 @@ export default function Button({
 
   // If link is true, create a new styled router link to the given destination.
   // Else, create a regular html button.
-  if (link === true) {
+  if (link) {
     return (
       <Link to={destination} className={buttonStyles}>
         {text}
