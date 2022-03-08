@@ -1,4 +1,8 @@
 .logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   color: white;
   flex: 1;
 }
@@ -17,11 +21,28 @@
   opacity: 0.75;
 }
 
+.login {
+  flex: 1;
+}
+
+.logo__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.user__controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 @media (min-width: 768px) {
   .logo {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: initial;
     flex-basis: 33%;
     padding: 1rem;
     border-radius: 10px;
@@ -40,6 +61,14 @@
   .logo p {
     font-size: 0.9375rem;
     line-height: 22px;
+  }
+
+  .logo__text {
+    order: 2;
+  }
+
+  .logo__login {
+    order: 1;
   }
 }
 
