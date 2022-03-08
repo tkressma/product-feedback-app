@@ -7,9 +7,11 @@ import addIcon from "../../assets/shared/icon-new-feedback.svg";
 import Button from "../UI/Button/Button";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isSignup, setIsSignup] = useState(false);
   const heading = isSignup ? "Create An Account" : "Sign In";
   const formChangeBtnText = isSignup ? "Already a user?" : "Create An Account";
@@ -30,6 +32,8 @@ const Auth = () => {
 
     try {
       dispatch({ type: "AUTH", data: { result, token } });
+      // Redirect to homepage
+      navigate("/");
     } catch (error) {
       console.log(error.message);
     }

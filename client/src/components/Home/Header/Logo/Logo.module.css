@@ -7,22 +7,18 @@
   flex: 1;
 }
 
-.logo h1 {
+.h1 {
   font-size: 0.9375rem;
   font-weight: bold;
   line-height: 22px;
   letter-spacing: -0.1875px;
 }
 
-.logo p {
+.p {
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 19px;
   opacity: 0.75;
-}
-
-.login {
-  flex: 1;
 }
 
 .logo__text {
@@ -30,11 +26,11 @@
   flex-direction: column;
 }
 
-.user__controls {
+.logo__user_controls {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 1rem;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -52,13 +48,13 @@
     background-size: cover;
   }
 
-  .logo h1 {
+  .h1 {
     font-size: 1.25rem;
     line-height: 29px;
     letter-spacing: -0.25px;
   }
 
-  .logo p {
+  .p {
     font-size: 0.9375rem;
     line-height: 22px;
   }
