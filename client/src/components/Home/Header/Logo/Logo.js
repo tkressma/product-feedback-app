@@ -1,6 +1,7 @@
 import styles from "./Logo.module.css";
+import { Link } from "react-router-dom";
 export default function Logo() {
-  const user = true;
+  const user = null;
 
   return (
     <div className={styles.logo}>
@@ -15,7 +16,9 @@ export default function Logo() {
           <p>Logout</p>
         </div>
       ) : (
-        <p className={styles["logo__login"]}>Login</p>
+        <Link to="/auth" className={styles["logo__login"]}>
+          Login
+        </Link>
       )}
     </div>
   );
