@@ -33,6 +33,19 @@
   align-items: center;
 }
 
+.logo__login {
+  width: fit-content;
+  margin-right: 1rem;
+  font-weight: bold;
+  opacity: 1;
+  text-decoration: none;
+  color: white;
+}
+
+.logo__login:hover {
+  text-decoration: underline;
+}
+
 @media (min-width: 768px) {
   .logo {
     display: flex;
@@ -65,6 +78,7 @@
 
   .logo__login {
     order: 1;
+    margin-right: 0;
   }
 }
 
