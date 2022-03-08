@@ -109,6 +109,9 @@ function addReplies(arr) {
 export const upvoteSuggestion = async (req, res) => {
   const { id } = req.query;
 
+  // User is not signed in
+  if (!req.userId) return req.json({ message: "Unauthorized user" });
+
   // Determine if a suggestion with the given ID is in the database, else return 404
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No suggestions with id ${id} exist`);
@@ -116,13 +119,25 @@ export const upvoteSuggestion = async (req, res) => {
   // Retrieve the suggestion with the ID
   const suggestion = await SuggestionModel.findById(id);
 
+  const index = suggestion.upvotes.findIndex((id) => id === String(req.id));
+
+  if (index === -1) {
+    // Like the suggestion
+    suggestion.upvotes.push(req.userId);
+  } else {
+    // Remove a like
+    suggestion.upvotes = suggestion.upvotes.filter(
+      (id) => id !== String(req.userId)
+    );
+  }
+
   // Update suggestion, returning the "new" version of the object
   const updatedSuggestion = await SuggestionModel.findByIdAndUpdate(
     id,
+    suggestion,
     {
-      upvotes: suggestion.upvotes + 1,
-    },
-    { new: true }
+      new: true,
+    }
   );
 
   res.json(updatedSuggestion);

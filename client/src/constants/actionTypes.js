@@ -1,5 +1,6 @@
 export const FETCH_ALL = "FETCH_UPDATE";
 export const CREATE_SUGGESTION = "CREATE_SUGGESTION";
+export const UPVOTE = "UPVOTE";
 export const FETCH_SORTED = "FETCH_SORTED";
 export const FETCH_FILTERED = "FETCH_FILTERED";
 export const CHANGE_FILTERS = "CHANGE_FILTERS";

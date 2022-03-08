@@ -9,3 +9,5 @@ export const fetchFilteredSuggestions = (category, type, order) =>
 
 export const createSuggestion = (newSuggestion) =>
   axios.post(url, newSuggestion);
+
+export const upvoteSuggestion = (id) => axios.patch(`${url}/${id}/upvote`);

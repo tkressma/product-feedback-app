@@ -15,6 +15,6 @@ const router = express.Router();
 router.get("/", getSuggestions);
 router.post("/", auth, addSuggestion);
 router.get("/filter", getFilteredSuggestions);
-router.patch("/upvote", auth, upvoteSuggestion);
+router.patch("/:id/upvote", auth, upvoteSuggestion);
 
 export default router;
