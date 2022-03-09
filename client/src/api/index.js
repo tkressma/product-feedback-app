@@ -2,6 +2,19 @@ import axios from "axios";
 
 const API = axios.create({ baseURL: "http://localhost:5000" });
 
+// This occurs before every individual API request.
+// Sends the token to the backend to verify the client is logged in.
+// The middleware in the backend checks the request headers for a token.
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem("profile")) {
+    req.headers.Authorization = `Bearer ${
+      JSON.parse(localStorage.getItem("profile")).token
+    }`;
+  }
+
+  return req;
+});
+
 export const fetchSuggestions = () => API.get("/suggestions");
 
 export const fetchFilteredSuggestions = (category, type, order) =>
