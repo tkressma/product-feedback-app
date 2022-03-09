@@ -18,7 +18,14 @@ export default function Suggestion({ suggestionData }) {
           {title}
         </Heading>
         <TextBody type="b1">{description}</TextBody>
-        <Tag category={category.charAt(0).toUpperCase() + category.slice(1)} />
+        <Tag
+          // Properly capitalize the category names
+          category={
+            category === "ux" || category === "ui"
+              ? category.toUpperCase()
+              : category.charAt(0).toUpperCase() + category.slice(1)
+          }
+        />
       </section>
 
       <CommentLink comments={comments} />
