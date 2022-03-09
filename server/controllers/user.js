@@ -1,14 +1,14 @@
 import bcrypt from "bcryptjs"; // Encryption for user data
 import jwt from "jsonwebtoken"; // Safe way to store the user in a browser
 
-import User from "../models/user.js";
+import UserModal from "../models/userModal.js";
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
 
   try {
     // Retrieve user from database
-    const existingUser = await User.findOne({ email });
+    const existingUser = await UserModal.findOne({ email });
 
     // If no user is found with that email, return error
     if (!existingUser)
@@ -39,9 +39,10 @@ export const signin = async (req, res) => {
 };
 
 export const signup = async (req, res) => {
-  const { email, password, confirmPassword, firstName, lastName } = req.body;
+  const { email, password, confirmPassword, firstName, lastName, username } =
+    req.body;
   try {
-    const existingUser = await User.findOne({ email });
+    const existingUser = await UserModal.findOne({ email });
 
     // If a user is found with that email, return error
     if (existingUser)
@@ -52,10 +53,13 @@ export const signup = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const result = await User.create({
+    const result = await UserModal.create({
+      givenName: firstName,
+      familyName: lastName,
+      name: `${firstName} ${lastName}`,
+      username,
       email,
       password: hashedPassword,
-      name: `${firstName} ${lastName}`,
     });
 
     const token = jwt.sign({ email: result.email, id: result._id }, "test", {

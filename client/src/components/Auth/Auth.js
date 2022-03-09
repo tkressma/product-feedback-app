@@ -21,6 +21,7 @@ const Auth = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -75,8 +76,8 @@ const Auth = () => {
 
             <div className={styles["inputlabel__container"]}>
               <FormTextInput
-                inputId="lastname"
-                value={formData.lastname}
+                inputId="lastName"
+                value={formData.lastName}
                 labelHeading="Last Name"
                 onChange={handleChange}
               />

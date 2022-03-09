@@ -1,13 +1,18 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/suggestions";
+const API = axios.create({ baseURL: "http://localhost:5000" });
 
-export const fetchSuggestions = () => axios.get(url);
+export const fetchSuggestions = () => API.get("/suggestions");
 
 export const fetchFilteredSuggestions = (category, type, order) =>
-  axios.get(`${url}/filter?category=${category}&type=${type}&order=${order}`);
+  API.get(
+    `/suggestions/filter?category=${category}&type=${type}&order=${order}`
+  );
 
 export const createSuggestion = (newSuggestion) =>
-  axios.post(url, newSuggestion);
+  API.post("/suggestions", newSuggestion);
 
-export const upvoteSuggestion = (id) => axios.patch(`${url}/${id}/upvote`);
+export const upvoteSuggestion = (id) => API.patch(`/suggestions/${id}/upvote`);
+
+export const signIn = (formData) => API.post("/user/signin", formData);
+export const signUp = (formData) => API.post("/user/signup", formData);
