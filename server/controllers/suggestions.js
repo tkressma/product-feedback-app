@@ -24,8 +24,10 @@ export const addSuggestion = async (req, res) => {
   const newSuggestion = new SuggestionModel({
     ...suggestion,
     creator: req.userId,
-    createdAt: new Date().toISOString,
+    createdAt: new Date().toISOString(),
   });
+
+  console.log(newSuggestion);
 
   try {
     await newSuggestion.save();

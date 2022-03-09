@@ -17,9 +17,9 @@ export default function Create() {
   const [newSuggestion, setNewSuggestion] = useState({
     title: "",
     category: "Feature",
-    upvotes: 0,
     status: "suggestion",
     description: "",
+    upvotes: [],
     comments: [],
   });
 
