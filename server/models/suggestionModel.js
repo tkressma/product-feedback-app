@@ -4,8 +4,13 @@ const suggestionSchema = mongoose.Schema(
   {
     title: String,
     category: String,
-    creator: String,
-    name: String,
+    name: String, // Full name of user
+    username: String, // Username of user
+    creator: String, // ID of user
+    createdAt: {
+      type: Date,
+      default: new Date(),
+    },
     upvotes: { type: [String], default: [] },
     status: String,
     description: String,

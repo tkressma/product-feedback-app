@@ -27,6 +27,15 @@ export default function Create() {
   const navigate = useNavigate();
   const { isLoading } = useSelector((state) => state.suggestions);
   const [submitted, setSubmitted] = useState(false); // Did the user submit the form?
+  const user = JSON.parse(localStorage.getItem("profile"));
+
+  // If a user is not logged in upon trying to access this form,
+  // redirect them to sign in/sign up.
+  useEffect(() => {
+    if (!user?.result?.name) {
+      navigate("/auth");
+    }
+  }, []);
 
   // Displays a loading circle if the api call is still processing.
   // Once finished, it will display a check mark.
@@ -53,11 +62,12 @@ export default function Create() {
     event.preventDefault();
     setSubmitted(true);
 
-    // Category field must be lowercase before being added to the database.
     dispatch(
       createSuggestion({
         ...newSuggestion,
-        category: newSuggestion.category.toLowerCase(),
+        category: newSuggestion.category.toLowerCase(), // Category field must be lowercase before being added to the database.
+        name: user?.result?.name, // Add full name to suggestion data
+        username: user?.result?.username, // Add username to suggestion data
       })
     );
   };
