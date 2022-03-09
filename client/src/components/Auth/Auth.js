@@ -121,7 +121,7 @@ const Auth = () => {
 
         <div className={styles["button__container"]}>
           <Button
-            style="violet"
+            btnStyle="violet"
             text={formSubmitBtnText}
             form="create-user"
             onClick={handleSubmit}
@@ -131,7 +131,7 @@ const Auth = () => {
             clientId="362804978157-o8ctp5ppr0kdu9a42h90rv8asg3d1eu2.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button
-                style="blue"
+                btnStyle="blue"
                 text="Google Sign In"
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
@@ -143,7 +143,7 @@ const Auth = () => {
           />
 
           <Button
-            style="transparent"
+            btnStyle="transparent"
             text={formChangeBtnText}
             onClick={(e) => {
               e.preventDefault();

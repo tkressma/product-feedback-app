@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createSuggestion } from "../../actions/suggestions";
@@ -35,7 +35,7 @@ export default function Create() {
     if (!user?.result?.name) {
       navigate("/auth");
     }
-  }, []);
+  });
 
   // Displays a loading circle if the api call is still processing.
   // Once finished, it will display a check mark.
@@ -122,14 +122,14 @@ export default function Create() {
           ) : (
             <>
               <Button
-                style="violet"
+                btnStyle="violet"
                 text="Add Feedback"
                 form="form"
                 onClick={handleSubmit}
               />
 
               <Button
-                style="navy-blue"
+                btnStyle="navy-blue"
                 text="Cancel"
                 onClick={handleSubmit}
                 link={true}

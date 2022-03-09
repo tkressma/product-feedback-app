@@ -19,7 +19,7 @@ const NoSuggestions = () => {
       </p>
 
       <Button
-        style="violet"
+        btnStyle="violet"
         text="+ Add Feedback"
         link={true}
         destination="create-feedback"
