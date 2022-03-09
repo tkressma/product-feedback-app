@@ -79,8 +79,8 @@ export const getFilteredSuggestions = async (req, res) => {
 // which DOES NOT account for reply comments.
 function sort(arr, order, type, isComment) {
   return arr.sort(function (a, b) {
-    let curr = a[type];
-    let next = b[type];
+    let curr = a[type].length;
+    let next = b[type].length;
 
     // If the type of data being sorted is a comment, retrieve all comment data
     // including all replies to comments on that suggestion.
