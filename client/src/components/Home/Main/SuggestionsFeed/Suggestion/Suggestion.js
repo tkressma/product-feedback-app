@@ -6,11 +6,12 @@ import Heading from "../../../../UI/Heading/Heading";
 import TextBody from "../../../../UI/TextBody/TextBody";
 export default function Suggestion({ suggestionData }) {
   // Destructuring props
-  const { title, description, category, upvotes, comments } = suggestionData;
+  const { title, description, category, upvotes, comments, _id } =
+    suggestionData;
 
   return (
     <article className={styles.suggestion}>
-      <UpvoteButton upvotes={upvotes} />
+      <UpvoteButton upvotes={upvotes} id={_id} />
 
       {/* Suggestion title, description, and tag */}
       <section className={styles["suggestion__info"]}>

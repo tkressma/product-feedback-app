@@ -46,7 +46,11 @@ export default function Create() {
       style={{ height: 43.98, margin: "0 auto" }}
     />
   ) : (
-    <img src={checkIcon} className={styles["loading--check"]} />
+    <img
+      src={checkIcon}
+      className={styles["loading--check"]}
+      alt="Checkmark - action is completed"
+    />
   );
 
   // After the feedback is added, wait 1.5 seconds before redirecting

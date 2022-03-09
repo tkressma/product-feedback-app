@@ -5,6 +5,7 @@ import {
   START_LOADING,
   END_LOADING,
   CHANGE_FILTERS,
+  UPVOTE,
 } from "../constants/actionTypes";
 export default (
   state = {
@@ -25,6 +26,13 @@ export default (
       return {
         ...state,
         suggestions: [...state.suggestions, action.payload],
+      };
+    case UPVOTE:
+      return {
+        ...state,
+        suggestions: state.suggestions.map((suggestion) =>
+          suggestion._id === action.payload._id ? action.payload : suggestion
+        ),
       };
     case CHANGE_FILTERS:
       return { ...state, filters: { ...action.payload } };

@@ -119,7 +119,7 @@ function addReplies(arr) {
 }
 
 export const upvoteSuggestion = async (req, res) => {
-  const { id } = req.query;
+  const { id } = req.params;
 
   // User is not signed in
   if (!req.userId) return req.json({ message: "Unauthorized user" });
@@ -131,7 +131,7 @@ export const upvoteSuggestion = async (req, res) => {
   // Retrieve the suggestion with the ID
   const suggestion = await SuggestionModel.findById(id);
 
-  const index = suggestion.upvotes.findIndex((id) => id === String(req.id));
+  const index = suggestion.upvotes.findIndex((id) => id === String(req.userId));
 
   if (index === -1) {
     // Like the suggestion
