@@ -3,7 +3,6 @@ import upvoteIcon from "../../../../../../assets/shared/icon-arrow-up.svg";
 import { useDispatch } from "react-redux";
 import { upvoteSuggestion } from "../../../../../../actions/suggestions";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 const UpvoteButton = ({ upvotes, id }) => {
   const dispatch = useDispatch();
