@@ -21,7 +21,11 @@ export const addSuggestion = async (req, res) => {
   const suggestion = req.body;
 
   // Create a new suggestion using the schema model
-  const newSuggestion = new SuggestionModel(suggestion);
+  const newSuggestion = new SuggestionModel({
+    ...suggestion,
+    creator: req.userId,
+    createdAt: new Date().toISOString,
+  });
 
   try {
     await newSuggestion.save();
