@@ -2,6 +2,7 @@ import {
   FETCH_ALL,
   FETCH_FILTERED,
   CREATE_SUGGESTION,
+  UPVOTE,
   START_LOADING,
   END_LOADING,
   CHANGE_FILTERS,
@@ -62,4 +63,13 @@ export const filterSuggestions =
 // Upvotes and Comments sort component - SuggestionsBar.js
 export const setFilters = (filters) => async (dispatch) => {
   dispatch({ type: CHANGE_FILTERS, payload: filters });
+};
+
+export const upvotePost = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.upvoteSuggestion(id);
+    dispatch({ type: UPVOTE, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
 };

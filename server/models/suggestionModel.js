@@ -4,7 +4,7 @@ const suggestionSchema = mongoose.Schema(
   {
     title: String,
     category: String,
-    upvotes: Number,
+    upvotes: { type: [String], default: [] },
     status: String,
     description: String,
     comments: [

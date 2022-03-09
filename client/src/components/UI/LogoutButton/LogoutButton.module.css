@@ -1,0 +1,29 @@
+.logout {
+  padding: 0.75rem 1rem;
+  font-size: 1.125rem;
+  text-align: center;
+  font-weight: bold;
+  line-height: 19px;
+  margin: 0 1.5rem;
+  background-color: white;
+  color: var(--navy-blue);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.logout:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .logout {
+    background-color: transparent;
+    color: var(--white);
+    font-size: 0.9375rem;
+    line-height: 22px;
+    padding: 0;
+    margin: 0;
+  }
+}

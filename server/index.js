@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import suggestionRoutes from "./routes/suggestions.js";
+import userRoutes from "./routes/users.js";
 
 // Initialize app
 const app = express();
@@ -15,6 +16,7 @@ app.use(cors());
 
 // Using express middleware to connect routes to our application
 app.use("/suggestions", suggestionRoutes);
+app.use("/user", userRoutes);
 
 // Connect app to MongoDB
 // Temporary database access before implementing environmental variables
