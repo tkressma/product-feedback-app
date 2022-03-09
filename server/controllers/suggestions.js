@@ -20,14 +20,20 @@ export const addSuggestion = async (req, res) => {
   // Retrieve suggestion data from the user
   const suggestion = req.body;
 
+  // Generates a username for google sign-in users
+  // This is done by combining the first and last name and adding the
+  // first 3 digits of their unique user ID.
+  const googleUsername =
+    suggestion.name.split(" ").join("").toLowerCase() +
+    String(req.userId).slice(0, 3);
+
   // Create a new suggestion using the schema model
   const newSuggestion = new SuggestionModel({
     ...suggestion,
+    username: suggestion.username || googleUsername,
     creator: req.userId,
     createdAt: new Date().toISOString(),
   });
-
-  console.log(newSuggestion);
 
   try {
     await newSuggestion.save();
