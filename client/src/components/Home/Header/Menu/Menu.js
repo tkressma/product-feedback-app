@@ -26,7 +26,12 @@ export default function Menu({ isOpen, closeMobileMenu }) {
       {isOpen && (
         <div className={styles["menu--backdrop"]} onClick={closeMobileMenu} />
       )}
-      <SuggestionTags />
+
+      {/* If the mobile menu is open, send a function to category tags that
+          will close the mobile menu when clicked. Else, send nothing. I did
+          this so that the closeMobileMenu function wasn't constantly called
+          when not on a mobile device. */}
+      <SuggestionTags closeMobileMenu={isOpen ? closeMobileMenu : null} />
       <ProjectRoadmap />
 
       {isOpen && user && <LogoutButton />}
