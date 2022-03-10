@@ -20,6 +20,8 @@
 
 .username {
   font-style: italic;
+  color: var(--blue-gray);
+  margin-left: 0.5rem;
 }
 
 .suggestion__description {

@@ -37,11 +37,13 @@ export default function Suggestion({ suggestionData }) {
           <Heading type="h3" link={true} destination="/">
             {title}
           </Heading>
-          <TextBody type="b3">
-            Posted by: {name}{" "}
-            <span className={styles.username}>(@{username})</span>
+
+          <TextBody type="b1">
+            Posted by: {name}
+            <span className={styles.username}>@{username}</span>
           </TextBody>
-          <TextBody type="b3">
+
+          <TextBody type="b2">
             Date Posted: <Moment format="MM/DD/YYYY" date={createdAt} />
           </TextBody>
         </div>
