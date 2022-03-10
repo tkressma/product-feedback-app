@@ -2,6 +2,7 @@ import {
   FETCH_ALL,
   FETCH_FILTERED,
   CREATE_SUGGESTION,
+  DELETE_SUGGESTION,
   START_LOADING,
   END_LOADING,
   CHANGE_FILTERS,
@@ -27,6 +28,8 @@ export default (
         ...state,
         suggestions: [...state.suggestions, action.payload],
       };
+    case DELETE_SUGGESTION:
+      return state;
     case UPVOTE:
       return {
         ...state,

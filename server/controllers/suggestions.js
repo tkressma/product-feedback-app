@@ -43,6 +43,18 @@ export const addSuggestion = async (req, res) => {
   }
 };
 
+/* Delete a suggestion */
+export const deleteSuggestion = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No post with id: ${id}`);
+
+  await SuggestionModel.findByIdAndRemove(id);
+
+  res.json({ message: "Post deleted successfully." });
+};
+
 export const getFilteredSuggestions = async (req, res) => {
   const { category, type, order } = req.query;
 

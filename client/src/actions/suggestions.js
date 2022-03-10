@@ -2,6 +2,7 @@ import {
   FETCH_ALL,
   FETCH_FILTERED,
   CREATE_SUGGESTION,
+  DELETE_SUGGESTION,
   UPVOTE,
   START_LOADING,
   END_LOADING,
@@ -29,6 +30,15 @@ export const createSuggestion = (newSuggestion) => async (dispatch) => {
     const { data } = await api.createSuggestion(newSuggestion);
     dispatch({ type: CREATE_SUGGESTION, payload: data });
     dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const deleteSuggestion = (id) => async (dispatch) => {
+  try {
+    await api.deleteSuggestion(id);
+    dispatch({ type: DELETE_SUGGESTION, payload: id });
   } catch (error) {
     console.log(error.message);
   }
