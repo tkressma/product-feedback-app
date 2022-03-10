@@ -56,7 +56,7 @@ export default function Create() {
   // After the feedback is added, wait 1.5 seconds before redirecting
   // back to the home page.
   useEffect(() => {
-    if ((!isLoading, submitted)) {
+    if (!isLoading && submitted) {
       let timerFunc = setTimeout(() => navigate("/"), 1500);
       return () => clearTimeout(timerFunc);
     }
