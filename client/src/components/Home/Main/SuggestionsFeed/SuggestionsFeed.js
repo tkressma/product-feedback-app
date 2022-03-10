@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./SuggestionsFeed.module.css";
 import { useSelector } from "react-redux";
 import Suggestion from "./Suggestion/Suggestion";

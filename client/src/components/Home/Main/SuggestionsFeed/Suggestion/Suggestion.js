@@ -39,12 +39,12 @@ export default function Suggestion({ suggestionData }) {
           </Heading>
 
           <TextBody type="b1">
-            Posted by: {name}
+            {name}
             <span className={styles["suggestion__username"]}>@{username}</span>
           </TextBody>
 
           <TextBody type="b2">
-            Date Posted: <Moment format="MM/DD/YYYY" date={createdAt} />
+            <Moment format="MM/DD/YYYY" date={createdAt} />
           </TextBody>
         </div>
 

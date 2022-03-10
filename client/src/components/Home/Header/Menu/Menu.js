@@ -4,17 +4,17 @@ import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import SuggestionTags from "./SuggestionTags/SuggestionTags";
 import ProjectRoadmap from "./ProjectRoadmap/ProjectRoadmap";
 import LogoutButton from "../../../UI/LogoutButton/LogoutButton";
-let test = document.querySelector("body");
 
 export default function Menu({ isOpen, closeMobileMenu }) {
   // Check if the user is logged in. Display Logout button if that is the case.
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   // Disable scrolling if the menu is opened
+  let body = document.querySelector("body");
   if (isOpen) {
-    disableBodyScroll(test);
+    disableBodyScroll(body);
   } else {
-    enableBodyScroll(test);
+    enableBodyScroll(body);
   }
 
   return (
@@ -30,7 +30,7 @@ export default function Menu({ isOpen, closeMobileMenu }) {
       {/* If the mobile menu is open, send a function to category tags that
           will close the mobile menu when clicked. Else, send nothing. I did
           this so that the closeMobileMenu function wasn't constantly called
-          when not on a mobile device. */}
+          when not on a mobile device.*/}
       <SuggestionTags closeMobileMenu={isOpen ? closeMobileMenu : null} />
       <ProjectRoadmap />
 
