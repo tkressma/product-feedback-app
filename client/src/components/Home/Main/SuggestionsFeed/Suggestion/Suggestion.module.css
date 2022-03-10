@@ -21,7 +21,10 @@
 .username {
   font-style: italic;
   color: var(--blue-gray);
+  padding: 0 0.5rem;
   margin-left: 0.5rem;
+  background-color: var(--light-gray);
+  border-radius: 10px;
 }
 
 .suggestion__description {
