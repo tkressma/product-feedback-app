@@ -6,11 +6,22 @@ import Heading from "../../../../UI/Heading/Heading";
 import TextBody from "../../../../UI/TextBody/TextBody";
 import editIcon from "../../../../../assets/shared/icon-edit-feedback-pen.svg";
 import deleteIcon from "../../../../../assets/shared/icon-delete.svg";
+import Moment from "react-moment";
 import { useNavigate } from "react-router-dom";
 export default function Suggestion({ suggestionData }) {
   // Destructuring props
-  const { title, description, category, upvotes, comments, creator, _id } =
-    suggestionData;
+  const {
+    title,
+    description,
+    category,
+    upvotes,
+    comments,
+    creator,
+    username,
+    createdAt,
+    name,
+    _id,
+  } = suggestionData;
 
   const user = JSON.parse(localStorage.getItem("profile"));
 
@@ -22,10 +33,20 @@ export default function Suggestion({ suggestionData }) {
 
       {/* Suggestion title, description, and tag */}
       <section className={styles["suggestion__info"]}>
-        <Heading type="h3" link={true} destination="/">
-          {title}
-        </Heading>
-        <TextBody type="b1">{description}</TextBody>
+        <div className={styles["suggestion__header"]}>
+          <Heading type="h3" link={true} destination="/">
+            {title}
+          </Heading>
+          <TextBody type="b3">
+            Posted by: {name}{" "}
+            <span className={styles.username}>(@{username})</span>
+          </TextBody>
+          <TextBody type="b3">
+            Date Posted: <Moment format="MM/DD/YYYY" date={createdAt} />
+          </TextBody>
+        </div>
+
+        <p className={styles["suggestion__description"]}>{description}</p>
         <Tag
           // Properly capitalize the category names
           category={

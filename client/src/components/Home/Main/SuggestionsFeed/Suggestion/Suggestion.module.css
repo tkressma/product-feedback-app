@@ -18,7 +18,11 @@
   order: 0;
 }
 
-.suggestion__info p {
+.username {
+  font-style: italic;
+}
+
+.suggestion__description {
   padding: 0.625rem 0 0.5rem;
   font-size: 1rem;
   line-height: 23px;
@@ -57,7 +61,7 @@
     flex-basis: 0;
   }
 
-  .suggestion__info p {
+  .suggestion__description {
     padding: 0.25rem 0 0.875rem;
   }
 
