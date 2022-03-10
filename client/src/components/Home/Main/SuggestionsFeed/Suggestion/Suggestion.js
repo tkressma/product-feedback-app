@@ -40,7 +40,7 @@ export default function Suggestion({ suggestionData }) {
 
           <TextBody type="b1">
             Posted by: {name}
-            <span className={styles.username}>@{username}</span>
+            <span className={styles["suggestion__username"]}>@{username}</span>
           </TextBody>
 
           <TextBody type="b2">

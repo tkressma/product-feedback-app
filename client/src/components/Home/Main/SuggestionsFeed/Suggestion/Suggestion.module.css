@@ -18,7 +18,7 @@
   order: 0;
 }
 
-.username {
+.suggestion__username {
   font-style: italic;
   color: var(--blue-gray);
   padding: 0 0.5rem;
@@ -49,11 +49,21 @@
 
 .suggestion__edit_icon {
   margin-top: -9.5px;
+  transition: all 0.2s;
+}
+
+.suggestion__edit_icon:hover {
+  transform: translateY(-2px);
 }
 
 .suggestion__delete_icon {
   margin-top: -2px;
   height: 25px;
+  transition: all 0.2s;
+}
+
+.suggestion__delete_icon:hover {
+  transform: translateY(-2px);
 }
 
 @media (min-width: 768px) {
