@@ -29,6 +29,14 @@ export default function Create() {
   const [submitted, setSubmitted] = useState(false); // Did the user submit the form?
   const user = JSON.parse(localStorage.getItem("profile"));
 
+  // If a user is not logged in upon trying to access this form,
+  // redirect them to sign in/sign up.
+  useEffect(() => {
+    if (!user?.result?.name) {
+      navigate("/auth");
+    }
+  });
+
   // Displays a loading circle if the api call is still processing.
   // Once finished, it will display a check mark.
   const submissionConfirmation = isLoading ? (
