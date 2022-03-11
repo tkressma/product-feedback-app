@@ -29,7 +29,12 @@ export default (
         suggestions: [...state.suggestions, action.payload],
       };
     case DELETE_SUGGESTION:
-      return state;
+      return {
+        ...state,
+        suggestions: state.suggestions.filter(
+          (suggestion) => suggestion._id !== action.payload
+        ),
+      };
     case UPVOTE:
       return {
         ...state,

@@ -3,6 +3,7 @@ import Home from "./components/Home/Home";
 import Create from "./components/Create/Create";
 import Container from "./components/UI/Container/Container";
 import Auth from "./components/Auth/Auth";
+import Backdrop from "./components/UI/Modal/Backdrop/Backdrop";
 
 function App() {
   return (
