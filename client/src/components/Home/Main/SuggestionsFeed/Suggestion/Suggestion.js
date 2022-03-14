@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import DeletionNotification from "../../../../UI/DeletionNotification/DeletionNotification";
 import styles from "./Suggestion.module.css";
 import Tag from "../../../../UI/Tag/Tag";
 import UpvoteButton from "./UpvoteButton/UpvoteButton";
@@ -6,11 +9,7 @@ import Heading from "../../../../UI/Heading/Heading";
 import TextBody from "../../../../UI/TextBody/TextBody";
 import editIcon from "../../../../../assets/shared/icon-edit-feedback-pen.svg";
 import deleteIcon from "../../../../../assets/shared/icon-delete.svg";
-import { deleteSuggestion } from "../../../../../actions/suggestions";
-import { useDispatch } from "react-redux";
 import Moment from "react-moment";
-import { useNavigate } from "react-router-dom";
-import Modal from "../../../../UI/Modal/Modal";
 export default function Suggestion({ suggestionData }) {
   // Destructuring props
   const {
@@ -27,19 +26,23 @@ export default function Suggestion({ suggestionData }) {
   } = suggestionData;
 
   const user = JSON.parse(localStorage.getItem("profile"));
-
+  const [deletionNotificationActive, setDeleteNotificationActive] =
+    useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const handleDelete = (e) => {
+  const openDeletionNotification = (e) => {
     e.preventDefault();
-
-    dispatch(deleteSuggestion(_id));
+    setDeleteNotificationActive(true);
   };
 
   return (
     <>
-      <Modal>Test</Modal>
+      {deletionNotificationActive && (
+        <DeletionNotification
+          id={_id}
+          closeNotification={() => setDeleteNotificationActive(false)}
+        />
+      )}
       <article className={styles.suggestion}>
         <UpvoteButton upvotes={upvotes} id={_id} />
 
@@ -93,7 +96,7 @@ export default function Suggestion({ suggestionData }) {
             </button>
             <button
               className={styles["suggestion__creator_settings_btn"]}
-              onClick={handleDelete}
+              onClick={openDeletionNotification}
               aria-label="Delete suggestion"
             >
               <img
