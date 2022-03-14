@@ -10,7 +10,7 @@ export default function FormTextInput({
 }) {
   let textInput;
   if (large) {
-    textInput = <textarea id={inputId} onChange={onChange} />;
+    textInput = <textarea id={inputId} onChange={onChange} value={value} />;
   } else {
     textInput = (
       <input id={inputId} type={type} onChange={onChange} value={value} />

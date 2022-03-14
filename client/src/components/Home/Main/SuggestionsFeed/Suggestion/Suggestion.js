@@ -84,7 +84,7 @@ export default function Suggestion({ suggestionData }) {
               className={styles["suggestion__creator_settings_btn"]}
               onClick={(e) => {
                 e.preventDefault();
-                navigate("/edit");
+                navigate(`/edit-feedback/${_id}`);
               }}
               aria-label="Edit suggestion"
             >

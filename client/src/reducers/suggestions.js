@@ -7,6 +7,7 @@ import {
   END_LOADING,
   CHANGE_FILTERS,
   UPVOTE,
+  FETCH_SUGGESTION,
 } from "../constants/actionTypes";
 export default (
   state = {
@@ -23,6 +24,8 @@ export default (
       return { ...state, isLoading: false };
     case FETCH_ALL:
       return { ...state, suggestions: action.payload };
+    case FETCH_SUGGESTION:
+      return { ...state, suggestion: action.payload.suggestion };
     case CREATE_SUGGESTION:
       return {
         ...state,

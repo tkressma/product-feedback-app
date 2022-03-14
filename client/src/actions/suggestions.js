@@ -1,6 +1,6 @@
 import {
-  FETCH_ALL,
   FETCH_FILTERED,
+  FETCH_SUGGESTION,
   CREATE_SUGGESTION,
   DELETE_SUGGESTION,
   UPVOTE,
@@ -12,12 +12,12 @@ import * as api from "../api";
 
 // Action Creators - Must use redux thunk since we are working with asynchronous data
 
-// Returns all suggestions
-export const getSuggestions = () => async (dispatch) => {
+export const getSuggestion = (id) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
-    const { data } = await api.fetchSuggestions();
-    dispatch({ type: FETCH_ALL, payload: data });
+    const { data } = await api.fetchSuggestion(id);
+
+    dispatch({ type: FETCH_SUGGESTION, payload: { suggestion: data } });
     dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error.message);

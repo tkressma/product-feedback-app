@@ -15,7 +15,7 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-export const fetchSuggestions = () => API.get("/suggestions");
+export const fetchSuggestion = (id) => API.get(`/suggestions/${id}`);
 
 export const fetchFilteredSuggestions = (category, type, order) =>
   API.get(

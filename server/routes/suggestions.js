@@ -1,6 +1,6 @@
 import express from "express";
 import {
-  getSuggestions,
+  getSuggestion,
   addSuggestion,
   upvoteSuggestion,
   getFilteredSuggestions,
@@ -13,10 +13,10 @@ import auth from "../middleware/auth.js";
 const router = express.Router();
 
 // Routes starting with '/suggestions'
-router.get("/", getSuggestions);
+router.get("/filter", getFilteredSuggestions);
+router.get("/:id", getSuggestion);
 router.post("/", auth, addSuggestion);
 router.delete(`/:id`, auth, deleteSuggestion);
-router.get("/filter", getFilteredSuggestions);
 router.patch("/:id/upvote", auth, upvoteSuggestion);
 
 export default router;

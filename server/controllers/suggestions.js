@@ -4,14 +4,15 @@
 import mongoose from "mongoose";
 import SuggestionModel from "../models/suggestionModel.js";
 
-/* Retrieve all suggestions */
-export const getSuggestions = async (req, res) => {
-  const suggestions = await SuggestionModel.find({});
+/* Retrieve a single suggestion */
+export const getSuggestion = async (req, res) => {
+  const { id } = req.params;
 
   try {
-    res.status(200).json(suggestions); // OK
+    const suggestion = await SuggestionModel.findOne({ _id: id });
+    res.status(200).json(suggestion);
   } catch (error) {
-    res.status(404).json({ message: error.message }); // Not found
+    res.status(404).json({ message: error.message });
   }
 };
 
