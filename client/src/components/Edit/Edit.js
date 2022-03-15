@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getSuggestion } from "../../actions/suggestions";
+import { getSuggestion, updateSuggestion } from "../../actions/suggestions";
 import styles from "./Edit.module.css";
 import Heading from "../UI/Heading/Heading";
 import Form from "../UI/Forms/Form/Form";
@@ -75,7 +75,7 @@ export default function Edit() {
     <SpinnerCircularFixed
       color="hsl(230,76%,59%)"
       secondaryColor="#f2f5ff"
-      style={{ "max-height": "35px" }}
+      style={{ maxHeight: "35px" }}
     />
   );
 
@@ -91,6 +91,8 @@ export default function Edit() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitted(true);
+    console.log("submitting!");
+    dispatch(updateSuggestion(id, updatedSuggestion));
   };
 
   return (

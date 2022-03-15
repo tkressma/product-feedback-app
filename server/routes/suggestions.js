@@ -2,6 +2,7 @@ import express from "express";
 import {
   getSuggestion,
   addSuggestion,
+  updateSuggestion,
   upvoteSuggestion,
   getFilteredSuggestions,
   deleteSuggestion,
@@ -17,6 +18,7 @@ router.get("/filter", getFilteredSuggestions);
 router.get("/:id", getSuggestion);
 router.post("/", auth, addSuggestion);
 router.delete(`/:id`, auth, deleteSuggestion);
+router.patch("/:id", auth, updateSuggestion);
 router.patch("/:id/upvote", auth, upvoteSuggestion);
 
 export default router;

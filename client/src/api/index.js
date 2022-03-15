@@ -25,6 +25,9 @@ export const fetchFilteredSuggestions = (category, type, order) =>
 export const createSuggestion = (newSuggestion) =>
   API.post("/suggestions", newSuggestion);
 
+export const updateSuggestion = (id, formData) =>
+  API.patch(`/suggestions/${id}`, formData);
+
 export const deleteSuggestion = (id) => API.delete(`/suggestions/${id}`);
 
 export const upvoteSuggestion = (id) => API.patch(`/suggestions/${id}/upvote`);

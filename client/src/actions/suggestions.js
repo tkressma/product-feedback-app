@@ -2,6 +2,7 @@ import {
   FETCH_FILTERED,
   FETCH_SUGGESTION,
   CREATE_SUGGESTION,
+  UPDATE_SUGGESTION,
   DELETE_SUGGESTION,
   UPVOTE,
   START_LOADING,
@@ -30,6 +31,15 @@ export const createSuggestion = (newSuggestion) => async (dispatch) => {
     const { data } = await api.createSuggestion(newSuggestion);
     dispatch({ type: CREATE_SUGGESTION, payload: data });
     dispatch({ type: END_LOADING });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const updateSuggestion = (id, formData) => async (dispatch) => {
+  try {
+    const { data } = await api.updateSuggestion(id, formData);
+    dispatch({ type: UPDATE_SUGGESTION, payload: data });
   } catch (error) {
     console.log(error.message);
   }
