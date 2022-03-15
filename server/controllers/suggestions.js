@@ -61,8 +61,6 @@ export const updateSuggestion = async (req, res) => {
   const { id } = req.params;
   const { title, category, description } = req.body;
 
-  console.log(id, title, category, description);
-
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send(`No post with id: ${id}`);
 

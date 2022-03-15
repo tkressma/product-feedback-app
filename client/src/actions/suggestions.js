@@ -38,8 +38,10 @@ export const createSuggestion = (newSuggestion) => async (dispatch) => {
 
 export const updateSuggestion = (id, formData) => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
     const { data } = await api.updateSuggestion(id, formData);
     dispatch({ type: UPDATE_SUGGESTION, payload: data });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error.message);
   }

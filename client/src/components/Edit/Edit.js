@@ -25,7 +25,7 @@ export default function Edit() {
   // A base state placeholder object for editing a form.
   const [updatedSuggestion, setUpdatedSuggestion] = useState({
     title: "",
-    category: "Feature",
+    category: "",
     description: "",
   });
 
@@ -103,7 +103,7 @@ export default function Edit() {
       <form id="form">
         <FormTextInput
           inputId="title"
-          value={isLoading ? "" : updatedSuggestion.title}
+          value={isLoading && !submitted ? "" : updatedSuggestion.title}
           labelHeading="Feedback Title"
           labelCaption="Add a short, descriptive headline"
           onChange={(event) =>
@@ -115,7 +115,9 @@ export default function Edit() {
         />
         <FormSelectInput
           inputId="category"
-          value={isLoading ? "Feature" : updatedSuggestion.category}
+          value={
+            isLoading && !submitted ? "Featured" : updatedSuggestion.category
+          }
           labelHeading="Category"
           labelCaption="Choose a category for your feedback"
           onChange={(event) =>
@@ -127,7 +129,7 @@ export default function Edit() {
         />
         <FormTextInput
           inputId="detail"
-          value={isLoading ? "" : updatedSuggestion.description}
+          value={isLoading && !submitted ? "" : updatedSuggestion.description}
           large="true"
           labelHeading="Feedback Detail"
           labelCaption="Include any specific comments on what should be improved, added, etc."
