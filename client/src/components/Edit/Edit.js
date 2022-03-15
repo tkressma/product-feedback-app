@@ -97,7 +97,7 @@ export default function Edit() {
   return (
     <Form icon={editIcon} backButtonDestination="/">
       <Heading type="h1">
-        Edit Your Feedback {isLoading && loadingSuggestionInfo}
+        Edit Your Feedback {isLoading && !submitted && loadingSuggestionInfo}
       </Heading>
 
       <form id="form">
