@@ -32,7 +32,7 @@ export default function SuggestionsBar() {
   useEffect(() => {
     dispatch(
       filterSuggestions({
-        category: "all",
+        category: "All",
         type: "upvotes",
         order: "desc",
       })

@@ -77,9 +77,9 @@ export const updateSuggestion = async (req, res) => {
 export const getFilteredSuggestions = async (req, res) => {
   const { category, type, order } = req.query;
 
-  // IF the category chose is "all", then return all suggestions and apply the remaining filters.
+  // IF the category chose is "All", then return all suggestions and apply the remaining filters.
   // ELSE return all suggestions with the given category and apply the filters on that data set.
-  const query = category === "all" ? {} : { category: category };
+  const query = category === "All" ? {} : { category: category };
   const suggestions = await SuggestionModel.find(query);
 
   // Since Mongoose Model.find() returns an instance of Mongoose's Query class,

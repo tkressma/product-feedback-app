@@ -14,7 +14,7 @@ export default (
   state = {
     isLoading: true,
     suggestions: [],
-    filters: { sortCategory: "all", sortType: "upvotes", sortOrder: "desc" },
+    filters: { sortCategory: "All", sortType: "upvotes", sortOrder: "desc" },
   },
   action
 ) => {

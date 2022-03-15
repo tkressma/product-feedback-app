@@ -69,7 +69,6 @@ export default function Create() {
     dispatch(
       createSuggestion({
         ...newSuggestion,
-        category: newSuggestion.category.toLowerCase(), // Category field must be lowercase before being added to the database.
         name: user?.result?.name, // Add full name to suggestion data
         username: user?.result?.username, // Add username to suggestion data
         upvotes: [`${user?.result?._id}`], // Automatically upvote the user's own post

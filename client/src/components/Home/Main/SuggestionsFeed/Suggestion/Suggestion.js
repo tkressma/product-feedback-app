@@ -66,14 +66,7 @@ export default function Suggestion({ suggestionData }) {
           </div>
 
           <p className={styles["suggestion__description"]}>{description}</p>
-          <Tag
-            // Properly capitalize the category names
-            category={
-              category === "ux" || category === "ui"
-                ? category.toUpperCase()
-                : category.charAt(0).toUpperCase() + category.slice(1)
-            }
-          />
+          <Tag category={category} />
         </section>
 
         {/* If the user is the creator of the suggestion, display the edit and delete options */}

@@ -13,14 +13,14 @@ export default function Tag({ category, closeMobileMenu }) {
     // chosen will also be taken into consideration when displaying results.
     dispatch(
       setFilters({
-        sortCategory: category.toLowerCase(),
+        sortCategory: category,
       })
     );
 
     // Filter the suggestions based on the new category.
     dispatch(
       filterSuggestions({
-        category: category.toLowerCase(),
+        category: category,
         type: sortType,
         order: sortOrder,
       })

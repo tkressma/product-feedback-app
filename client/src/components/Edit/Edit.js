@@ -91,7 +91,6 @@ export default function Edit() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setSubmitted(true);
-    console.log("submitting!");
     dispatch(updateSuggestion(id, updatedSuggestion));
   };
 
