@@ -27,8 +27,8 @@ This is a solution to the [Product feedback app challenge on Frontend Mentor](ht
 - Sort suggestions by most/least upvotes and most/least comments :heavy_check_mark:
 - Filter suggestions by category :heavy_check_mark:
 - Upvote product feedback requests :heavy_check_mark:
-- Receive form validations when trying to create/edit feedback requests **WIP**
-- Add comments and replies to a product feedback request **WIP**
+- Receive form validations when trying to create/edit feedback requests :construction:
+- Add comments and replies to a product feedback request :construction:
 
 ### Screenshot
 
