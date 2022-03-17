@@ -148,7 +148,7 @@ export default function Edit() {
             <>
               <Button
                 btnStyle="violet"
-                text="Add Feedback"
+                text="Submit Changes"
                 form="form"
                 onClick={handleSubmit}
               />
