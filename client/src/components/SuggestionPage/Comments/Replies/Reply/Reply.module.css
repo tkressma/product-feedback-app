@@ -1,0 +1,38 @@
+.reply {
+  display: flex;
+  flex-direction: column;
+  gap: 1.0625rem;
+  font-size: 0.8125rem;
+  line-height: 19px;
+}
+
+.reply_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.poster {
+  display: flex;
+  flex-direction: column;
+}
+.poster_name {
+  font-weight: bold;
+  letter-spacing: -0.180556px;
+  color: var(--navy-blue);
+}
+
+.poster_username {
+  font-weight: 400;
+  line-height: 19px;
+  color: var(--blue-gray);
+}
+
+.reply_content {
+  color: var(--blue-gray);
+}
+
+@media (min-width: 768px) {
+  .reply {
+    font-size: 0.9375rem;
+  }
+}

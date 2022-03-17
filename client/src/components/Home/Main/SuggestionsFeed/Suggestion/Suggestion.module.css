@@ -73,6 +73,11 @@
     padding: 1.5rem 2rem;
     margin: 0;
   }
+
+  .suggestion--page {
+    width: 100%;
+  }
+
   .suggestion__info {
     flex-basis: 0;
   }

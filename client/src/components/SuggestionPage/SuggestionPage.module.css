@@ -1,0 +1,8 @@
+.suggestion_page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 730px;
+  margin: 0 auto;
+  gap: 1.5rem;
+}

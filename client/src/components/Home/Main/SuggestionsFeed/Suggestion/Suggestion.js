@@ -10,7 +10,7 @@ import TextBody from "../../../../UI/TextBody/TextBody";
 import editIcon from "../../../../../assets/shared/icon-edit-feedback-pen.svg";
 import deleteIcon from "../../../../../assets/shared/icon-delete.svg";
 import Moment from "react-moment";
-export default function Suggestion({ suggestionData }) {
+export default function Suggestion({ suggestionData, viewing }) {
   // Destructuring props
   const {
     title,
@@ -49,7 +49,11 @@ export default function Suggestion({ suggestionData }) {
         {/* Suggestion title, description, and tag */}
         <section className={styles["suggestion__info"]}>
           <div className={styles["suggestion__header"]}>
-            <Heading type="h3" link={true} destination="/">
+            <Heading
+              type="h3"
+              link={true}
+              destination={`/view-suggestion/${_id}`}
+            >
               {title}
             </Heading>
 

@@ -1,0 +1,22 @@
+.comments {
+  padding: 1.5rem;
+  margin: 0 1.5rem;
+  background-color: var(--white);
+  border-radius: 10px;
+}
+
+.comments_header {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: -0.25px;
+  color: var(--navy-blue);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .comments {
+    padding: 1.5rem 2rem;
+    margin: 0;
+  }
+}
