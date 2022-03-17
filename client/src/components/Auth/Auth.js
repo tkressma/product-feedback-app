@@ -48,7 +48,7 @@ const Auth = () => {
 
     try {
       dispatch({ type: "AUTH", data: { result, token } });
-      // Redirect to homepage
+      // Redirect to previous page
       navigate(-1);
     } catch (error) {
       console.log(error.message);

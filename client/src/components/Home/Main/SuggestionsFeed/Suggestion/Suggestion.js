@@ -10,7 +10,7 @@ import TextBody from "../../../../UI/TextBody/TextBody";
 import editIcon from "../../../../../assets/shared/icon-edit-feedback-pen.svg";
 import deleteIcon from "../../../../../assets/shared/icon-delete.svg";
 import Moment from "react-moment";
-export default function Suggestion({ suggestionData, viewing }) {
+export default function Suggestion({ suggestionData }) {
   // Destructuring props
   const {
     title,

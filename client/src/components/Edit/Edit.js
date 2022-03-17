@@ -80,10 +80,10 @@ export default function Edit() {
   );
 
   // After the feedback is added, wait 1.5 seconds before redirecting
-  // back to the home page.
+  // back to the previous page.
   useEffect(() => {
     if (!isLoading && submitted) {
-      let timerFunc = setTimeout(() => navigate("/"), 1500);
+      let timerFunc = setTimeout(() => navigate(-1), 1500);
       return () => clearTimeout(timerFunc);
     }
   });

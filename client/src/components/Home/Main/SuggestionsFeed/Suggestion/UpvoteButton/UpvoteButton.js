@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./UpvoteButton.module.css";
 import upvoteIcon from "../../../../../../assets/shared/icon-arrow-up.svg";
 import { useDispatch } from "react-redux";
@@ -7,21 +8,30 @@ import { useNavigate } from "react-router-dom";
 const UpvoteButton = ({ upvotes, id }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const user = JSON.parse(localStorage.getItem("profile"));
+
+  // Using state to instantly modify the upvote for a qucker feedback to improve user experience.
+  const [upvoteCount, setUpvoteCount] = useState(upvotes);
 
   // Checks to see if the current user ID has already upvoted the post.
   // If the ID has not upvoted, add active styling to the upvote button.
   // Else, remove active styling.
-  const isUpvoted = upvotes.find(
-    (upvote) => upvote === (user?.result?.googleId || user?.result?._id)
-  );
+  const userId = user?.result.googleId || user?.result?._id;
+  const isUpvoted = upvotes.find((upvote) => upvote === userId);
 
-  const handleUpvote = () => {
+  const handleUpvote = async () => {
     // If the user is not signed in, redirect to sign in/sign up
     if (!user) {
       navigate("/auth");
     } else {
       dispatch(upvoteSuggestion(id));
+
+      if (isUpvoted) {
+        setUpvoteCount(upvotes.filter((upvoteId) => upvoteId !== userId));
+      } else {
+        setUpvoteCount([...upvotes, userId]);
+      }
     }
   };
 
@@ -37,7 +47,7 @@ const UpvoteButton = ({ upvotes, id }) => {
           isUpvoted && styles["upvote__icon--active"]
         }`}
       />
-      <span>{upvotes.length}</span>
+      <span>{upvoteCount.length}</span>
     </button>
   );
 };
