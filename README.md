@@ -19,16 +19,19 @@ This is a solution to the [Product feedback app challenge on Frontend Mentor](ht
 ## Overview
 
 ### The challenge
- Users should be able to:
+
+Users should be able to:
+
 - View the optimal layout for the app depending on their device's screen size :heavy_check_mark:
-- See hover states for all interactive elements on the page :heavy_check_mark: 
-- Create and login to their account :heavy_check_mark: 
+- See hover states for all interactive elements on the page :heavy_check_mark:
+- Create and login to their account :heavy_check_mark:
 - Create, read, update, and delete product feedback requests :heavy_check_mark:
 - Sort suggestions by most/least upvotes and most/least comments :heavy_check_mark:
 - Filter suggestions by category :heavy_check_mark:
 - Upvote product feedback requests :heavy_check_mark:
 - Receive form validations when trying to create/edit feedback requests :construction:
 - Add comments and replies to a product feedback request :construction:
+- Add transitions and animations to the web application :construction:
 
 ### Screenshot
 
