@@ -3,6 +3,8 @@ import Replies from "../Replies/Replies";
 import styles from "./Comment.module.css";
 
 const Comment = ({ user, content, id, replies }) => {
+  console.log(replies);
+
   return (
     <div className={styles.comment}>
       <div className={styles["comment_header"]}>
