@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000" });
+const API = axios.create({
+  baseURL: "https://product-feedback-board.herokuapp.com/",
+});
 
 // This occurs before every individual API request.
 // Sends the token to the backend to verify the client is logged in.

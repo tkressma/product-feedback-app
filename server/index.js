@@ -17,6 +17,9 @@ app.use(cors());
 // Using express middleware to connect routes to our application
 app.use("/suggestions", suggestionRoutes);
 app.use("/user", userRoutes);
+app.get("/", (req, res) => {
+  res.send("Feedback board API running.");
+});
 
 // Connect app to MongoDB
 // Temporary database access before implementing environmental variables
