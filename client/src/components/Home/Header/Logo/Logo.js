@@ -10,8 +10,8 @@ export default function Logo() {
   // Retrieve the user from localStorage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const location = useLocation();
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
-  const dispatch = useDispatch;
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });

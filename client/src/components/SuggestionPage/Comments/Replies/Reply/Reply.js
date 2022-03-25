@@ -12,7 +12,9 @@ const Reply = ({ user, content, replyingTo }) => {
 
         <p>Reply</p>
       </div>
-      <p className={styles["reply_content"]}>{content}</p>
+      <p className={styles["reply_content"]}>
+        <span className={styles.recipient}>@{replyingTo}</span> {content}
+      </p>
     </div>
   );
 };

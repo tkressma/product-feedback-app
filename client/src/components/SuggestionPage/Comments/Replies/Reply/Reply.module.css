@@ -31,6 +31,10 @@
   color: var(--blue-gray);
 }
 
+.recipient {
+  color: var(--violet);
+}
+
 @media (min-width: 768px) {
   .reply {
     font-size: 0.9375rem;

@@ -22,6 +22,17 @@ const suggestionSchema = mongoose.Schema(
           name: String,
           username: String,
         },
+        replies: [
+          {
+            content: String,
+            replyingTo: String,
+            user: {
+              image: String,
+              name: String,
+              username: String,
+            },
+          },
+        ],
       },
     ],
   },
