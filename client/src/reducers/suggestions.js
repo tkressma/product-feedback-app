@@ -9,6 +9,7 @@ import {
   UPVOTE,
   FETCH_SUGGESTION,
   UPDATE_SUGGESTION,
+  ADD_COMMENT,
 } from "../constants/actionTypes";
 export default (
   state = {

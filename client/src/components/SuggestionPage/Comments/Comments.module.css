@@ -14,6 +14,12 @@
   margin-bottom: 1rem;
 }
 
+.comment_details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media (min-width: 768px) {
   .comments {
     padding: 1.5rem 2rem;

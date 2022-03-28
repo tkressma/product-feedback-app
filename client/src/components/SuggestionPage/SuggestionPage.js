@@ -6,6 +6,7 @@ import BackButton from "../UI/BackButton/BackButton";
 import Suggestion from "../Home/Main/SuggestionsFeed/Suggestion/Suggestion";
 import Comments from "./Comments/Comments";
 import { getSuggestion } from "../../actions/suggestions";
+import AddComment from "./AddCommentForm/AddCommentForm";
 export default function SuggestionPage() {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -21,6 +22,7 @@ export default function SuggestionPage() {
         <>
           <Suggestion suggestionData={suggestion} />
           <Comments commentData={suggestion.comments} />
+          <AddComment />
         </>
       )}
     </main>

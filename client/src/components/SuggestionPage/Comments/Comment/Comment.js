@@ -1,9 +1,11 @@
-import React from "react";
-import Replies from "../Replies/Replies";
+import React, { useState } from "react";
 import styles from "./Comment.module.css";
+import Replies from "../Replies/Replies";
+import ReplyForm from "../Replies/ReplyForm";
+import ReplyButton from "../../../UI/ReplyButton/ReplyButton";
 
 const Comment = ({ user, content, id, replies }) => {
-  console.log(replies);
+  const [replyFormActive, setReplyFormActive] = useState(false);
 
   return (
     <div className={styles.comment}>
@@ -13,10 +15,13 @@ const Comment = ({ user, content, id, replies }) => {
           <p className={styles["poster_username"]}>@{user.username}</p>
         </div>
 
-        <p>Reply</p>
+        <ReplyButton activateReplyForm={setReplyFormActive} />
       </div>
       <p className={styles["comment_content"]}>{content}</p>
-      {replies && <Replies replyData={replies} />}
+      {replyFormActive && (
+        <ReplyForm replyUser={user.username} parentCommentId={id} />
+      )}
+      {replies && <Replies replyData={replies} parentCommentId={id} />}
     </div>
   );
 };

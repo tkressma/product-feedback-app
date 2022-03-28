@@ -7,7 +7,7 @@ const Comments = ({ commentData }) => {
     <Comment
       key={index}
       user={comment.user}
-      id={comment.id}
+      id={comment._id}
       content={comment.content}
       replies={comment.replies}
     />

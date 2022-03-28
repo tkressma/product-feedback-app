@@ -38,5 +38,6 @@
 @media (min-width: 768px) {
   .reply {
     font-size: 0.9375rem;
+    margin-top: 1rem;
   }
 }

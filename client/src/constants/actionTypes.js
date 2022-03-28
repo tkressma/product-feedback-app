@@ -8,6 +8,7 @@ export const FETCH_SORTED = "FETCH_SORTED";
 export const FETCH_FILTERED = "FETCH_FILTERED";
 export const CHANGE_FILTERS = "CHANGE_FILTERS";
 export const CHANGE_TYPE = "CHANGE_TYPE";
+export const ADD_COMMENT = "ADD_COMMENT";
 
 export const START_LOADING = "START_LOADING";
 export const END_LOADING = "END_LOADING";
