@@ -53,25 +53,13 @@
   text-decoration: underline;
 }
 
-.button--logout {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  line-height: 19px;
-  margin-right: 1rem;
-  background-color: transparent;
-  color: white;
+.button--disabled {
+  visibility: hidden;
 }
 
 @media (min-width: 768px) {
   .button {
     padding: 0.75rem 25px;
     font-size: 0.875rem;
-  }
-
-  .button--logout {
-    font-size: 0.9375rem;
-    line-height: 22px;
-    padding: 0;
-    margin-right: 0;
   }
 }

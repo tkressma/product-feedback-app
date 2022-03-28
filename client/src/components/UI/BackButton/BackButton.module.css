@@ -13,6 +13,7 @@
   cursor: pointer;
   text-decoration: none;
   padding: 0;
+  margin-left: 1.5rem;
   align-self: flex-start;
 }
 
@@ -28,5 +29,6 @@
   .button--back {
     font-size: 0.875rem;
     padding: 0;
+    margin-left: 0;
   }
 }

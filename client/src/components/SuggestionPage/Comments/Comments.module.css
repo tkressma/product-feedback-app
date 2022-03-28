@@ -20,6 +20,12 @@
   align-items: center;
 }
 
+.comment_textarea {
+  outline-color: var(--blue);
+  color: var(--navy-blue);
+  overflow: hidden;
+}
+
 .comment_charcount {
   font-size: 0.9375rem;
   color: var(--blue-gray);

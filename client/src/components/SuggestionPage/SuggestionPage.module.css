@@ -3,6 +3,12 @@
   flex-direction: column;
   width: 100%;
   max-width: 730px;
-  margin: 0 auto;
+  margin: 3.5rem auto;
   gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .suggestion_page {
+    margin: 0 auto;
+  }
 }

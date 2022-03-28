@@ -27,6 +27,7 @@ export default function Button({
         form={form}
         onClick={onClick}
         className={buttonStyles}
+        aria-disabled={btnStyle === "disabled" ? "true" : "false"}
       >
         {text}
       </button>
