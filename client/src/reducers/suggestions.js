@@ -9,7 +9,7 @@ import {
   UPVOTE,
   FETCH_SUGGESTION,
   UPDATE_SUGGESTION,
-  ADD_COMMENT,
+  COMMENT,
 } from "../constants/actionTypes";
 export default (
   state = {
@@ -48,6 +48,13 @@ export default (
         ),
       };
     case UPVOTE:
+      return {
+        ...state,
+        suggestions: state.suggestions.map((suggestion) =>
+          suggestion._id === action.payload._id ? action.payload : suggestion
+        ),
+      };
+    case COMMENT:
       return {
         ...state,
         suggestions: state.suggestions.map((suggestion) =>

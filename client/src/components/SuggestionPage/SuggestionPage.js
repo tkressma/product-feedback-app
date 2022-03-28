@@ -9,6 +9,7 @@ import { getSuggestion } from "../../actions/suggestions";
 import AddComment from "./AddCommentForm/AddCommentForm";
 export default function SuggestionPage() {
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("profile"));
   const { id } = useParams();
   // Retrieve suggestion being requested via params id
   useEffect(() => dispatch(getSuggestion(id)), []);
@@ -22,7 +23,7 @@ export default function SuggestionPage() {
         <>
           <Suggestion suggestionData={suggestion} />
           <Comments commentData={suggestion.comments} />
-          <AddComment />
+          <AddComment suggestionId={suggestion._id} currentUser={user} />
         </>
       )}
     </main>

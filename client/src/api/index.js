@@ -31,6 +31,8 @@ export const updateSuggestion = (id, formData) =>
 export const deleteSuggestion = (id) => API.delete(`/suggestions/${id}`);
 
 export const upvoteSuggestion = (id) => API.patch(`/suggestions/${id}/upvote`);
+export const commentSuggestion = (comment, id) =>
+  API.post(`/suggestions/${id}/comment`, { comment });
 
 export const signIn = (formData) => API.post("/user/signin", formData);
 export const signUp = (formData) => API.post("/user/signup", formData);

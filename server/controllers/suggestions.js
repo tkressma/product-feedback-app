@@ -183,3 +183,20 @@ export const upvoteSuggestion = async (req, res) => {
 
   res.json(updatedSuggestion);
 };
+
+export const commentSuggestion = async (req, res) => {
+  const { id } = req.params;
+  const { comment } = req.body;
+
+  const suggestion = await SuggestionModel.findById(id);
+
+  suggestion.comments.push(comment);
+
+  const updatedSuggestion = await SuggestionModel.findByIdAndUpdate(
+    id,
+    suggestion,
+    { new: true }
+  );
+
+  res.json(updateSuggestion);
+};

@@ -4,8 +4,8 @@ import {
   CREATE_SUGGESTION,
   UPDATE_SUGGESTION,
   DELETE_SUGGESTION,
-  ADD_COMMENT,
   UPVOTE,
+  COMMENT,
   START_LOADING,
   END_LOADING,
   CHANGE_FILTERS,
@@ -92,6 +92,15 @@ export const upvoteSuggestion = (id) => async (dispatch) => {
   try {
     const { data } = await api.upvoteSuggestion(id);
     dispatch({ type: UPVOTE, payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const commentSuggestion = (comment, id) => async (dispatch) => {
+  try {
+    const { data } = await api.commentSuggestion(comment, id);
+    dispatch({ type: COMMENT, payload: data });
   } catch (error) {
     console.log(error.message);
   }
