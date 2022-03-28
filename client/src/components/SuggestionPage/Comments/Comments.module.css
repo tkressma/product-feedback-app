@@ -20,6 +20,16 @@
   align-items: center;
 }
 
+.comment_charcount {
+  font-size: 0.9375rem;
+  color: var(--blue-gray);
+}
+
+.comment_charcount--error {
+  color: var(--red);
+  font-weight: 600;
+}
+
 @media (min-width: 768px) {
   .comments {
     padding: 1.5rem 2rem;

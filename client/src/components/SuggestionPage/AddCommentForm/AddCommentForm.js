@@ -15,7 +15,13 @@ const AddComment = () => {
         placeholder="Type your comment..."
       />
       <div className={styles["comment_details"]}>
-        {charsLeft} characters left
+        <p
+          className={`${styles["comment_charcount"]} ${
+            charsLeft <= 0 && styles["comment_charcount--error"]
+          }`}
+        >
+          {charsLeft} characters left
+        </p>
         <Button btnStyle="violet" text="Post Comment" />
       </div>
     </section>
