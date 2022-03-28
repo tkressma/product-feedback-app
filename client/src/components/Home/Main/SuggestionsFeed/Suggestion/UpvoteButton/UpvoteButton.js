@@ -18,7 +18,7 @@ const UpvoteButton = ({ upvotes, id }) => {
   // If the ID has not upvoted, add active styling to the upvote button.
   // Else, remove active styling.
   const userId = user?.result.googleId || user?.result?._id;
-  const isUpvoted = upvotes.find((upvote) => upvote === userId);
+  const isUpvoted = upvoteCount.find((upvote) => upvote === userId);
 
   const handleUpvote = async () => {
     // If the user is not signed in, redirect to sign in/sign up
