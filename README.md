@@ -30,7 +30,7 @@ Users should be able to:
 - Filter suggestions by category :heavy_check_mark:
 - Upvote product feedback requests :heavy_check_mark:
 - Receive form validations when trying to create/edit feedback requests :construction:
-- Add comments and replies to a product feedback request :construction:
+- Add comments and replies to a product feedback request :heavy_check_mark:
 - Add transitions and animations to the web application :construction:
 
 ### Screenshot
