@@ -3,15 +3,16 @@ import styles from "../Comments/Comments.module.css";
 import { useDispatch } from "react-redux";
 import { commentSuggestion } from "../../../actions/suggestions";
 import Button from "../../UI/Button/Button";
-const AddComment = ({ suggestionId, currentUser }) => {
+const AddCommentForm = ({ suggestionId, currentUser, updateComments }) => {
   const [charsLeft, setCharsLeft] = useState(225);
   const [comment, setComment] = useState("");
   const dispatch = useDispatch();
   const isValid = charsLeft > 0;
 
-  const handleAddComment = (e) => {
+  const handleAddComment = async (e) => {
     e.preventDefault();
-    dispatch(
+
+    const newComments = await dispatch(
       commentSuggestion(
         {
           content: comment,
@@ -23,6 +24,9 @@ const AddComment = ({ suggestionId, currentUser }) => {
         suggestionId
       )
     );
+
+    setComment(""); // Reset the comment
+    updateComments(newComments); // Refresh the comments to reflect the newly added comment
   };
 
   // Update comment field character count and the comment to be posted by the user.
@@ -37,6 +41,7 @@ const AddComment = ({ suggestionId, currentUser }) => {
       <textarea
         className={styles["comment_textarea"]}
         onChange={handleCommentChange}
+        value={comment}
         placeholder="Type your comment here..."
       />
       <div className={styles["comment_details"]}>
@@ -59,4 +64,4 @@ const AddComment = ({ suggestionId, currentUser }) => {
   );
 };
 
-export default AddComment;
+export default AddCommentForm;

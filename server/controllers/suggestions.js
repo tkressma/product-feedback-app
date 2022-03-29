@@ -192,11 +192,14 @@ export const commentSuggestion = async (req, res) => {
 
   suggestion.comments.push(comment);
 
+  // Update suggestion, returning the "new" version of the object
   const updatedSuggestion = await SuggestionModel.findByIdAndUpdate(
     id,
     suggestion,
-    { new: true }
+    {
+      new: true,
+    }
   );
 
-  res.json(updateSuggestion);
+  res.json(updatedSuggestion);
 };

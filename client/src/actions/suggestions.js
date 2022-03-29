@@ -101,6 +101,7 @@ export const commentSuggestion = (comment, id) => async (dispatch) => {
   try {
     const { data } = await api.commentSuggestion(comment, id);
     dispatch({ type: COMMENT, payload: data });
+    return data.comments; // Return all the comments on the suggestion to reflect comment changes on the front end
   } catch (error) {
     console.log(error.message);
   }
