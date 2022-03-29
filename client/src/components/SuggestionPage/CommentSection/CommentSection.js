@@ -2,13 +2,26 @@ import React, { useState } from "react";
 import styles from "./Comments.module.css";
 import Comment from "./Comment/Comment";
 import AddCommentForm from "../AddCommentForm/AddCommentForm";
-const CommentSection = ({ commentData, suggestionId }) => {
+const CommentSection = ({ commentData }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
 
   const [updatedComments, setUpdatedComments] = useState(commentData);
 
+  let totalComments = updatedComments.length + addReplies(updatedComments);
+  // Checks every comment in the suggestion for replies and returns a running total.
+  function addReplies(arr) {
+    let totalReplies = 0;
+
+    // If replies exist, add that to the total replies. Else, set the value to 0.
+    arr.forEach((comment) => {
+      totalReplies += comment?.replies?.length || 0;
+    });
+
+    return totalReplies;
+  }
+
   const commentTitle =
-    updatedComments.length === 0 ? "0" : `${updatedComments.length}`;
+    updatedComments.length === 1 ? "1 Comment" : `${totalComments} Comments`;
   const commentCards = updatedComments.map((comment, index) => (
     <Comment
       key={index}
@@ -22,7 +35,7 @@ const CommentSection = ({ commentData, suggestionId }) => {
   return (
     <>
       <section className={styles.comments}>
-        <h1 className={styles["comments_header"]}>{commentTitle} Comments</h1>
+        <h1 className={styles["comments_header"]}>{commentTitle} </h1>
         {commentCards}
       </section>
       <AddCommentForm currentUser={user} updateComments={setUpdatedComments} />

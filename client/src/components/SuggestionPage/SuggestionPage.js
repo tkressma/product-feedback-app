@@ -8,7 +8,6 @@ import CommentSection from "./CommentSection/CommentSection";
 import { getSuggestion } from "../../actions/suggestions";
 export default function SuggestionPage() {
   const dispatch = useDispatch();
-  const user = JSON.parse(localStorage.getItem("profile"));
   const { id } = useParams();
   // Retrieve suggestion being requested via params id
   useEffect(() => dispatch(getSuggestion(id)), []);
