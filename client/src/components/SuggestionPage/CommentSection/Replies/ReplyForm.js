@@ -5,18 +5,23 @@ import styles from "./ReplyForm.module.css";
 import Button from "../../../UI/Button/Button";
 import { replyToComment } from "../../../../actions/suggestions";
 
-const ReplyForm = ({ replyUser, parentCommentId }) => {
+const ReplyForm = ({
+  replyUser,
+  parentCommentId,
+  closeForm,
+  updateReplies,
+}) => {
   const [reply, setReply] = useState("");
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
   const { id } = useParams();
 
-  const handleReplyComment = (e) => {
+  const handleReplyComment = async (e) => {
     e.preventDefault();
 
     console.log(id);
 
-    dispatch(
+    const newReplies = await dispatch(
       replyToComment(
         {
           content: reply,
@@ -30,6 +35,11 @@ const ReplyForm = ({ replyUser, parentCommentId }) => {
         parentCommentId
       )
     );
+
+    console.log(newReplies);
+
+    updateReplies(newReplies);
+    closeForm();
   };
 
   const handleReplyChange = (e) => {

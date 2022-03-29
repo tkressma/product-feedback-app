@@ -6,6 +6,7 @@ import ReplyButton from "../../../UI/ReplyButton/ReplyButton";
 
 const Comment = ({ user, content, id, suggestionId, replies }) => {
   const [replyFormActive, setReplyFormActive] = useState(false);
+  const [replyData, setReplyData] = useState(replies);
 
   return (
     <div className={styles.comment}>
@@ -19,9 +20,20 @@ const Comment = ({ user, content, id, suggestionId, replies }) => {
       </div>
       <p className={styles["comment_content"]}>{content}</p>
       {replyFormActive && (
-        <ReplyForm replyUser={user.username} parentCommentId={id} />
+        <ReplyForm
+          replyUser={user.username}
+          parentCommentId={id}
+          closeForm={() => setReplyFormActive(false)}
+          updateReplies={setReplyData}
+        />
       )}
-      {replies && <Replies replyData={replies} parentCommentId={id} />}
+      {replyData && (
+        <Replies
+          replyData={replyData}
+          parentCommentId={id}
+          updateReplies={setReplyData}
+        />
+      )}
     </div>
   );
 };

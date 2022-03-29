@@ -113,7 +113,8 @@ export const replyToComment =
     try {
       const { data } = await api.replyToComment(comment, id, parentCommentId);
       dispatch({ type: REPLY, payload: data });
-      return data.comments;
+      return data.comments.find((comment) => comment._id === parentCommentId)
+        .replies;
     } catch (error) {
       console.log(error.message);
     }

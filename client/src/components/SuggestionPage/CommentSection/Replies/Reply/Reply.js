@@ -3,9 +3,15 @@ import styles from "./Reply.module.css";
 import ReplyForm from "../ReplyForm";
 import ReplyButton from "../../../../UI/ReplyButton/ReplyButton";
 
-const Reply = ({ user, content, replyingTo, parentCommentId }) => {
+const Reply = ({
+  user,
+  content,
+  replyingTo,
+  parentCommentId,
+  updateReplies,
+}) => {
   const [replyFormActive, setReplyFormActive] = useState(false);
-  console.log(replyFormActive);
+
   return (
     <div className={styles.reply}>
       <div className={styles["reply_header"]}>
@@ -22,6 +28,8 @@ const Reply = ({ user, content, replyingTo, parentCommentId }) => {
         <ReplyForm
           replyUser={user.username}
           parentCommentId={parentCommentId}
+          closeForm={() => setReplyFormActive(false)}
+          updateReplies={updateReplies}
         />
       )}
     </div>
