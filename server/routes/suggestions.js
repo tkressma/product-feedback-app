@@ -5,6 +5,7 @@ import {
   updateSuggestion,
   upvoteSuggestion,
   commentSuggestion,
+  replyToComment,
   getFilteredSuggestions,
   deleteSuggestion,
 } from "../controllers/suggestions.js";
@@ -22,5 +23,6 @@ router.delete(`/:id`, auth, deleteSuggestion);
 router.patch("/:id", auth, updateSuggestion);
 router.patch("/:id/upvote", auth, upvoteSuggestion);
 router.post("/:id/comment", auth, commentSuggestion);
+router.post("/:id/comment/reply", auth, replyToComment);
 
 export default router;

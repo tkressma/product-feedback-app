@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import styles from "../Comments/Comments.module.css";
 import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { commentSuggestion } from "../../../actions/suggestions";
 import Button from "../../UI/Button/Button";
-const AddCommentForm = ({ suggestionId, currentUser, updateComments }) => {
+const AddCommentForm = ({ currentUser, updateComments }) => {
   const [charsLeft, setCharsLeft] = useState(225);
   const [comment, setComment] = useState("");
   const dispatch = useDispatch();
   const isValid = charsLeft > 0;
+  const { id } = useParams();
 
   const handleAddComment = async (e) => {
     e.preventDefault();
@@ -21,7 +23,7 @@ const AddCommentForm = ({ suggestionId, currentUser, updateComments }) => {
             username: currentUser?.result?.username, // Add username to comment data
           },
         },
-        suggestionId
+        id
       )
     );
 

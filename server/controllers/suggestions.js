@@ -203,3 +203,22 @@ export const commentSuggestion = async (req, res) => {
 
   res.json(updatedSuggestion);
 };
+
+export const replyToComment = async (req, res) => {
+  const { id } = req.params;
+  const { comment, parentCommentId } = req.body;
+
+  const suggestion = await SuggestionModel.findById(id);
+
+  suggestion.comments
+    .find((comment) => comment.id === parentCommentId)
+    .replies.push(comment);
+
+  const updatedSuggestion = await SuggestionModel.findByIdAndUpdate(
+    id,
+    suggestion,
+    { new: true }
+  );
+
+  res.json(updatedSuggestion);
+};

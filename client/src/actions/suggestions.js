@@ -6,6 +6,7 @@ import {
   DELETE_SUGGESTION,
   UPVOTE,
   COMMENT,
+  REPLY,
   START_LOADING,
   END_LOADING,
   CHANGE_FILTERS,
@@ -106,3 +107,14 @@ export const commentSuggestion = (comment, id) => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const replyToComment =
+  (comment, id, parentCommentId) => async (dispatch) => {
+    try {
+      const { data } = await api.replyToComment(comment, id, parentCommentId);
+      dispatch({ type: REPLY, payload: data });
+      return data.comments;
+    } catch (error) {
+      console.log(error.message);
+    }
+  };

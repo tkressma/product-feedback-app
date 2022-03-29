@@ -4,7 +4,7 @@ import Replies from "../Replies/Replies";
 import ReplyForm from "../Replies/ReplyForm";
 import ReplyButton from "../../../UI/ReplyButton/ReplyButton";
 
-const Comment = ({ user, content, id, replies }) => {
+const Comment = ({ user, content, id, suggestionId, replies }) => {
   const [replyFormActive, setReplyFormActive] = useState(false);
 
   return (

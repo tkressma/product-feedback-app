@@ -21,7 +21,7 @@ export default function SuggestionPage() {
       {!isLoading && suggestion && (
         <>
           <Suggestion suggestionData={suggestion} />
-          <CommentSection commentData={suggestion.comments} suggestionId={id} />
+          <CommentSection commentData={suggestion.comments} />
         </>
       )}
     </main>

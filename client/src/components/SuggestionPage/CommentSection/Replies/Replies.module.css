@@ -9,5 +9,6 @@
 @media (min-width: 768px) {
   .replies {
     padding-left: 2rem;
+    gap: 0;
   }
 }

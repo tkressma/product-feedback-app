@@ -34,5 +34,8 @@ export const upvoteSuggestion = (id) => API.patch(`/suggestions/${id}/upvote`);
 export const commentSuggestion = (comment, id) =>
   API.post(`/suggestions/${id}/comment`, { comment });
 
+export const replyToComment = (comment, id, parentCommentId) =>
+  API.post(`/suggestions/${id}/comment/reply`, { comment, parentCommentId });
+
 export const signIn = (formData) => API.post("/user/signin", formData);
 export const signUp = (formData) => API.post("/user/signup", formData);

@@ -5,6 +5,7 @@ export const UPDATE_SUGGESTION = "UPVOTE_SUGGESTION";
 export const DELETE_SUGGESTION = "DELETE_SUGGESTION";
 export const UPVOTE = "UPVOTE";
 export const COMMENT = "COMMENT";
+export const REPLY = "REPLY";
 export const FETCH_SORTED = "FETCH_SORTED";
 export const FETCH_FILTERED = "FETCH_FILTERED";
 export const CHANGE_FILTERS = "CHANGE_FILTERS";

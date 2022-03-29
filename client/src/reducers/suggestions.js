@@ -10,6 +10,7 @@ import {
   FETCH_SUGGESTION,
   UPDATE_SUGGESTION,
   COMMENT,
+  REPLY,
 } from "../constants/actionTypes";
 export default (
   state = {
@@ -55,6 +56,13 @@ export default (
         ),
       };
     case COMMENT:
+      return {
+        ...state,
+        suggestions: state.suggestions.map((suggestion) =>
+          suggestion._id === action.payload._id ? action.payload : suggestion
+        ),
+      };
+    case REPLY:
       return {
         ...state,
         suggestions: state.suggestions.map((suggestion) =>
