@@ -1,7 +1,8 @@
 import styles from "./CommentLink.module.css";
 import commentIcon from "../../../../../../assets/shared/icon-comments.svg";
+import { Link } from "react-router-dom";
 
-const CommentLink = ({ comments }) => {
+const CommentLink = ({ comments, id }) => {
   let totalComments = comments.length + addReplies(comments);
   // Checks every comment in the suggestion for replies and returns a running total.
   function addReplies(arr) {
@@ -16,14 +17,14 @@ const CommentLink = ({ comments }) => {
   }
 
   return (
-    <a href="#" className={styles.comment}>
+    <Link to={`/view-suggestion/${id}`} className={styles.comment}>
       <img
         src={commentIcon}
         alt="A message bubble"
         className={styles["comment_icon"]}
       />
       <span>{totalComments}</span>
-    </a>
+    </Link>
   );
 };
 

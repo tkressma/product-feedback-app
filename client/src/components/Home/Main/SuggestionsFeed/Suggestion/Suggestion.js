@@ -105,7 +105,7 @@ export default function Suggestion({ suggestionData }) {
           </div>
         )}
 
-        <CommentLink comments={comments} />
+        <CommentLink comments={comments} id={_id} />
       </article>
     </>
   );
