@@ -15,7 +15,12 @@ const Replies = ({ replyData, parentCommentId, updateReplies }) => {
     />
   ));
 
-  return <div className={styles.replies}>{commentReplies}</div>;
+  // If there is at least 1 reply, display it. Else, don't render.
+  return (
+    replyData.length > 0 && (
+      <div className={styles.replies}>{commentReplies}</div>
+    )
+  );
 };
 
 export default Replies;
