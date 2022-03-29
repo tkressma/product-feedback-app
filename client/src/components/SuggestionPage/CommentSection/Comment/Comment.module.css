@@ -37,6 +37,10 @@
   color: var(--blue-gray);
 }
 
+.comment_error {
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   .comment {
     font-size: 0.9375rem;
