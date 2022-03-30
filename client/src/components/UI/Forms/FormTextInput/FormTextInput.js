@@ -4,16 +4,30 @@ export default function FormTextInput({
   value, // The inner text value of the input being displayed
   large = false, // Whether or not the text box is multiple lines or a single line
   type = "text",
+  error, // Is the input text valid?
   labelHeading,
   labelCaption,
   onChange,
 }) {
   let textInput;
   if (large) {
-    textInput = <textarea id={inputId} onChange={onChange} value={value} />;
+    textInput = (
+      <textarea
+        id={inputId}
+        onChange={onChange}
+        value={value}
+        className={error ? styles.error : undefined}
+      />
+    );
   } else {
     textInput = (
-      <input id={inputId} type={type} onChange={onChange} value={value} />
+      <input
+        id={inputId}
+        type={type}
+        onChange={onChange}
+        value={value}
+        className={error ? styles.error : undefined}
+      />
     );
   }
 
@@ -28,6 +42,8 @@ export default function FormTextInput({
       </label>
 
       {textInput}
+
+      {error && <p className={styles["error_message"]}>Can't be empty</p>}
     </>
   );
 }

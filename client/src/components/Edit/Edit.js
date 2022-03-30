@@ -32,6 +32,9 @@ export default function Edit() {
     category: "",
     description: "",
   });
+  // Form validation
+  const [titleError, setTitleError] = useState(false);
+  const [descriptionError, setDecriptionError] = useState(false);
 
   // If a user is not logged in upon trying to access this form,
   // redirect them to sign in/sign up.
@@ -94,8 +97,17 @@ export default function Edit() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSubmitted(true);
-    dispatch(updateSuggestion(id, updatedSuggestion));
+
+    const titleValidation = updatedSuggestion.title.length !== 0;
+    const descriptionValidation = updatedSuggestion.description.length !== 0;
+
+    setTitleError(!titleValidation ? true : false);
+    setDecriptionError(!descriptionValidation ? true : false);
+
+    if (titleValidation && descriptionValidation) {
+      setSubmitted(true);
+      dispatch(updateSuggestion(id, updatedSuggestion));
+    }
   };
 
   const handleDelete = (event) => {
@@ -116,6 +128,7 @@ export default function Edit() {
           value={isLoading && !submitted ? "" : updatedSuggestion.title}
           labelHeading="Feedback Title"
           labelCaption="Add a short, descriptive headline"
+          error={titleError}
           onChange={(event) =>
             setUpdatedSuggestion({
               ...updatedSuggestion,
@@ -143,6 +156,7 @@ export default function Edit() {
           large="true"
           labelHeading="Feedback Detail"
           labelCaption="Include any specific comments on what should be improved, added, etc."
+          error={descriptionError}
           onChange={(event) =>
             setUpdatedSuggestion({
               ...updatedSuggestion,

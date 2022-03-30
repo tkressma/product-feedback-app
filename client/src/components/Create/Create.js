@@ -23,6 +23,9 @@ export default function Create() {
     comments: [],
   });
 
+  const [titleError, setTitleError] = useState(false);
+  const [descriptionError, setDecriptionError] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading } = useSelector((state) => state.suggestions);
@@ -64,16 +67,24 @@ export default function Create() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSubmitted(true);
 
-    dispatch(
-      createSuggestion({
-        ...newSuggestion,
-        name: user?.result?.name, // Add full name to suggestion data
-        username: user?.result?.username, // Add username to suggestion data
-        upvotes: [`${user?.result?._id}`], // Automatically upvote the user's own post
-      })
-    );
+    const titleValidation = newSuggestion.title.length !== 0;
+    const descriptionValidation = newSuggestion.description.length !== 0;
+
+    setTitleError(!titleValidation ? true : false);
+    setDecriptionError(!descriptionValidation ? true : false);
+
+    if (titleValidation && descriptionValidation) {
+      setSubmitted(true);
+      dispatch(
+        createSuggestion({
+          ...newSuggestion,
+          name: user?.result?.name, // Add full name to suggestion data
+          username: user?.result?.username, // Add username to suggestion data
+          upvotes: [`${user?.result?._id}`], // Automatically upvote the user's own post
+        })
+      );
+    }
   };
 
   return (
@@ -86,6 +97,7 @@ export default function Create() {
           value={newSuggestion.title}
           labelHeading="Feedback Title"
           labelCaption="Add a short, descriptive headline"
+          error={titleError}
           onChange={(event) =>
             setNewSuggestion({ ...newSuggestion, title: event.target.value })
           }
@@ -108,6 +120,7 @@ export default function Create() {
           large="true"
           labelHeading="Feedback Detail"
           labelCaption="Include any specific comments on what should be improved, added, etc."
+          error={descriptionError}
           onChange={(event) =>
             setNewSuggestion({
               ...newSuggestion,
