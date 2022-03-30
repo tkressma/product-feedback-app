@@ -95,7 +95,7 @@ export default function Edit() {
   };
 
   return (
-    <Form icon={editIcon} backButtonDestination="/">
+    <Form icon={editIcon}>
       <Heading type="h1">
         Edit Your Feedback {isLoading && !submitted && loadingSuggestionInfo}
       </Heading>
@@ -158,8 +158,10 @@ export default function Edit() {
                 text="Cancel"
                 onClick={handleSubmit}
                 link={true}
-                destination="/"
+                destination={-1}
               />
+
+              <Button btnStyle="red" text="Delete" onClick={handleSubmit} />
             </>
           )}
         </div>

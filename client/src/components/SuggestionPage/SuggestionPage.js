@@ -16,7 +16,7 @@ export default function SuggestionPage() {
 
   return (
     <main className={styles["suggestion_page"]}>
-      <BackButton destination="/" />
+      <BackButton />
       {!isLoading && suggestion && (
         <>
           <Suggestion suggestionData={suggestion} />

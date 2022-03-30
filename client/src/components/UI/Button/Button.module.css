@@ -62,4 +62,8 @@
     padding: 0.75rem 25px;
     font-size: 0.875rem;
   }
+
+  .button--red {
+    margin-right: auto;
+  }
 }

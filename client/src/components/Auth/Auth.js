@@ -59,7 +59,7 @@ const Auth = () => {
   };
 
   return (
-    <Form icon={addIcon} backButtonDestination="/">
+    <Form icon={addIcon}>
       <Heading type="h1">{heading}</Heading>
 
       <form id="create-user">

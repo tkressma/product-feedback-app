@@ -2,9 +2,9 @@ import styles from "./BackButton.module.css";
 import backIcon from "../../../assets/shared/icon-arrow-left.svg";
 import { Link } from "react-router-dom";
 
-export default function BackButton({ destination }) {
+export default function BackButton() {
   return (
-    <Link to={destination} className={styles["button--back"]}>
+    <Link to={-1} className={styles["button--back"]}>
       <img
         src={backIcon}
         className={styles.backicon}
