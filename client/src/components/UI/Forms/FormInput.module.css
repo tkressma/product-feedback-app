@@ -23,6 +23,7 @@ input {
   border-radius: 5px;
   background-color: var(--off-white);
   color: var(--navy-blue);
+  outline-color: var(--blue);
 }
 
 textarea {
@@ -35,6 +36,7 @@ textarea {
   border-radius: 5px;
   background-color: var(--off-white);
   color: var(--navy-blue);
+  outline-color: var(--blue);
 }
 
 select {

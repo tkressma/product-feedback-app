@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://product-feedback-board.herokuapp.com/",
+  baseURL: "http://localhost:5000",
 });
 
 // This occurs before every individual API request.
