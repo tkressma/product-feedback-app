@@ -51,8 +51,10 @@ export const updateSuggestion = (id, formData) => async (dispatch) => {
 
 export const deleteSuggestion = (id) => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
     await api.deleteSuggestion(id);
     dispatch({ type: DELETE_SUGGESTION, payload: id });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error.message);
   }

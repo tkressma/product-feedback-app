@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getSuggestion, updateSuggestion } from "../../actions/suggestions";
+import {
+  getSuggestion,
+  updateSuggestion,
+  deleteSuggestion,
+} from "../../actions/suggestions";
 import styles from "./Edit.module.css";
 import Heading from "../UI/Heading/Heading";
 import Form from "../UI/Forms/Form/Form";
@@ -79,7 +83,7 @@ export default function Edit() {
     />
   );
 
-  // After the feedback is added, wait 1.5 seconds before redirecting
+  // After the form is submitted, wait 1.5 seconds before redirecting
   // back to the previous page.
   useEffect(() => {
     if (!isLoading && submitted) {
@@ -92,6 +96,12 @@ export default function Edit() {
     event.preventDefault();
     setSubmitted(true);
     dispatch(updateSuggestion(id, updatedSuggestion));
+  };
+
+  const handleDelete = (event) => {
+    event.preventDefault();
+    setSubmitted(true);
+    dispatch(deleteSuggestion(id));
   };
 
   return (
@@ -161,7 +171,7 @@ export default function Edit() {
                 destination={-1}
               />
 
-              <Button btnStyle="red" text="Delete" onClick={handleSubmit} />
+              <Button btnStyle="red" text="Delete" onClick={handleDelete} />
             </>
           )}
         </div>
