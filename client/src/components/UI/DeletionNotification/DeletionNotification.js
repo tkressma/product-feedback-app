@@ -5,11 +5,11 @@ import Button from "../Button/Button";
 import Heading from "../Heading/Heading";
 import { useDispatch } from "react-redux";
 import { deleteSuggestion } from "../../../actions/suggestions";
-
-// dispatch(deleteSuggestion(_id));
+import { useNavigate } from "react-router-dom";
 
 const DeletionNotification = ({ id, closeNotification }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -20,7 +20,10 @@ const DeletionNotification = ({ id, closeNotification }) => {
           <Button
             btnStyle="red"
             text="Delete"
-            onClick={() => dispatch(deleteSuggestion(id))}
+            onClick={() => {
+              dispatch(deleteSuggestion(id));
+              navigate("/");
+            }}
           />
         </div>
       </div>

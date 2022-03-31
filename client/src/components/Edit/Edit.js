@@ -26,6 +26,8 @@ export default function Edit() {
   const { suggestion, isLoading } = useSelector((state) => state.suggestions);
   // Did the user submit the form?
   const [submitted, setSubmitted] = useState(false);
+  // Did the user delete the suggestion?
+  const [deleted, setDeleted] = useState(false);
   // A base state placeholder object for editing a form.
   const [updatedSuggestion, setUpdatedSuggestion] = useState({
     title: "",
@@ -87,10 +89,15 @@ export default function Edit() {
   );
 
   // After the form is submitted, wait 1.5 seconds before redirecting
-  // back to the previous page.
+  // back to the previous page. If the user deleted the suggestion,
+  // go to the home page.
   useEffect(() => {
     if (!isLoading && submitted) {
       let timerFunc = setTimeout(() => navigate(-1), 1500);
+      return () => clearTimeout(timerFunc);
+    }
+    if (!isLoading && deleted) {
+      let timerFunc = setTimeout(() => navigate("/"), 1500);
       return () => clearTimeout(timerFunc);
     }
   });
@@ -112,7 +119,7 @@ export default function Edit() {
 
   const handleDelete = (event) => {
     event.preventDefault();
-    setSubmitted(true);
+    setDeleted(true);
     dispatch(deleteSuggestion(id));
   };
 
