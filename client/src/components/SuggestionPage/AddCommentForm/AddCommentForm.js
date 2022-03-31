@@ -13,11 +13,6 @@ const AddCommentForm = ({ updateComments }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  // If the comment is empty, and a user types something, update the empty state to be false.
-  useEffect(() => {
-    if (charsLeft < 225) setIsEmpty(false);
-  }, [charsLeft]);
-
   // Sends a comment to the back end, the refreshes the current suggestion's
   // comments to be immediately displayed on the front end. Then, it resets
   // the comment text area.
@@ -34,10 +29,10 @@ const AddCommentForm = ({ updateComments }) => {
     }
   };
 
-  // Update comment field character count and the comment to be posted by the user.
   const handleCommentChange = (e) => {
-    setCharsLeft(225 - e.target.value.length);
-    setComment(e.target.value);
+    setCharsLeft(225 - e.target.value.length); // Update comment field character count
+    setComment(e.target.value); // Update the comment to be posted by the user.
+    setIsEmpty(false); // If the comment is empty, and a user types something, update the empty state to be false.
   };
 
   return (

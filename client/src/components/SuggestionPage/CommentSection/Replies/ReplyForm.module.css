@@ -6,8 +6,22 @@
 }
 
 .replytext {
+  position: relative;
   flex-basis: 70%;
   flex-grow: 1;
   margin: 0;
   outline-color: var(--blue);
+}
+
+.replytext--error {
+  padding: 0.875rem 1.375rem;
+  border: 2px solid var(--red);
+  outline-color: var(--red);
+}
+
+.replytext--error-message {
+  position: absolute;
+  font-size: 0.875rem;
+  color: var(--red);
+  transform: translateY(6.5rem);
 }
