@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./CommentSection.module.css";
-import Comment from "./Comment/Comment";
-import AddCommentForm from "../AddCommentForm/AddCommentForm";
+import Comment from "./Comments/Comment/Comment";
+import AddCommentForm from "./AddCommentForm/AddCommentForm";
 const CommentSection = ({ commentData }) => {
   const [updatedComments, setUpdatedComments] = useState(commentData);
 
