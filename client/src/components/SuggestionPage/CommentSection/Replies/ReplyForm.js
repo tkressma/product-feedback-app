@@ -13,30 +13,16 @@ const ReplyForm = ({
 }) => {
   const [reply, setReply] = useState("");
   const dispatch = useDispatch();
-  const user = JSON.parse(localStorage.getItem("profile"));
   const { id } = useParams();
 
+  // Sends a reply to the back end, the refreshes the current suggestion's
+  // replys to be immediately displayed on the front end. Then, it closes
+  // reply text box.
   const handleReplyComment = async (e) => {
     e.preventDefault();
-
-    console.log(id);
-
     const newReplies = await dispatch(
-      replyToComment(
-        {
-          content: reply,
-          user: {
-            name: user?.result?.name,
-            username: user?.result?.username,
-          },
-          replyingTo: replyUser,
-        },
-        id,
-        parentCommentId
-      )
+      replyToComment(reply, replyUser, id, parentCommentId)
     );
-
-    console.log(newReplies);
 
     updateReplies(newReplies);
     closeForm();

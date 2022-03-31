@@ -13,6 +13,14 @@ import {
 } from "../constants/actionTypes";
 import * as api from "../api";
 
+// The following code is used to generate a username for users signed in with GoogleOAuth.
+const generateGoogleUsername = (user) => {
+  return (
+    user?.result.name.split(" ").join("").toLowerCase() +
+    String(user?.result.googleId).slice(0, 3)
+  );
+};
+
 // Action Creators - Must use redux thunk since we are working with asynchronous data
 
 export const getSuggestion = (id) => async (dispatch) => {
@@ -101,8 +109,19 @@ export const upvoteSuggestion = (id) => async (dispatch) => {
 };
 
 export const commentSuggestion = (comment, id) => async (dispatch) => {
+  const user = JSON.parse(localStorage.getItem("profile"));
+  const username = user?.result.username || generateGoogleUsername(user);
+
+  const commentData = {
+    content: comment,
+    user: {
+      name: user?.result?.name, // Add full name to comment data
+      username: username, // Add username to comment data
+    },
+  };
+
   try {
-    const { data } = await api.commentSuggestion(comment, id);
+    const { data } = await api.commentSuggestion(commentData, id);
     dispatch({ type: COMMENT, payload: data });
     return data.comments; // Return all the comments on the suggestion to reflect comment changes on the front end
   } catch (error) {
@@ -111,9 +130,20 @@ export const commentSuggestion = (comment, id) => async (dispatch) => {
 };
 
 export const replyToComment =
-  (comment, id, parentCommentId) => async (dispatch) => {
+  (comment, replyUser, id, parentCommentId) => async (dispatch) => {
+    const user = JSON.parse(localStorage.getItem("profile"));
+    const username = user?.result.username || generateGoogleUsername(user);
+
+    const replyData = {
+      content: comment,
+      replyingTo: replyUser,
+      user: {
+        name: user?.result?.name, // Add full name to comment data
+        username: username, // Add username to comment data
+      },
+    };
     try {
-      const { data } = await api.replyToComment(comment, id, parentCommentId);
+      const { data } = await api.replyToComment(replyData, id, parentCommentId);
       dispatch({ type: REPLY, payload: data });
       return data.comments.find((comment) => comment._id === parentCommentId)
         .replies;

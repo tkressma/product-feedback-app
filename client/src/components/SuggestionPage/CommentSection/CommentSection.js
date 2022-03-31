@@ -38,7 +38,7 @@ const CommentSection = ({ commentData }) => {
         <h1 className={styles["comments_header"]}>{commentTitle} </h1>
         {commentCards}
       </section>
-      <AddCommentForm currentUser={user} updateComments={setUpdatedComments} />
+      <AddCommentForm updateComments={setUpdatedComments} />
     </>
   );
 };
