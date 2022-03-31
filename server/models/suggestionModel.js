@@ -18,7 +18,7 @@ const suggestionSchema = mongoose.Schema(
       {
         content: String,
         user: {
-          image: String,
+          id: String,
           name: String,
           username: String,
         },
@@ -27,7 +27,7 @@ const suggestionSchema = mongoose.Schema(
             content: String,
             replyingTo: String,
             user: {
-              image: String,
+              id: String,
               name: String,
               username: String,
             },

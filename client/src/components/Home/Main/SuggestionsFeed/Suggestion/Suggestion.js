@@ -99,7 +99,7 @@ export default function Suggestion({ suggestionData }) {
               <img
                 src={deleteIcon}
                 className={styles["suggestion__delete_icon"]}
-                alt="A trash can suggestion deletion."
+                alt="A trash can suggesting deletion."
               />
             </button>
           </div>

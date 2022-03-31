@@ -10,6 +10,7 @@ const Replies = ({ replyData, parentCommentId, updateReplies }) => {
       user={reply.user}
       content={reply.content}
       replyingTo={reply.replyingTo}
+      id={reply._id}
       parentCommentId={parentCommentId}
       updateReplies={updateReplies}
     />

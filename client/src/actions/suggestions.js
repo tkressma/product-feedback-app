@@ -111,10 +111,12 @@ export const upvoteSuggestion = (id) => async (dispatch) => {
 export const commentSuggestion = (comment, id) => async (dispatch) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const username = user?.result.username || generateGoogleUsername(user);
+  const userId = user?.result.id || user?.result.googleId;
 
   const commentData = {
     content: comment,
     user: {
+      id: userId,
       name: user?.result?.name, // Add full name to comment data
       username: username, // Add username to comment data
     },
@@ -133,11 +135,12 @@ export const replyToComment =
   (comment, replyUser, id, parentCommentId) => async (dispatch) => {
     const user = JSON.parse(localStorage.getItem("profile"));
     const username = user?.result.username || generateGoogleUsername(user);
-
+    const userId = user?.result.id || user?.result.googleId;
     const replyData = {
       content: comment,
       replyingTo: replyUser,
       user: {
+        id: userId,
         name: user?.result?.name, // Add full name to comment data
         username: username, // Add username to comment data
       },

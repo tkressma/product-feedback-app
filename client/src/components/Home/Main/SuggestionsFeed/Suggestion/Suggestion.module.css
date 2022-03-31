@@ -60,7 +60,6 @@
   margin-top: -2px;
   height: 25px;
   transition: all 0.2s;
-  http: ; //localhost:3000/;
 }
 
 .suggestion__delete_icon:hover {

@@ -17,6 +17,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .poster {
   display: flex;
   flex-direction: column;
@@ -31,6 +32,29 @@
   font-weight: 400;
   line-height: 19px;
   color: var(--blue-gray);
+}
+
+.comment_settings {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.comment__settings_btn {
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.comment__delete_icon {
+  margin-top: -2px;
+  height: 20px;
+  transition: all 0.2s;
+}
+
+.comment__delete_icon:hover {
+  transform: translateY(-2px);
 }
 
 .comment_content {

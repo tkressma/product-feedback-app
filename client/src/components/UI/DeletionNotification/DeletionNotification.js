@@ -7,14 +7,16 @@ import { useDispatch } from "react-redux";
 import { deleteSuggestion } from "../../../actions/suggestions";
 import { useNavigate } from "react-router-dom";
 
-const DeletionNotification = ({ id, closeNotification }) => {
+const DeletionNotification = ({ id, closeNotification, comment = false }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   return (
     <>
       <div className={styles.notification}>
-        <Heading type="h1">Delete Suggestion?</Heading>
+        <Heading type="h1">
+          Delete {comment ? "Comment" : "Suggestion"}?
+        </Heading>
         <div className={styles.options}>
           <Button btnStyle="blue" text="Cancel" onClick={closeNotification} />
           <Button
