@@ -14,7 +14,7 @@ import FormSelectInput from "../UI/Forms/FormSelectInput/FormSelectInput";
 import editIcon from "../../assets/shared/icon-edit-feedback.svg";
 import Button from "../UI/Button/Button";
 import checkIcon from "../../assets/shared/icon-check.svg";
-
+import DeletionNotification from "../UI/DeletionNotification/DeletionNotification";
 import { SpinnerCircularFixed } from "spinners-react";
 
 export default function Edit() {
@@ -27,7 +27,8 @@ export default function Edit() {
   // Did the user submit the form?
   const [submitted, setSubmitted] = useState(false);
   // Did the user delete the suggestion?
-  const [deleted, setDeleted] = useState(false);
+  const [deleteNotificationActive, setDeleteNotificationActive] =
+    useState(false);
   // A base state placeholder object for editing a form.
   const [updatedSuggestion, setUpdatedSuggestion] = useState({
     title: "",
@@ -89,15 +90,10 @@ export default function Edit() {
   );
 
   // After the form is submitted, wait 1.5 seconds before redirecting
-  // back to the previous page. If the user deleted the suggestion,
-  // go to the home page.
+  // back to the previous page.
   useEffect(() => {
     if (!isLoading && submitted) {
       let timerFunc = setTimeout(() => navigate(-1), 1500);
-      return () => clearTimeout(timerFunc);
-    }
-    if (!isLoading && deleted) {
-      let timerFunc = setTimeout(() => navigate("/"), 1500);
       return () => clearTimeout(timerFunc);
     }
   });
@@ -119,84 +115,91 @@ export default function Edit() {
 
   const handleDelete = (event) => {
     event.preventDefault();
-    setDeleted(true);
-    dispatch(deleteSuggestion(id));
+    setDeleteNotificationActive(true);
   };
 
   return (
-    <Form icon={editIcon}>
-      <Heading type="h1">
-        Edit Your Feedback {isLoading && !submitted && loadingSuggestionInfo}
-      </Heading>
-
-      <form id="form">
-        <FormTextInput
-          inputId="title"
-          value={isLoading && !submitted ? "" : updatedSuggestion.title}
-          labelHeading="Feedback Title"
-          labelCaption="Add a short, descriptive headline"
-          error={titleError}
-          onChange={(event) =>
-            setUpdatedSuggestion({
-              ...updatedSuggestion,
-              title: event.target.value,
-            })
-          }
+    <>
+      {deleteNotificationActive && (
+        <DeletionNotification
+          id={id}
+          closeNotification={() => setDeleteNotificationActive(false)}
         />
-        <FormSelectInput
-          inputId="category"
-          value={
-            isLoading && !submitted ? "Featured" : updatedSuggestion.category
-          }
-          labelHeading="Category"
-          labelCaption="Choose a category for your feedback"
-          onChange={(event) =>
-            setUpdatedSuggestion({
-              ...updatedSuggestion,
-              category: event.target.value,
-            })
-          }
-        />
-        <FormTextInput
-          inputId="detail"
-          value={isLoading && !submitted ? "" : updatedSuggestion.description}
-          large="true"
-          labelHeading="Feedback Detail"
-          labelCaption="Include any specific comments on what should be improved, added, etc."
-          error={descriptionError}
-          onChange={(event) =>
-            setUpdatedSuggestion({
-              ...updatedSuggestion,
-              description: event.target.value,
-            })
-          }
-        />
+      )}
+      <Form icon={editIcon}>
+        <Heading type="h1">
+          Edit Your Feedback {isLoading && !submitted && loadingSuggestionInfo}
+        </Heading>
 
-        <div className={styles["button__container"]}>
-          {submitted ? (
-            submissionConfirmation
-          ) : (
-            <>
-              <Button
-                btnStyle="violet"
-                text="Submit Changes"
-                form="form"
-                onClick={handleSubmit}
-              />
+        <form id="form">
+          <FormTextInput
+            inputId="title"
+            value={isLoading && !submitted ? "" : updatedSuggestion.title}
+            labelHeading="Feedback Title"
+            labelCaption="Add a short, descriptive headline"
+            error={titleError}
+            onChange={(event) =>
+              setUpdatedSuggestion({
+                ...updatedSuggestion,
+                title: event.target.value,
+              })
+            }
+          />
+          <FormSelectInput
+            inputId="category"
+            value={
+              isLoading && !submitted ? "Featured" : updatedSuggestion.category
+            }
+            labelHeading="Category"
+            labelCaption="Choose a category for your feedback"
+            onChange={(event) =>
+              setUpdatedSuggestion({
+                ...updatedSuggestion,
+                category: event.target.value,
+              })
+            }
+          />
+          <FormTextInput
+            inputId="detail"
+            value={isLoading && !submitted ? "" : updatedSuggestion.description}
+            large="true"
+            labelHeading="Feedback Detail"
+            labelCaption="Include any specific comments on what should be improved, added, etc."
+            error={descriptionError}
+            onChange={(event) =>
+              setUpdatedSuggestion({
+                ...updatedSuggestion,
+                description: event.target.value,
+              })
+            }
+          />
 
-              <Button
-                btnStyle="navy-blue"
-                text="Cancel"
-                onClick={handleSubmit}
-                link={true}
-                destination={-1}
-              />
+          <div className={styles["button__container"]}>
+            {submitted ? (
+              submissionConfirmation
+            ) : (
+              <>
+                <Button
+                  btnStyle="violet"
+                  text="Submit Changes"
+                  form="form"
+                  onClick={handleSubmit}
+                />
 
-              <Button btnStyle="red" text="Delete" onClick={handleDelete} />
-            </>
-          )}
-        </div>
-      </form>
-    </Form>
+                <Button
+                  btnStyle="navy-blue"
+                  text="Cancel"
+                  onClick={handleSubmit}
+                  link={true}
+                  destination={-1}
+                />
+
+                <Button btnStyle="red" text="Delete" onClick={handleDelete} />
+              </>
+            )}
+          </div>
+        </form>
+      </Form>
+    </>
   );
 }
