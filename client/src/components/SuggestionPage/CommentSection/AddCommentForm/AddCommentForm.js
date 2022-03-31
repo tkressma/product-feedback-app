@@ -93,7 +93,7 @@ const AddCommentForm = ({ updateComments }) => {
             </p>
 
             <Button
-              btnStyle={isValid ? "violet" : "disabled"}
+              btnStyle={isValid && !isEmpty ? "violet" : "disabled"}
               text="Post Comment"
               form="add-comment"
               aria-disabled={!isValid}
