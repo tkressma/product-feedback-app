@@ -14,6 +14,9 @@ export default function FormTextInput({
     textInput = (
       <textarea
         id={inputId}
+        aria-invalid={error}
+        aria-required="true"
+        aria-errormessage="validation-error"
         onChange={onChange}
         value={value}
         className={error ? styles.error : undefined}
@@ -23,6 +26,9 @@ export default function FormTextInput({
     textInput = (
       <input
         id={inputId}
+        aria-invalid={error}
+        aria-required="true"
+        aria-errormessage="validation-error"
         type={type}
         onChange={onChange}
         value={value}
@@ -43,7 +49,11 @@ export default function FormTextInput({
 
       {textInput}
 
-      {error && <p className={styles["error_message"]}>Can't be empty</p>}
+      {error && (
+        <p id="validation-error" className={styles["error_message"]}>
+          Can't be empty
+        </p>
+      )}
     </>
   );
 }
