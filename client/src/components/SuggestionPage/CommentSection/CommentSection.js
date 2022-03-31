@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import styles from "./Comments.module.css";
+import styles from "./CommentSection.module.css";
 import Comment from "./Comment/Comment";
 import AddCommentForm from "../AddCommentForm/AddCommentForm";
 const CommentSection = ({ commentData }) => {
-  const user = JSON.parse(localStorage.getItem("profile"));
-
   const [updatedComments, setUpdatedComments] = useState(commentData);
 
   let totalComments = updatedComments.length + addReplies(updatedComments);
