@@ -10,6 +10,26 @@
   padding: 1.625rem 1.5rem;
 }
 
+.roadmap__options {
+  display: flex;
+}
+
+.roadmap__option {
+  font-size: 0.8125rem;
+  border: 0;
+  font-weight: 700;
+  letter-spacing: -0.180556px;
+  color: var(--navy-blue);
+  padding: 1.25rem 0;
+  flex-grow: 1;
+  border-radius: 0;
+}
+
+.roadmap__option--selected {
+  padding-bottom: 0.96875rem;
+  border-bottom: 4.5px solid var(--violet);
+}
+
 @media (min-width: 768px) {
   .roadmap__header {
     border-radius: 10px;
