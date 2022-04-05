@@ -9,8 +9,8 @@
   margin-top: 72px;
   visibility: hidden;
   opacity: 0;
-  transform: translateX(100px);
-  transition: 0.3s all;
+  transform: translateY(25px) translateX(-5px);
+  transition: 0.15s all;
 }
 
 .menu--active {
@@ -38,7 +38,7 @@
     height: auto;
     margin: 0;
     background: transparent;
-    transform: translateX(0px);
+    transform: translateY(0px) translateX(0);
     visibility: visible;
     opacity: 1;
   }

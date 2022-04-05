@@ -1,5 +1,4 @@
 import styles from "./Menu.module.css";
-import { useState } from "react";
 import SuggestionTags from "./SuggestionTags/SuggestionTags";
 import ProjectRoadmap from "./ProjectRoadmap/ProjectRoadmap";
 import LogoutButton from "../../../UI/LogoutButton/LogoutButton";

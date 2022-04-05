@@ -14,7 +14,7 @@ export default function ControlCenter() {
       {isMobile && (
         <Hamburger
           color="#ffffff"
-          duration={0.3}
+          duration={0.15}
           size={20}
           label="Show menu"
           aria-expanded={isOpen}
