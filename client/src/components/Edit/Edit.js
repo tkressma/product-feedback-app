@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  getSuggestion,
-  updateSuggestion,
-  deleteSuggestion,
-} from "../../actions/suggestions";
+import { getSuggestion, updateSuggestion } from "../../actions/suggestions";
 import styles from "./Edit.module.css";
 import Heading from "../UI/Heading/Heading";
 import Form from "../UI/Forms/Form/Form";
@@ -152,10 +148,10 @@ export default function Edit() {
             }
             labelHeading="Category"
             labelCaption="Choose a category for your feedback"
-            onChange={(event) =>
+            onChange={(option) =>
               setUpdatedSuggestion({
                 ...updatedSuggestion,
-                category: event.target.value,
+                category: option,
               })
             }
           />

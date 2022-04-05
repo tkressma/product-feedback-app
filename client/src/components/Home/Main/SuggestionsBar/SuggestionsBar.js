@@ -6,8 +6,7 @@ import styles from "./SuggestionsBar.module.css";
 import Button from "../../../UI/Button/Button";
 import Heading from "../../../UI/Heading/Heading";
 import bulbIcon from "../../../../assets/suggestions/icon-suggestions.svg";
-import downArrowIcon from "../../../../assets/shared/icon-arrow-down.svg";
-import checkIcon from "../../../../assets/shared/icon-check.svg";
+import { DropDownMenu } from "../../../UI/DropDownMenu/DropDownMenu";
 
 export default function SuggestionsBar() {
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
@@ -17,7 +16,7 @@ export default function SuggestionsBar() {
     "Most Comments",
     "Least Comments",
   ];
-  const [sortingOption, setSortingOption] = useState("Most Upvotes");
+  const [option, setOption] = useState("Most Upvotes");
 
   // Retrieves all of the suggestions and filters that are selected
   const {
@@ -25,7 +24,6 @@ export default function SuggestionsBar() {
     filters: { sortCategory, sortType, sortOrder },
   } = useSelector((state) => state.suggestions);
 
-  const [menuOpen, setMenuOpen] = useState(false);
   const dispatch = useDispatch();
 
   // Sort by Most Upvotes on component mount
@@ -42,8 +40,8 @@ export default function SuggestionsBar() {
   // Listen for each time a new sorting option is selected and update state
   useEffect(() => {
     // Determine the sort order (ascending/descending) and type (upvotes/comments)
-    const order = sortingOption.includes("Most") ? "desc" : "asc";
-    const type = sortingOption.includes("Upvotes") ? "upvotes" : "comments";
+    const order = option.includes("Most") ? "desc" : "asc";
+    const type = option.includes("Upvotes") ? "upvotes" : "comments";
 
     // Update the sorting filters
     dispatch(
@@ -62,17 +60,7 @@ export default function SuggestionsBar() {
         order: sortOrder,
       })
     );
-  }, [sortingOption, sortCategory, sortType, sortOrder, dispatch]);
-
-  const handleDropDown = (event) => {
-    setMenuOpen(!menuOpen); // Toggle the dropdown menu
-    event.target.setAttribute("aria-expanded", menuOpen); // Toggle aria-expanded label for accessibility
-  };
-
-  const handleSortSelection = (event) => {
-    setMenuOpen(false); // Close the dropdown menu
-    setSortingOption(event.target.innerText); // Set the sorting option to user selection (E.G. "Least Upvotes")
-  };
+  }, [option, sortCategory, sortType, sortOrder, dispatch]);
 
   // Displays how many suggestions are available on screen sizes larger than 768px
   const suggestionCount = !isMobile && (
@@ -86,60 +74,7 @@ export default function SuggestionsBar() {
     <section className={`${styles.bar} ${isMobile && styles["bar--sticky"]}`}>
       {suggestionCount}
 
-      <div className={styles["bar__listbox"]}>
-        {/* Container for the label, the dropdown button, and the up/down arrow */}
-        <div className={styles["bar__sort_options"]}>
-          <span id="sort_label">Sort by :</span>
-          <button
-            onClick={handleDropDown}
-            aria-haspopup="listbox"
-            aria-expanded="false"
-            aria-labelledby="sort_label"
-          >
-            {sortingOption}
-          </button>
-          <img
-            src={downArrowIcon}
-            className={`${styles.menuarrow} ${
-              menuOpen && styles["menuarrow--active"]
-            }`}
-            alt={`${menuOpen ? "Down" : "Up"} arrow`}
-          />
-        </div>
-
-        {/* Dropdown pop up */}
-        <div
-          className={`${styles["bar__dropdown"]} ${
-            menuOpen && styles["bar__dropdown--active"]
-          }`}
-        >
-          <ul role="listbox" aria-labelledby="sort_label">
-            {sortingOptions.map((option, index) => (
-              <li
-                key={index}
-                className={styles["bar__listitem"]}
-                aria-selected={sortingOption === option ? true : false}
-                role="option"
-                tabIndex="0"
-                onClick={handleSortSelection}
-                onKeyPress={handleSortSelection}
-              >
-                {/* Option text */}
-                {option}
-
-                {/* If a list item is currently selected, display a checkmark */}
-                {sortingOption === option && (
-                  <img
-                    src={checkIcon}
-                    alt="Checkmark"
-                    className={styles["bar__listitem_checkmark"]}
-                  />
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <DropDownMenu listOptions={sortingOptions} setOption={setOption} />
 
       <Button
         btnStyle="violet"

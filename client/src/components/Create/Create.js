@@ -104,15 +104,14 @@ export default function Create() {
         />
         <FormSelectInput
           inputId="category"
-          value={newSuggestion.category}
           labelHeading="Category"
           labelCaption="Choose a category for your feedback"
-          onChange={(event) =>
+          onChange={(option) => {
             setNewSuggestion({
               ...newSuggestion,
-              category: event.target.value,
-            })
-          }
+              category: option,
+            });
+          }}
         />
         <FormTextInput
           inputId="detail"

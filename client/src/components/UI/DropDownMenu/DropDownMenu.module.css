@@ -1,0 +1,120 @@
+.listbox {
+  font-size: 0.8125rem;
+  flex: 1;
+  color: var(--light-gray);
+  position: relative;
+}
+
+.listbox--form {
+  display: flex;
+  height: 3rem;
+  margin: 1rem 0 1.5rem;
+  padding: 1rem;
+  color: var(--navy-blue);
+  background-color: var(--off-white);
+  border-radius: 5px;
+}
+
+.listbox--open {
+  border: 2px solid var(--blue);
+  padding: 0.875rem;
+}
+
+.listbox--form-button {
+  font-size: 1rem;
+}
+
+.sort_options {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.menuarrow {
+  filter: brightness(0) invert(1);
+  transition: all 0.3s;
+  width: 10px;
+  height: 7px;
+  cursor: pointer;
+}
+
+.menuarrow--form {
+  filter: none;
+  transition: all 0.3s;
+  margin-left: auto;
+  width: 10px;
+  height: 7px;
+  cursor: pointer;
+}
+
+.menuarrow--active {
+  transform: rotate(-180deg);
+}
+
+.listbox button {
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  outline-color: var(--blue);
+}
+
+.dropdown {
+  position: absolute;
+  top: 68px;
+  left: 0;
+  width: 255px;
+  color: var(--navy-blue);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 10;
+}
+
+.dropdown--form {
+  width: 100%;
+}
+
+.dropdown--active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+}
+
+.listitem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 23px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: 0.3s all;
+  outline-color: var(--blue);
+}
+
+.listitem + .listitem {
+  border-top: 1px solid var(--navy-blue);
+}
+
+.listitem:hover {
+  color: var(--violet);
+}
+
+.listitem_checkmark {
+  width: 13px;
+  height: 11px;
+}
+
+@media (min-width: 768px) {
+  .listbox {
+    font-size: 0.875rem;
+  }
+}
