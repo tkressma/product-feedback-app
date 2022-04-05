@@ -6,7 +6,7 @@ export default function ProjectRoadmap() {
     <article className={styles.roadmap}>
       <div className={styles["roadmap__header"]}>
         <Heading type="h3">Project Roadmap</Heading>
-        <Link to="/" className={styles["roadmap__link"]}>
+        <Link to="/project-roadmap" className={styles["roadmap__link"]}>
           View
         </Link>
       </div>

@@ -1,4 +1,18 @@
-.roadmap__header {
+.roadmap {
   width: 100%;
+  max-width: 1100px;
+}
+.roadmap__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: var(--navy-blue-dark);
+  padding: 1.625rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .roadmap__header {
+    border-radius: 10px;
+    padding: 1.6875rem 2rem;
+  }
 }
