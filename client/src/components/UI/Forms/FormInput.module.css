@@ -50,15 +50,26 @@ textarea {
   transform: translateY(-1.25rem);
 }
 
-select {
+.select {
   width: 100%;
   height: 3rem;
   margin: 1rem 0 1.5rem;
   padding: 0 1rem;
   border: none;
   border-radius: 5px;
+  outline-color: var(--blue);
+  -webkit-appearance: none;
+  background: url(../../../assets/shared/icon-arrow-down.svg) no-repeat right;
+  background-origin: content-box;
   background-color: var(--off-white);
   color: var(--navy-blue);
+}
+
+select > option {
+}
+
+.select--active {
+  background-image: url(../../../assets/shared/icon-arrow-up.svg);
 }
 
 @media (min-width: 768px) {
