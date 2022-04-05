@@ -1,21 +1,12 @@
 import styles from "./Menu.module.css";
 import { useState } from "react";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import SuggestionTags from "./SuggestionTags/SuggestionTags";
 import ProjectRoadmap from "./ProjectRoadmap/ProjectRoadmap";
 import LogoutButton from "../../../UI/LogoutButton/LogoutButton";
 
 export default function Menu({ isOpen, closeMobileMenu }) {
   // Check if the user is logged in. Display Logout button if that is the case.
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-
-  // Disable scrolling if the menu is opened
-  let body = document.querySelector("body");
-  if (isOpen) {
-    disableBodyScroll(body);
-  } else {
-    enableBodyScroll(body);
-  }
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   return (
     <section
