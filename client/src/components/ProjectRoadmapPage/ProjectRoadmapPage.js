@@ -22,6 +22,8 @@ export const ProjectRoadmapPage = () => {
           destination="create-feedback"
         />
       </header>
+
+      <section></section>
     </main>
   );
 };
