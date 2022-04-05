@@ -6,6 +6,47 @@
   border-radius: 10px;
 }
 
+li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.roadmap__list {
+  list-style-type: none;
+  margin-top: 1.5rem;
+  padding: 0;
+  font-size: 1rem;
+  color: var(--blue-gray);
+}
+
+.count {
+  font-weight: 700;
+}
+
+.roadmap__list_type {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bullet {
+  border-radius: 100%;
+  width: 8px;
+  height: 8px;
+}
+
+.planned {
+  background-color: var(--light-orange);
+}
+
+.inprogress {
+  background-color: var(--violet);
+}
+
+.live {
+  background-color: var(--lightblue);
+}
+
 @media (min-width: 768px) {
   .roadmap {
     flex: 1;
