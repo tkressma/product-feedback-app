@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./Header.module.css";
 import { useMediaQuery } from "react-responsive";
 import { Spin as Hamburger } from "hamburger-react";
-import Logo from "./Logo/Logo";
+import UserCenter from "./UserCenter/UserCenter";
 import Menu from "./Menu/Menu";
 export default function ControlCenter() {
   const isMobile = useMediaQuery({ query: "(max-width: 767px)" });
@@ -10,7 +10,7 @@ export default function ControlCenter() {
 
   return (
     <header className={styles.header}>
-      <Logo />
+      <UserCenter />
       {isMobile && (
         <Hamburger
           color="#ffffff"

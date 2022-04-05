@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Comment.module.css";
-import Replies from "../Replies/Replies";
-import ReplyForm from "../Replies/ReplyForm/ReplyForm";
+import Replies from "./Replies/Replies";
+import ReplyForm from "./Replies/ReplyForm/ReplyForm";
 import ReplyButton from "../../../../UI/ReplyButton/ReplyButton";
 import deleteIcon from "../../../../../assets/shared/icon-delete.svg";
 import DeletionNotification from "../../../../UI/DeletionNotification/DeletionNotification";
