@@ -25,7 +25,7 @@ export const DropDownMenu = ({ listOptions, setOption, isForm = false }) => {
   return (
     <div
       className={`${styles["listbox"]} ${isForm && styles["listbox--form"]} ${
-        menuOpen && styles["listbox--open"]
+        menuOpen && isForm && styles["listbox--open"]
       }`}
     >
       {/* Container for the label, the dropdown button, and the up/down arrow */}

@@ -57,6 +57,8 @@
   border: none;
   cursor: pointer;
   outline-color: var(--blue);
+  width: 100%;
+  text-align: left;
 }
 
 .dropdown {

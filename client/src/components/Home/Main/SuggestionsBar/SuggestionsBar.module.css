@@ -14,92 +14,10 @@
   position: sticky;
 }
 
-.bar__listbox {
-  font-size: 0.8125rem;
-  flex: 1;
-  color: var(--light-gray);
-  position: relative;
-}
-
-.bar__sort_options {
-  display: flex;
-  align-items: center;
-}
-
-.menuarrow {
-  filter: brightness(0) invert(1);
-  transition: all 0.3s;
-  width: 10px;
-  height: 7px;
-}
-
-.menuarrow--active {
-  transform: rotate(-180deg);
-}
-
-.bar__listbox button {
-  background-color: transparent;
-  color: inherit;
-  border: none;
-  cursor: pointer;
-}
-
-.bar__dropdown {
-  position: absolute;
-  top: 68px;
-  left: 0;
-  width: 255px;
-  color: var(--navy-blue);
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.2s, visibility 0.2s;
-}
-
-.bar__dropdown--active {
-  visibility: visible;
-  opacity: 1;
-}
-
-.bar__dropdown ul {
-  list-style: none;
-  padding: 0;
-}
-
-.bar__listitem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-  line-height: 23px;
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  transition: 0.3s all;
-}
-
-.bar__listitem + .bar__listitem {
-  border-top: 1px solid var(--navy-blue);
-}
-
-.bar__listitem:hover {
-  color: var(--violet);
-}
-
-.bar__listitem_checkmark {
-  width: 13px;
-  height: 11px;
-}
-
 @media (min-width: 768px) {
   .bar {
     height: 72px;
     border-radius: 10px;
     padding: 0 1rem 0 1.5rem;
-  }
-
-  .bar__listbox {
-    font-size: 0.875rem;
   }
 }

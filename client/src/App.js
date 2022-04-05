@@ -5,6 +5,7 @@ import Edit from "./components/Edit/Edit";
 import SuggestionPage from "./components/SuggestionPage/SuggestionPage";
 import Container from "./components/UI/Container/Container";
 import Auth from "./components/Auth/Auth";
+import { ProjectRoadmapPage } from "./components/ProjectRoadmapPage/ProjectRoadmapPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/create-feedback" element={<Create />} />
           <Route path="/edit-feedback/:id" element={<Edit />} />
           <Route path="/view-suggestion/:id" element={<SuggestionPage />} />
+          <Route path="/project-roadmap/" element={<ProjectRoadmapPage />} />
         </Routes>
       </Container>
     </Router>
