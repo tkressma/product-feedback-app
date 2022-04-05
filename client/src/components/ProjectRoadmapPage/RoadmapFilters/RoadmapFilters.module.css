@@ -1,0 +1,20 @@
+.roadmap__filters {
+  display: flex;
+}
+
+.roadmap__filter {
+  font-size: 0.8125rem;
+  border: 0;
+  font-weight: 700;
+  letter-spacing: -0.180556px;
+  color: var(--navy-blue);
+  padding: 1.25rem 0;
+  flex-grow: 1;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.roadmap__filter--selected {
+  padding-bottom: 0.96875rem;
+  border-bottom: 4.5px solid var(--violet);
+}
