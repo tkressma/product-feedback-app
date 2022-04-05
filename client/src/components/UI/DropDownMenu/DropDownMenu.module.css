@@ -22,6 +22,8 @@
 
 .listbox--form-button {
   font-size: 1rem;
+  width: 100%;
+  text-align: left;
 }
 
 .sort_options {
@@ -57,8 +59,6 @@
   border: none;
   cursor: pointer;
   outline-color: var(--blue);
-  width: 100%;
-  text-align: left;
 }
 
 .dropdown {
