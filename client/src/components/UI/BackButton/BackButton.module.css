@@ -17,12 +17,20 @@
   align-self: flex-start;
 }
 
+.button--back-white {
+  color: var(--white);
+}
+
 .button--back:hover {
   text-decoration: underline;
 }
 
 .backicon {
   margin-right: 1rem;
+}
+
+.backicon--white {
+  filter: brightness(0) invert(100);
 }
 
 @media (min-width: 768px) {

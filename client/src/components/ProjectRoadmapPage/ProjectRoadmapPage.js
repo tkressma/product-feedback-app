@@ -9,7 +9,7 @@ export const ProjectRoadmapPage = () => {
     <main className={styles.roadmap}>
       <header className={styles["roadmap__header"]}>
         <div>
-          <BackButton />
+          <BackButton white={true} />
           <Heading type="h1" white={true}>
             Roadmap
           </Heading>
