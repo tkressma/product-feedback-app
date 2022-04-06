@@ -31,7 +31,8 @@ Users should be able to:
 - Upvote product feedback requests :heavy_check_mark:
 - Receive form validations when trying to create/edit feedback requests :construction:
 - Add comments and replies to a product feedback request :heavy_check_mark:
-- Add transitions and animations to the web application :construction:
+- Delete comments ad replies to a feedback request :construction:
+- View transitions and animations while navigating pages :construction:
 
 ### Screenshot
 
