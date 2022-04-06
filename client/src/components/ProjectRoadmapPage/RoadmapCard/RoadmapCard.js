@@ -4,7 +4,6 @@ import Moment from "react-moment";
 import UpvoteButton from "../../Home/Main/SuggestionsFeed/Suggestion/UpvoteButton/UpvoteButton";
 import CommentLink from "../../Home/Main/SuggestionsFeed/Suggestion/CommentLink/CommentLink";
 import { Link } from "react-router-dom";
-import TextBody from "../../UI/TextBody/TextBody";
 import Tag from "../../UI/Tag/Tag";
 
 export const RoadmapCard = ({
