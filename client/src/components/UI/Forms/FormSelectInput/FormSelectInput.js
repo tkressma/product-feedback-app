@@ -9,7 +9,6 @@ export default function FormSelectInput({
   onChange,
 }) {
   const categories = ["Feature", "UI", "UX", "Enhancement", "Bug"];
-  const status = ["Suggestion", "Planned", "In-Progress", "Live"];
 
   return (
     <>

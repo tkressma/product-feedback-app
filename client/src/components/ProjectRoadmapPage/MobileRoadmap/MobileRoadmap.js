@@ -21,6 +21,9 @@ export const MobileRoadmap = ({ filter }) => {
     case "Live":
       description = "Released features";
       break;
+    default:
+      description = "Ideas prioritized for research";
+      break;
   }
 
   return (
