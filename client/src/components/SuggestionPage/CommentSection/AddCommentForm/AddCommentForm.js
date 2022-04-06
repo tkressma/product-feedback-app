@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../Comments/Comments.module.css";
+import styles from "./AddCommentForm.module.css";
 import { useDispatch } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { commentSuggestion } from "../../../../actions/suggestions";

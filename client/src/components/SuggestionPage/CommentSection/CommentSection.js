@@ -32,9 +32,10 @@ const CommentSection = ({ commentData }) => {
 
   return (
     <>
-      <section className={styles.comments}>
+      <section className={styles["comments_section"]}>
         <h1 className={styles["comments_header"]}>{commentTitle} </h1>
-        {commentCards}
+
+        <div className={styles.comments}>{commentCards}</div>
       </section>
       <AddCommentForm updateComments={setUpdatedComments} />
     </>
