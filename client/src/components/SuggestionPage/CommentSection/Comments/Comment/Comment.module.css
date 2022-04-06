@@ -4,12 +4,13 @@
   gap: 1.0625rem;
   font-size: 0.8125rem;
   line-height: 19px;
+  border-top: 1px solid rgb(0, 0, 0, 0.1);
+  padding-top: 1rem;
 }
 
-.comment + .comment {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgb(0, 0, 0, 0.1);
+.comment:first-child {
+  border: none;
+  padding-top: 0;
 }
 
 .comment_header {
