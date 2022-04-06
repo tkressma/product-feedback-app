@@ -4,6 +4,7 @@ import {
   CREATE_SUGGESTION,
   UPDATE_SUGGESTION,
   DELETE_SUGGESTION,
+  DELETE_COMMENT,
   UPVOTE,
   COMMENT,
   REPLY,
@@ -130,7 +131,7 @@ export const upvoteSuggestion = (id) => async (dispatch) => {
 export const commentSuggestion = (comment, id) => async (dispatch) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const username = user?.result.username || generateGoogleUsername(user);
-  const userId = user?.result.id || user?.result.googleId;
+  const userId = user?.result._id || user?.result.googleId;
 
   const commentData = {
     content: comment,
@@ -173,3 +174,13 @@ export const replyToComment =
       console.log(error.message);
     }
   };
+
+export const deleteComment = (suggestionId, commentId) => async (dispatch) => {
+  try {
+    const { data } = await api.deleteComment(suggestionId, commentId);
+    dispatch({ type: DELETE_COMMENT, payload: data });
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};

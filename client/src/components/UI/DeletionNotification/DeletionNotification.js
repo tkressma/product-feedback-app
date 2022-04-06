@@ -4,12 +4,28 @@ import Backdrop from "./Backdrop/Backdrop";
 import Button from "../Button/Button";
 import Heading from "../Heading/Heading";
 import { useDispatch } from "react-redux";
-import { deleteSuggestion } from "../../../actions/suggestions";
+import { deleteComment, deleteSuggestion } from "../../../actions/suggestions";
 import { useNavigate } from "react-router-dom";
 
-const DeletionNotification = ({ id, closeNotification, comment = false }) => {
+const DeletionNotification = ({
+  id,
+  closeNotification,
+  comment = false,
+  suggestionId,
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleDelete = (event) => {
+    event.preventDefault();
+    if (comment) {
+      dispatch(deleteComment(suggestionId, id));
+      closeNotification();
+    } else {
+      dispatch(deleteSuggestion(id));
+      navigate("/");
+    }
+  };
 
   return (
     <>
@@ -19,14 +35,7 @@ const DeletionNotification = ({ id, closeNotification, comment = false }) => {
         </Heading>
         <div className={styles.options}>
           <Button btnStyle="blue" text="Cancel" onClick={closeNotification} />
-          <Button
-            btnStyle="red"
-            text="Delete"
-            onClick={() => {
-              dispatch(deleteSuggestion(id));
-              navigate("/");
-            }}
-          />
+          <Button btnStyle="red" text="Delete" onClick={handleDelete} />
         </div>
       </div>
       <Backdrop onClick={closeNotification} />

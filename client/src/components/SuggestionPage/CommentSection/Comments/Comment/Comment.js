@@ -5,13 +5,15 @@ import ReplyForm from "./Replies/ReplyForm/ReplyForm";
 import ReplyButton from "../../../../UI/ReplyButton/ReplyButton";
 import deleteIcon from "../../../../../assets/shared/icon-delete.svg";
 import DeletionNotification from "../../../../UI/DeletionNotification/DeletionNotification";
+import { useParams } from "react-router-dom";
 
-const Comment = ({ user, content, id, replies }) => {
+const Comment = ({ user, content, commentId, replies }) => {
   const [replyFormActive, setReplyFormActive] = useState(false);
   const [replyData, setReplyData] = useState(replies);
   const [deletionNotificationActive, setDeleteNotificationActive] =
     useState(false);
   const currentUser = JSON.parse(localStorage.getItem("profile"));
+  const { id } = useParams();
 
   const openDeletionNotification = (e) => {
     e.preventDefault();
@@ -22,7 +24,8 @@ const Comment = ({ user, content, id, replies }) => {
     <>
       {deletionNotificationActive && (
         <DeletionNotification
-          id={id}
+          id={commentId}
+          suggestionId={id}
           comment={true}
           closeNotification={() => setDeleteNotificationActive(false)}
         />
@@ -37,7 +40,7 @@ const Comment = ({ user, content, id, replies }) => {
           <div className={styles["comment_settings"]}>
             {/* If the user is the creator of the comment, display the deletion option */}
             {(currentUser?.result?.googleId === user.id ||
-              currentUser?.result?._id === id) && (
+              currentUser?.result?._id === user.id) && (
               <button
                 className={styles["comment__settings_btn"]}
                 aria-label="Delete comment"
@@ -57,7 +60,7 @@ const Comment = ({ user, content, id, replies }) => {
         {replyFormActive && (
           <ReplyForm
             replyUser={user.username}
-            parentCommentId={id}
+            parentCommentId={commentId}
             closeForm={() => setReplyFormActive(false)}
             updateReplies={setReplyData}
           />
@@ -65,7 +68,7 @@ const Comment = ({ user, content, id, replies }) => {
         {replyData && (
           <Replies
             replyData={replyData}
-            parentCommentId={id}
+            parentCommentId={commentId}
             updateReplies={setReplyData}
           />
         )}

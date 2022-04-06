@@ -41,7 +41,7 @@ const Reply = ({
           <div className={styles["reply_settings"]}>
             {/* If the user is the creator of the comment, display the deletion option */}
             {(currentUser?.result?.googleId === user.id ||
-              currentUser?.result?._id === id) && (
+              currentUser?.result?._id === user.id) && (
               <button
                 className={styles["reply__settings_btn"]}
                 aria-label="Delete comment"

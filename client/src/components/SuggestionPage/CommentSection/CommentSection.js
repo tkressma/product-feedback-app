@@ -24,7 +24,7 @@ const CommentSection = ({ commentData }) => {
     <Comment
       key={index}
       user={comment.user}
-      id={comment._id}
+      commentId={comment._id}
       content={comment.content}
       replies={comment.replies}
     />

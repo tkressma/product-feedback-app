@@ -41,3 +41,6 @@ export const replyToComment = (comment, id, parentCommentId) =>
 
 export const signIn = (formData) => API.post("/user/signin", formData);
 export const signUp = (formData) => API.post("/user/signup", formData);
+
+export const deleteComment = (suggestionId, commentId) =>
+  API.delete(`/suggestions/${suggestionId}/comment/${commentId}`);

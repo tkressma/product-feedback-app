@@ -204,6 +204,23 @@ export const commentSuggestion = async (req, res) => {
   res.json(updatedSuggestion);
 };
 
+export const deleteComment = async (req, res) => {
+  const { suggestionId, commentId } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(commentId))
+    return res.status(404).send(`No post with id: ${commentId}`);
+
+  await SuggestionModel.findByIdAndUpdate(
+    suggestionId,
+    {
+      $pull: { comments: { _id: mongoose.Types.ObjectId(commentId) } },
+    },
+    { new: true }
+  );
+
+  res.json({ message: "Comment deleted successfully." });
+};
+
 export const replyToComment = async (req, res) => {
   const { id } = req.params;
   const { comment, parentCommentId } = req.body;

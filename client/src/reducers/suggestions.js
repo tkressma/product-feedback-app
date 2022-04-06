@@ -3,6 +3,7 @@ import {
   FETCH_FILTERED,
   CREATE_SUGGESTION,
   DELETE_SUGGESTION,
+  DELETE_COMMENT,
   START_LOADING,
   END_LOADING,
   CHANGE_FILTERS,
@@ -48,6 +49,11 @@ export default (
         suggestions: state.suggestions.filter(
           (suggestion) => suggestion._id !== action.payload
         ),
+      };
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        suggestions: action.payload,
       };
     case UPVOTE:
       return {
