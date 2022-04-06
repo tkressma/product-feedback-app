@@ -1,0 +1,26 @@
+.roadmap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 1.30208333%;
+}
+
+.roadmap__status {
+  display: flex;
+  flex-direction: column;
+}
+
+.roadmap__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.roadmap__status_heading {
+  margin: 2rem 0 1.5rem 0;
+}
+
+@media (min-width: 1440px) {
+  .roadmap {
+    column-gap: 1.875rem;
+  }
+}

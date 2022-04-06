@@ -3,7 +3,7 @@ import styles from "./RoadmapCard.module.css";
 import Moment from "react-moment";
 import UpvoteButton from "../../Home/Main/SuggestionsFeed/Suggestion/UpvoteButton/UpvoteButton";
 import CommentLink from "../../Home/Main/SuggestionsFeed/Suggestion/CommentLink/CommentLink";
-import Heading from "../../UI/Heading/Heading";
+import { Link } from "react-router-dom";
 import TextBody from "../../UI/TextBody/TextBody";
 import Tag from "../../UI/Tag/Tag";
 
@@ -24,27 +24,26 @@ export const RoadmapCard = ({
 
   return (
     <article className={`${styles.suggestion} ${cardStyle}`}>
-      <UpvoteButton upvotes={upvotes} id={_id} />
+      <UpvoteButton upvotes={upvotes} id={_id} isRoadmap={true} />
 
       {/* Suggestion title, description, and tag */}
       <section className={styles["suggestion__info"]}>
         <div className={styles["suggestion__header"]}>
-          <Heading
-            type="h3"
-            link={true}
-            destination={`/view-suggestion/${_id}`}
+          <Link
+            to={`/view-suggestion/${_id}`}
+            className={styles["suggestion__title"]}
           >
             {title}
-          </Heading>
+          </Link>
 
-          <TextBody type="b1">
+          <p className={styles["suggestion__user"]}>
             {name}
             <span className={styles["suggestion__username"]}>@{username}</span>
-          </TextBody>
+          </p>
 
-          <TextBody type="b2">
+          <p className={styles["suggestion__date"]}>
             <Moment format="MM/DD/YYYY" date={createdAt} />
-          </TextBody>
+          </p>
         </div>
 
         <p className={styles["suggestion__description"]}>{description}</p>

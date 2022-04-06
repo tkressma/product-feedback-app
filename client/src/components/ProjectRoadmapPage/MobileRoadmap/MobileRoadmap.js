@@ -4,15 +4,13 @@ import { RoadmapCard } from "../RoadmapCard/RoadmapCard";
 import { useSelector } from "react-redux";
 import Heading from "../../UI/Heading/Heading";
 
+// Retrieve each suggestion in a selected category from the roadmap
+// and display to the user.
 export const MobileRoadmap = ({ filter }) => {
-  const { suggestions } = useSelector((state) => state.suggestions);
-
-  let filteredSuggestions = suggestions.filter((suggestion) => {
-    return suggestion.status === filter.toLowerCase();
-  });
+  const { roadmap } = useSelector((state) => state.suggestions);
+  let filteredSuggestions = roadmap[`${filter.toLowerCase()}`];
 
   let description;
-  console.log(filter);
   switch (filter) {
     case "Planned":
       description = "Ideas prioritized for research";

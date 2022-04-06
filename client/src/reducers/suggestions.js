@@ -17,6 +17,7 @@ export default (
     isLoading: true,
     suggestions: [],
     filters: { sortCategory: "All", sortType: "upvotes", sortOrder: "desc" },
+    roadmap: { planned: [], inProgress: [], live: [] },
   },
   action
 ) => {
@@ -72,7 +73,11 @@ export default (
     case CHANGE_FILTERS:
       return { ...state, filters: { ...action.payload } };
     case FETCH_FILTERED:
-      return { ...state, suggestions: action.payload };
+      return {
+        ...state,
+        suggestions: action.payload.data,
+        roadmap: action.payload.roadmap,
+      };
     default:
       return state;
   }

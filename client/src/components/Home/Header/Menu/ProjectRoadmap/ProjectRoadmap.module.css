@@ -53,7 +53,7 @@ li + li {
   background-color: var(--light-orange);
 }
 
-.inprogress {
+.in-progress {
   background-color: var(--violet);
 }
 

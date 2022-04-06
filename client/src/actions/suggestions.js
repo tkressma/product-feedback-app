@@ -84,7 +84,26 @@ export const filterSuggestions =
         order
       );
 
-      dispatch({ type: FETCH_FILTERED, payload: data });
+      // Retrieve the filtered suggestions based on status for the roadmap
+      const planned = data.filter(
+        (suggestion) => suggestion.status === "planned"
+      );
+      const inProgress = data.filter(
+        (suggestion) => suggestion.status === "in-progress"
+      );
+      const live = data.filter((suggestion) => suggestion.status === "live");
+
+      const roadmap = {
+        planned: planned,
+        "in-progress": inProgress,
+        live: live,
+      };
+
+      // Payload containing all sorted suggestions as well as suggestions
+      // that are in the roadmap
+      let suggestionData = { data, roadmap };
+
+      dispatch({ type: FETCH_FILTERED, payload: suggestionData });
       dispatch({ type: END_LOADING });
     } catch (error) {
       console.log(error.message);

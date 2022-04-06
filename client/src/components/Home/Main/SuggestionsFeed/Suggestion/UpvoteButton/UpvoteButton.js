@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { upvoteSuggestion } from "../../../../../../actions/suggestions";
 import { useNavigate } from "react-router-dom";
 
-const UpvoteButton = ({ upvotes, id }) => {
+const UpvoteButton = ({ upvotes, id, isRoadmap = false }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -37,7 +37,9 @@ const UpvoteButton = ({ upvotes, id }) => {
 
   return (
     <button
-      className={`${styles.upvote} ${isUpvoted && styles["upvote--active"]}`}
+      className={`${styles.upvote} ${isUpvoted && styles["upvote--active"]} ${
+        isRoadmap && styles["upvote--roadmap"]
+      }`}
       onClick={handleUpvote}
     >
       <img
